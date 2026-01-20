@@ -1,0 +1,158 @@
+/* form 寬度 */
+@media (min-width: 700px) {
+    #account_form {
+        width: 800px;
+    }
+}
+
+/* 註冊區塊輸入框 */
+.memcenter-container input {
+    border-radius: 10px !important;
+    border: 0 !important;
+    background-color: #fffbf7 !important;
+    text-align: center;
+}
+
+/* 註冊區塊文字 */
+.memcenter-container label {
+    font-size: 20px;
+    color: #5D4033;
+    font-weight: bold;
+}
+
+/* 基本資料 placeholder */
+#account_Account::placeholder {
+    text-align: center;
+}
+
+/* 修改密碼 */
+#account_repasswdBtn {
+    font-size: 20px;
+    color: #5D4033;
+    font-weight: bold;
+    background-color: #d5c8b8;
+    border-color: #5D4033;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+/* 修改密碼 hover */
+#account_repasswdBtn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 修改密碼 Modal標題 */
+.modal-title {
+    font-weight: bold;
+    color: #5D4033;
+    margin: auto;
+}
+
+/* 修改密碼 Modal輸入框*/
+.modal-body input {
+    background-color: #e9e2d8 !important;
+}
+
+/* 修改密碼 Modal按鈕 */
+.modal-footer .btn {
+    font-weight: bold;
+    color: #FFFBF7;
+    background-color: #ab9073;
+    border: none;
+    /* 去掉邊框 */
+    padding: 5px;
+    /* 調整按鈕大小 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* 修改密碼 Modal按鈕 hover */
+.modal-footer .btn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/*---------------------------------
+    密碼規則 
+ --------------------------------*/
+#passwordRule {
+    display: block;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    padding: 10px;
+    font-size: 12px;
+    display: none;
+}
+
+.invalid {
+    color: #9c4332;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid::before {
+    position: relative;
+    left: -5px;
+    content: "!";
+}
+
+.valid::before {
+    position: relative;
+    left: -5px;
+    content: "\2713";
+}
+
+/* 修改暱稱 */
+#account_renickName {
+    font-size: 15px;
+    color: #5D4033;
+    font-weight: bold;
+    background-color: #d5c8b8;
+    border-color: #5D4033;
+    border-width: 2px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+/* 修改暱稱 hover */
+#account_renickName:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 性別區塊 */
+#account_Gender {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* 性別按鈕 */
+#account_Gender .btn {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5D4033;
+    border-color: #5D4033;
+    border-width: 2px;
+    padding-inline: 80px;   /* 調整按鈕寬度 */
+    border-radius: 10px;    /* 圓角 */
+}
+
+@media (max-width: 700px) {
+    #account_Gender .btn {
+        padding-inline: 30px;
+        /* 調整按鈕寬度 */
+    }
+}
+
+/* 性別按鈕 */
+#account_Gender .btn-check:checked+.btn {
+    color: #FFFBF7;
+    background-color: #756b61;
+
+}

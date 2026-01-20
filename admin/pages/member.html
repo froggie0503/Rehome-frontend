@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 會員管理">
+    <meta name="theme-color" content="#9B7E66">
+    <title>會員管理 | ReHome 後台管理系統</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/member.css">
+</head>
+
+<body>
+    <!-- 漢堡選單按鈕 (手機版) -->
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="開啟側邊選單" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- 遮罩層 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+    
+    <header class="header"></header>
+    <div class="main-container">
+        <aside class="sidebar" role="navigation" aria-label="主選單"></aside>
+        <main class="content" role="main">
+            <h1>會員管理</h1>
+
+            <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
+                    <path
+                        d="M16.516 14.9586L13.2553 11.5898C13.1082 11.4377 12.9087 11.3532 12.6994 11.3532H12.1663C13.0689 10.1605 13.6053 8.66022 13.6053 7.0282C13.6053 3.14579 10.5604 0 6.80264 0C3.04484 0 0 3.14579 0 7.0282C0 10.9106 3.04484 14.0564 6.80264 14.0564C8.38229 14.0564 9.8344 13.5022 10.9889 12.5697V13.1204C10.9889 13.3367 11.0706 13.5428 11.2178 13.6948L14.4785 17.0636C14.7859 17.3813 15.2831 17.3813 15.5872 17.0636L16.5128 16.1074C16.8202 15.7898 16.8202 15.2762 16.516 14.9586ZM6.80264 11.3532C4.4904 11.3532 2.6164 9.42048 2.6164 7.0282C2.6164 4.63928 4.48713 2.70315 6.80264 2.70315C9.11489 2.70315 10.9889 4.63591 10.9889 7.0282C10.9889 9.41711 9.11816 11.3532 6.80264 11.3532Z"
+                        fill="#6B3E26" />
+                </svg>
+                <input type="text" placeholder="search member" id="searchInput">
+            </div>
+
+            <div class="member-table-container">
+                <table class="member-table">
+                    <thead>
+                        <tr>
+                            <th>編號</th>
+                            <th>Email</th>
+                            <th>姓名</th>
+                            <th style="text-align: center;">狀態</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="memberTableBody">
+                        <!-- <tr>
+                            <td>編號</td>
+                            <td>信箱</td>
+                            <td>姓名</td>
+                            <td>狀態</td>
+                            <td class="action-buttons">
+                                <button class="btn-edit">Edit</button>
+                            </td>
+                        </tr> -->
+                        <!-- 更多會員資料行可以在這裡加入 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="pagination-btn btn-page-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path
+                            d="M24 16L16 24M16 24L24 32M16 24H32M44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24Z"
+                            stroke="#DAC4AC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <!-- 頁數顯示 -->
+                <div class="page-info">
+                    <span id="currentPage">1</span> | <span id="totalPages">10</span>
+                </div>
+
+                <button class="pagination-btn btn-page-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path
+                            d="M24 32L32 24M32 24L24 16M32 24H16M44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24Z"
+                            stroke="#DAC4AC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/member.js"></script>
+</body>
+
+<!-- Modal 彈窗 -->
+<div id="memberModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>會員資料</h1>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="member-avatar">
+                <img id="modalAvatar" src="../../assets/img/logo/Logo.png" alt="Avatar">
+            </div>
+            <div class="member-info">
+                <div class="info-row">
+                    <label>Email</label>
+                    <p id="modalEmail">omkardeshmane832@gmail.com</p>
+                </div>
+                <div class="info-row-group">
+                    <div class="info-row">
+                        <label>姓名</label>
+                        <p id="modalName">omkar deshmane</p>
+                    </div>
+                    <div class="info-row">
+                        <label>暱稱</label>
+                        <p id="modalNickname">ReHome</p>
+                    </div>
+                </div>
+                <div class="info-row-group">
+                    <div class="info-row">
+                        <label>性別</label>
+                        <p id="modalGender">男 / 女</p>
+                    </div>
+                    <div class="info-row">
+                        <label>生日</label>
+                        <p id="modalBirthday">yyyy/MM/dd</p>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <label>手機號碼</label>
+                    <p id="modalPhone">0000-000000</p>
+                </div>
+                <div class="info-row">
+                    <label>聯絡地址</label>
+                    <p id="modalAddress">台中市公益路51號</p>
+                </div>
+                <div class="info-row-checkbox">
+                    <label>
+                        <input type="checkbox" id="modalcheckaccount" checked>
+                        凍結帳號
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-save">Save</button>
+            <button class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+</html>

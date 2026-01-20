@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="../../css/modules/card.css">
+<link rel="stylesheet" href="../../css/modules/new_mem_card.css">
+<!-- <script src="../../js/modules/card.js"></script> -->
+<!-- <script src="../../js/modules/publicationCard.js"></script> -->
+<script src="../../js/modules/memfavor.js"></script>
+<p class="containertitle">領養收藏</p>
+
+<!--內容-->
+<div class="memcenter-container">
+        <div id="loading-spinner">
+        <div class="loader-dots">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <p style="margin-top: 15px; color: #756B61; font-weight: bold; letter-spacing: 2px;">資料載入中</p>
+    </div>
+
+    <div class="missing-publish">
+        <h4>已收藏</h4>
+        <!-- card -->
+        <div class="pub-card-wrapper" data-id="ZS20251205120005">
+
+            <a href="/#pet-adoption-detail?casenumber=ZS20251205120005" class="top-link-tab favorite-page">
+                <i class="bi bi-box-arrow-up-right"></i> 點擊前往詳細單頁
+            </a>
+
+
+            <button class="border-0 right-heart-tab js-api-favorite-toggle" data-case="${item.caseNumber}"
+                onclick="handleApiFavorite(this, event, '${item.caseNumber}')">
+                <i class="bi bi-heart-fill card-heart-icon"></i>
+
+            </button>
+
+            <div class="right-action-tab btn-close-collect">我要取消收藏</div>
+
+
+            <div class="pub-card">
+                <div class="row g-0 h-100">
+                    <div class="col-md-5 img-container">
+                        <img src="../../assets/img/material/carousel_1.jpg" class="pet-img" alt="寵物照片"
+                            data-field="petImg">
+                    </div>
+
+                    <div class="col-md-7 info-container">
+                        <div class="case-number">
+                            案件編號：<span data-field="caseNumber" class="highlight-text">ZS20251205120005</span>
+                        </div>
+
+                        <div class="pet-details">
+                            <div class="public-Adoption memeber-center">公立 <i class="bi bi-building"></i></div>
+
+                            <p>寵物姓名：<span data-field="petName">阿貓</span></p>
+                            <p>寵物種類：<span data-field="species">種子</span></p>
+                            <p>寵物品種：<span data-field="petBreed">其他-神奇寶貝</span></p>
+                            <p>飼主地點：<span data-field="casesDistrict">高雄市 楠梓區</span></p>
+                            <p>收藏日期：<span data-field="favoriteDate">2025-10-10</span></p>
+                        </div>
+                    </div>
+                    <button class="btn p-0 border-0 bg-transparent js-api-favorite-toggle"
+                        data-case="${item.caseNumber}" onclick="handleApiFavorite(this, event, '${item.caseNumber}')">
+                        <i class="bi card-heart-icon ${heartClass}"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="missing-publish  closed-collect-case">
+        <h4>已結案</h4>
+        <!-- card -->
+        <div class="pub-card-wrapper" data-id="12345">
+
+            <a href="#" class="top-link-tab favorite-page">
+                <i class="bi bi-box-arrow-up-right"></i> 點擊前往詳細單頁
+            </a>
+
+            <button class="center-floating-btn btn-close-collect">
+                <i class="bi bi-trash3-fill"></i> 取消收藏
+            </button>
+
+
+            <button class="border-0 right-heart-tab js-api-favorite-toggle" data-case="${item.caseNumber}"
+                onclick="handleApiFavorite(this, event, '${item.caseNumber}')">
+                <i class="bi bi-heart-fill card-heart-icon"></i>
+
+            </button>
+
+            <div class="right-action-tab btn-close-case">我要取消收藏</div>
+
+
+            <div class="pub-card ">
+                <div class="row g-0 h-100">
+                    <div class="col-md-5 img-container">
+                        <img src="../../assets/img/material/carousel_1.jpg" class="pet-img" alt="寵物照片"
+                            data-field="petImg">
+                    </div>
+
+                    <div class="col-md-7 info-container">
+                        <div class="case-number">
+                            案件編號：<span data-field="caseNumber" class="highlight-text">ZS20251205120005</span>
+                        </div>
+
+                        <div class="pet-details">
+                            <div class="private-Adoption memeber-center">個人 <i class="bi bi-house"></i></div>
+
+                            <p>寵物姓名：<span data-field="petName">阿貓</span></p>
+                            <p>寵物種類：<span data-field="species">種子</span></p>
+                            <p>寵物品種：<span data-field="petBreed">其他-神奇寶貝</span></p>
+                            <p>飼主地點：<span data-field="casesDistrict">高雄市 楠梓區</span></p>
+                            <p>收藏日期：<span data-field="favoriteDate">2025-10-10</span></p>
+                        </div>
+                    </div>
+                    <button class="btn p-0 border-0 bg-transparent js-api-favorite-toggle"
+                        data-case="${item.caseNumber}" onclick="handleApiFavorite(this, event, '${item.caseNumber}')">
+                        <i class="bi card-heart-icon ${heartClass}"></i>
+                    </button>
+                </div>
+            </div>
+            <img src="../../assets/img/material/closed.png" class="closed-stamp-img" alt="已結案印章">
+
+
+        </div>
+        
+    </div>
+</div>
+<!--下架 Modal-->
+<div class="modal fade " id="cardremove_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content cardremovemodalcontent" style="background-color: #FFFBF7;">
+            <div class="modal-header">
+                <h5 class="modal-title">是否取消收藏?</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
+                <button type="button" id="confirmRemoveBtn" class="btn">確定</button>
+            </div>
+        </div>
+    </div>
+</div>

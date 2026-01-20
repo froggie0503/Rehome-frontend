@@ -1,0 +1,79 @@
+/* 1. 遮罩層 (半透明黑色背景) */
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明黑 */
+    z-index: 9999; /* 確保在最上層 */
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    align-items: center;     /* 垂直置中 */
+    opacity: 0;
+    animation: fadeIn 0.3s forwards; /* 進場動畫 */
+}
+
+/* 2. 彈窗本體 */
+.custom-alert-box {
+    background-color: #E9E2D8; /* 截圖中的米色背景 */
+    width: 90%;
+    max-width: 450px; /* 最大寬度 */
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: left;
+    position: relative;
+}
+
+/* 3. 標題樣式 */
+.custom-alert-header h3 {
+    color: #504033; /* 深咖啡色 */
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 18px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #8B7E74; /* 標題下方的線 */
+    display: inline-block; /* 讓底線跟文字一樣寬 */
+}
+
+/* 4. 內容文字樣式 */
+.custom-alert-body p {
+    background-color: #FFFBF7;
+    border-radius: 10px;
+    color: #504033;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    line-height: 1.6;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+}
+
+
+
+/* 5. 按鈕與底部 */
+.custom-alert-footer {
+    text-align: right; /* 按鈕靠右 */
+}
+
+.custom-alert-footer button {
+    background-color: #81A868; /* 截圖中的灰綠色 */
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* transition: background 0.3s; */
+}
+
+.custom-alert-footer button:hover {
+    background-color: #679067; /* 滑鼠移過去變深一點 */
+}
+
+/* 進場動畫設定 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

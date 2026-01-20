@@ -1,0 +1,110 @@
+/* 註冊標題 */
+#login_Title {
+    font-weight: bold;
+    color: #5D4033;
+    text-align: center;
+    padding: 20px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 5px; /* 底線寬度 */
+    text-underline-offset: 10px;    /* 底線間距 */
+}
+
+/* 輸入驗證碼 */
+#login_ConfirmCode{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+
+/* 記住帳號 */
+#login_rememberAccount.form-check-input {
+    border-radius: 5px !important;
+}
+
+/* 記住帳號 check */
+#login_rememberAccount.form-check-input:checked {
+    color: #FFFBF7;            
+    background-color: #756b61 !important;
+}
+
+/* 送出按鈕 */
+#login_Btn {
+    font-size: large;
+    font-weight: bold;            
+    color: #FFFBF7;             
+    background-color: #ab9073;  
+    border: none;                 /* 去掉邊框 */
+    padding: 5px;                 /* 調整按鈕大小 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;           /* 圓角 */
+}
+
+/* 送出按鈕 hover */
+#login_Btn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 忘記密碼? 沒有會員? */
+#login_Help{
+    font-size: large;
+    font-weight: bold; 
+    margin: 20px;
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+
+}
+
+/* 超連結去底線 */
+#login_form a {
+    text-decoration: none;
+    color: #5D4033;
+}
+
+/* 超連結 hover */
+#login_form a:hover {
+    color: #9c4332;
+}
+
+/* 忘記密碼 Modal標題 */
+.modal-title{
+    font-weight: bold;
+    color: #5D4033;
+    margin: auto;
+}
+
+/* 忘記密碼 Modal驗證碼區塊 */
+.login_ConfirmCode {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+
+/* 忘記密碼 Modal按鈕 */
+.modal-footer .btn{
+    font-weight: bold;            
+    color: #FFFBF7;             
+    background-color: #ab9073;  
+    border: none;                 /* 去掉邊框 */
+    padding: 5px;                 /* 調整按鈕大小 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; 
+}
+
+/* 忘記密碼 Modal按鈕 hover */
+.modal-footer .btn:hover{
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 其他登入方式 */
+#login_other {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}

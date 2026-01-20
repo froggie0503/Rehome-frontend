@@ -1,0 +1,348 @@
+/* src/main/resources/static/css/modules/index_loading.css */
+
+:root {
+    /* ==========================================================
+       [手動微調區] 請依照您的螢幕寬度去調整 left 值
+       ========================================================== */
+
+    /* 1. 垂直位置 (Top) */
+    /* 您的 Nav 高度固定，Logo 垂直置中，這個值通常不太會變 */
+    /* 從影片看，Logo 距離頂部約 10px ~ 12px */
+    --final-top: -5px;
+
+    /* 2. 水平位置 (Left) - 這是最需要微調的地方 */
+    /* 因為 container-fluid 有 padding，Logo 不會貼齊最左邊 */
+    /* 您可能需要根據不同寬度去覆寫這個值 (在下方的 @media 裡) */
+    --final-left: 28px;
+
+    /* ==========================================================
+       [尺寸設定區] 您的 Logo 是 269x75，我們以此為目標
+       ========================================================== */
+
+    /* 真 Logo 的寬度 (目標值) */
+    --target-width: 270;
+
+    /* 動畫 Logo 的初始寬度 (這是您在下方 .logo-box 和 .name-img-box 設定的總和) */
+    /* PC: Logo(180) + Gap(10) + Text(500) = 690 (大約值，我們會用縮放來控制) */
+    /* 為了精準，我們直接設定「縮放倍率」最快 */
+
+    /* 3. 縮放倍率設定 */
+    /* 您可以調整這個數值，直到動畫 Logo 跟真 Logo 一樣大 */
+    /* 電腦版建議：0.25 ~ 0.3 */
+    --scale-pc: 0.35;
+
+    /* 手機版建議：0.4 ~ 0.5 */
+    --scale-mobile: 0.525;
+
+    /* 小螢幕建議 */
+    --scale-small: 0.7;
+}
+
+/* =========================================
+   1. 控制 Nav 與 Logo 出現時機
+   ========================================= */
+body:not(.animation-done) #header-placeholder {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+body.animation-done #header-placeholder {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.1s ease;
+}
+
+.navbar-brand img {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+body.animation-done .navbar-brand img {
+    opacity: 1 !important;
+}
+
+/* =========================================
+   2. 動畫容器與移動設定
+   ========================================= */
+#loader-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D5C8B8;
+    z-index: 9998;
+    transition: opacity 0.8s ease;
+}
+
+#loader-bg.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.brand-container {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+ transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1), 
+                left 1s cubic-bezier(0.65, 0, 0.35, 1), 
+                top 1s cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* ★ 關鍵：變形原點設為左上角，方便對齊 */
+    transform-origin: center center;
+    pointer-events: none;
+}
+
+/* --- 飛行狀態 --- */
+.brand-container.move-to-header {
+    /* 移除置中 */
+    top: var(--final-top);
+    left: var(--final-left);
+
+    /* 使用手動設定的倍率 */
+    transform: translate(0, 0) scale(var(--scale-pc));
+
+    /* 改為左上角對齊 */
+    transform-origin: top left;
+}
+
+.brand-container.mission-complete {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.brand-container.move-to-header .slogan {
+    opacity: 0 !important;
+    transition: opacity 0.3s ease;
+}
+
+/* =========================================
+   3. 內部元件 (尺寸設定)
+   ========================================= */
+.logo-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo-box.show {
+    opacity: 1;
+}
+
+/* 所有圖片的基礎定位 */
+.logo-box .logo-img {
+    position: absolute; /* 讓圖片重疊的核心 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 底層：暗圖 */
+.logo-box .logo-img:not(.light) {
+    z-index: 1;
+}
+
+/* 上層：亮圖 (初始狀態) */
+.logo-box .logo-img.light {
+    opacity: 0;      /* 初始隱藏 */
+    z-index: 2;      /* 確保在暗圖上方 */
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 亮圖點亮狀態 (必須寫在 .light 的下方，才能成功覆蓋 opacity) */
+.logo-box .logo-img.light.start-glow {
+    opacity: 1;
+}
+
+/* 光暈層 (最頂層) */
+.window-glow {
+    position: absolute;
+    background-color: #ffe760;
+    width: 40%; 
+    height: 20%; 
+    top: 78%; /* 微調對準窗戶位置 */
+    left: 60%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 光暈動畫 */
+.window-glow.start-glow {
+    animation: smoothLightUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes smoothLightUp {
+   0% { 
+        opacity: 0; 
+        transform: translate(-50%, 0) scale(0.6); 
+        filter: blur(5px);
+    }
+    100% { 
+        opacity: 0.9; 
+        transform: translate(-50%, 0) scale(0.9); 
+        filter: blur(18px); 
+    }
+}
+
+/* 文字圖片設定 */
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -20px;
+    white-space: nowrap;
+}
+.name-img-box {
+    /* 1. 位置調整：改用 margin-top 往下推，解決太高的問題 */
+    margin-top: 46px;
+    margin-bottom: 0px;
+    /* 移除底部邊距 */
+
+    /* 2. 大小調整：寬度設為 auto 解除 200px 的限制，讓圖片能自然變大 */
+    width: auto;
+
+    /* 容器高度配合圖片微調 */
+    height: 240px;
+
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.name-img-box.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.name-img-box img {
+    /* 3. 圖片高度微調：從 220px 加大到 240px */
+    height: 280px !important;
+    width: auto;
+}
+
+.slogan {
+    font-size: 2rem;
+    color: #504033;
+    margin-top: 0px;
+    margin-left: 40px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    opacity: 0;
+    font-weight: bolder;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+}
+
+.slogan.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================
+   RWD 設定 - 針對不同螢幕調整位置與縮放
+   ========================================================== */
+
+/* 平板/大手機 (800px 以下) */
+@media (max-width: 800px) {
+    :root {
+        --final-top: -20px;
+        --final-left: 28px;
+    }
+
+    .brand-container.move-to-header {
+        transform: translate(0, 0) scale(var(--scale-mobile));
+    }
+
+    .logo-box {
+        width: 120px;
+        height: 120px;
+    }
+
+    .text-group {
+        margin-left: -5px;
+    }
+
+    /* 修正重點：解除高度鎖定並調整 margin-top */
+    .name-img-box {
+        /* 1. 設定高度為 auto，避免繼承電腦版的 240px */
+        height: auto;
+
+        /* 2. 調整 margin-top */
+        /* 桌面版是 46px，這裡圖片高度 140px (約一半)，所以 margin-top 設為 30px 左右比較剛好 */
+        /* 如果還是覺得太高，可以把這個數字改大 (例如 35px) */
+        margin-top: 60px;
+
+        width: auto;
+    }
+
+    .name-img-box img {
+        height: 180px !important;
+    }
+
+    .slogan {
+        font-size: 1.8rem;
+        margin-top: 0px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 500px) {
+    :root {
+        --final-top: -25px;
+        --final-left: 30px;
+    }
+
+    .brand-container.move-to-header {
+        transform: translate(0, 0) scale(var(--scale-small));
+    }
+
+    .logo-box {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* 修正重點 */
+    .name-img-box img {
+        height: 140px !important;
+    }
+
+    .name-img-box {
+        /* ★ 這裡的高度改為 auto，避免繼承電腦版的 240px 導致下方留白推擠文字 */
+        height: auto;
+
+        /* 數值設為 25px 左右即可 (依比例縮放) */
+        /* 因為修好了 height: auto，不需要設到 60px 這麼大 */
+        margin-top: 50px;
+    }
+
+    .slogan {
+        font-size: 1.5rem;
+        margin-top: 0px;
+        letter-spacing: 1px;
+        margin-left: 20px;
+        padding-top: 0%;
+    }
+
+    .text-group {
+        margin-left: -10px;
+    }
+}
+
+
+

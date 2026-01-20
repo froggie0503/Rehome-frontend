@@ -1,0 +1,973 @@
+   /* 置頂標籤 */
+   /* 外層容器：負責把整個區塊置中 */
+
+
+   .title-container {
+       text-align: center;
+       margin-top: 50px;
+   }
+
+   /* 核心設計：標題包裝器 */
+   .custom-title-wrapper {
+       display: inline-flex;
+       align-items: flex-end;
+       /* 底部對齊 */
+       justify-content: center;
+       /* 水平置中 */
+       border-bottom: 5px solid #504033;
+       padding-bottom: 5px;
+       padding-left: 10px;
+       /* 手機版減少內距 */
+       padding-right: 10px;
+       max-width: 100%;
+       /* 防止超出螢幕寬度 */
+       flex-wrap: nowrap;
+       /* 禁止換行，這是關鍵！ */
+   }
+
+   /* 文字樣式 */
+   .custom-title-wrapper h3 {
+       margin: 0;
+       font-size: 36px;
+       /* 桌面版預設大小 */
+       color: #504033;
+       font-weight: bolder;
+       letter-spacing: 2px;
+       padding: 0 10px;
+       /* 減少左右間距 */
+       white-space: nowrap;
+       /* 禁止文字換行 */
+   }
+
+   /* 特別強調「走失」兩個字 */
+   .highlight-text {
+       color: #9C4332;
+   }
+
+
+   .title-left-img {
+       height: 60px;
+       margin-bottom: -10px;
+       /* 微調對齊 */
+       width: auto;
+       max-width: 20vw;
+       /* 限制最大寬度為視窗寬度的 20%，避免擠壓文字 */
+       object-fit: contain;
+       /* 保持圖片比例 */
+   }
+
+   .title-right-img {
+       height: 80px;
+       margin-bottom: -10px;
+       /* 微調對齊 */
+       width: auto;
+       max-width: 20vw;
+       /* 限制最大寬度 */
+       object-fit: contain;
+   }
+
+   @media (max-width: 480px) {
+
+       .custom-title-wrapper h3 {
+           font-size: 24px;
+           /* 手機版文字變小 */
+           letter-spacing: 1px;
+       }
+
+       .title-left-img {
+           height: 40px;
+           /* 手機版圖片變小 */
+           margin-bottom: -10px;
+       }
+
+       .title-right-img {
+           height: 50px;
+           /* 手機版圖片變小 */
+           margin-bottom: -5px;
+       }
+
+       .placeholder-box>img {
+           width: 100px;
+           height: 100px;
+
+       }
+   }
+
+
+
+   /* 進度條 */
+   .container {
+       max-width: 50%;
+       min-height: 100px;
+       padding: 20px;
+       margin: 20px auto;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       font-family: "微軟正黑體", sans-serif;
+       box-sizing: border-box;
+   }
+
+   .step {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+
+   .step .title {
+       font-size: 15px;
+       color: #5a5148;
+       width: 100%;
+       text-align: left;
+   }
+
+   .step .label {
+       font-size: 18px;
+       padding: 6px 18px;
+       background-color: #e2d4c1;
+       color: #7a6553;
+       border-radius: 4px;
+       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+       white-space: nowrap;
+       text-align: center;
+       font-weight: bold;
+   }
+
+   .step .label-start {
+       font-size: 18px;
+       padding: 6px 18px;
+       background-color: #756B61;
+       color: #FFFBF7;
+       border-radius: 4px;
+       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+       white-space: nowrap;
+       text-align: center;
+       font-weight: bold;
+
+   }
+
+   .line {
+       flex: 1;
+       height: 5px;
+       background-color: #dcc7b3;
+       margin: 18px 0 0;
+   }
+
+   /* Divider 分隔線 */
+   .Divider {
+       height: 5px;
+       background-color: #7a6553;
+       max-width: 50%;
+       margin: 50px auto;
+       border-radius: 50px;
+   }
+
+   /* 共用卡片樣式 */
+   /* .card, */
+   .card1,
+   .card2,
+   .card3,
+   .card4,
+   .card5,
+   .card6 {
+       max-width: 700px;
+       margin: 50px auto;
+       padding: 20px 30px;
+       background-color: #D5C8B8;
+       border-radius: 0 20px 0 20px;
+       position: relative;
+       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+   }
+
+   /* 共用卡片標題樣式 */
+   .card-text1,
+   .card-text2,
+   .card-text3,
+   .card-text4,
+   .card-text5,
+   .card-text6 {
+       position: absolute;
+       top: -25px;
+       left: 50%;
+       transform: translateX(-50%) rotate(-5deg);
+       background: #7a6a58;
+       padding: 4px 16px;
+       color: #fff;
+       font-size: 25px;
+       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+   }
+
+   /* 保留原有的特定卡片樣式以向後相容 (現在為空，由共用樣式處理) */
+
+   .form-grid {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 100px;
+       margin: 30px auto;
+   }
+
+   .form-col {
+       display: flex;
+       flex-direction: column;
+       gap: 15px;
+   }
+
+   /* 表單元素樣式 - 統一所有卡片內的表單樣式 */
+   .card1 label,
+   .card5 label,
+   .card6 label {
+       font-size: 18px;
+       color: #504033;
+       font-weight: 700;
+       margin-bottom: 5px;
+   }
+
+   .card1 input,
+   .card1 select {
+       padding: 10px 12px;
+       border: 2px solid #dcc7b3;
+       border-radius: 10px;
+       background-color: #fff;
+       font-size: 16px;
+       font-family: "微軟正黑體", sans-serif;
+       transition: border-color 0.3s ease, background-color 0.2s ease;
+   }
+
+   .card1 input:focus,
+   .card1 select:focus,
+   .card5 input:focus,
+   .card5 select:focus {
+       outline: none;
+       border-color: #7a6553;
+       box-shadow: 0 0 0 3px rgba(122, 101, 83, 0.1);
+   }
+
+   .card1 input::placeholder,
+   .card5 input::placeholder {
+       color: #999;
+   }
+
+   /* 禁用狀態的輸入框樣式 */
+   .card1 input:disabled {
+       background-color: #f5f5f5 !important;
+       color: #999;
+       cursor: not-allowed;
+       border-color: #e0e0e0;
+   }
+
+   .card1 input:disabled::placeholder {
+       color: #bbb;
+       font-style: italic;
+   }
+
+   /* 可送養範圍 - 使用共用樣式 .card 和 .card-text */
+
+   .area-grid {
+       font-size: 18px;
+       margin: 30px auto;
+       display: grid;
+       grid-template-columns: repeat(5, 1fr);
+       gap: 20px;
+       text-align: center;
+   }
+
+   .area-note {
+       font-size: 12px;
+       color: #504033;
+   }
+
+   .area-grid label {
+       color: #504033;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       padding: 8px 12px;
+       border-radius: 6px;
+       display: flex;
+       align-items: center;
+       gap: 10px;
+       position: relative;
+       font-weight: bold;
+
+   }
+
+   /*送養範圍 互動標籤  */
+   .area-grid label:hover {
+       background-color: rgba(255, 255, 255, 0.286);
+       transform: translateY(-2px);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   }
+
+   /* 動畫1 */
+   .area-grid label:hover::after {
+       content: "";
+       position: absolute;
+       bottom: 2px;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 80%;
+       height: 2px;
+       background-color: #ffffff;
+       animation: underlineAppear 0.3s ease forwards;
+   }
+
+   @keyframes underlineAppear {
+       from {
+           width: 0%;
+       }
+
+       to {
+           width: 100%;
+       }
+   }
+
+   /*顏色送養範圍 互動checkbox顏色 */
+   .area-grid input[type="checkbox"] {
+       width: 18px;
+       height: 18px;
+       accent-color: #ff7e05;
+       cursor: pointer;
+       transition: transform 0.2s ease;
+   }
+
+   .area-grid input[type="checkbox"]:hover {
+       transform: scale(1.1);
+   }
+
+   /* 送養範圍提示文字 */
+   .area-note {
+       display: block;
+       text-align: center;
+       margin-top: 15px;
+       font-size: 14px;
+       color: #666;
+       font-style: italic;
+   }
+
+   /* 寵物照片上傳 - 使用共用樣式 .card 和 .card-text */
+
+   .photo-upload {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr 1fr;
+       gap: 2px;
+       /* padding: 20px; */
+       margin: 50px auto;
+       justify-items: center;
+       /*網格置中 */
+   }
+
+   .photo-item {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       /*垂直置中*/
+       gap: 5px;
+       width: 160px;
+   }
+
+   .photo-item div {
+       font-size: 16px;
+       color: #5a5148;
+       font-weight: bold;
+       margin-bottom: 5px;
+   }
+
+   .photo-preview {
+       width: 160px;
+       height: 160px;
+       border: 2px dashed #dcc7b3;
+       border-radius: 10px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background-color: #f5f5f5;
+       position: relative;
+       overflow: hidden;
+   }
+
+   .photo-preview img {
+       max-width: 100%;
+       max-height: 100%;
+       object-fit: cover;
+       border-radius: 8px;
+   }
+
+   .photo-preview div {
+       color: #bbb8b8f8;
+       text-align: center;
+       font-size: 14px;
+       line-height: 1.5;
+   }
+
+
+   /* 隱藏的 file input，不需要樣式 */
+   .photo-item input[type="file"] {
+       display: none;
+   }
+
+   .preview-image-hidden {
+       display: none;
+   }
+
+   .file-input-hidden {
+       display: none;
+   }
+
+   /* 自定義上傳按鈕 */
+   .upload-btn {
+       padding: 10px 10px;
+       background: #ab9073;
+       color: white;
+       border: none;
+       border-radius: 8px;
+       font-size: 16px;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 2px 10px rgba(122, 101, 83, 0.3);
+       font-family: "微軟正黑體", sans-serif;
+       width: 150px;
+       position: relative;
+       overflow: hidden;
+   }
+
+   .upload-btn:hover {
+       background-color: #eca78275;
+       transform: translateY(-2px);
+       box-shadow: 0 4px 15px rgba(122, 101, 83, 0.4);
+   }
+
+   .upload-btn:active {
+       transform: translateY(0);
+   }
+
+   /* 裁剪模態框樣式 */
+   .crop-modal {
+       display: none;
+       position: fixed;
+       z-index: 9999;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.8);
+       justify-content: center;
+       align-items: center;
+   }
+
+   .crop-modal-content {
+       background-color: #f9f6f2;
+       border-radius: 15px;
+       width: 90%;
+       max-width: 800px;
+       max-height: 90%;
+       display: flex;
+       flex-direction: column;
+       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+       overflow: hidden;
+   }
+
+   .crop-header {
+       background: linear-gradient(135deg, #7a6553, #a68969);
+       color: white;
+       padding: 20px;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+   }
+
+   .crop-header h3 {
+       margin: 0;
+       font-size: 24px;
+       font-family: "微軟正黑體", sans-serif;
+   }
+
+   .close-btn {
+       background: none;
+       border: none;
+       color: white;
+       font-size: 30px;
+       cursor: pointer;
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       transition: background-color 0.3s ease;
+   }
+
+   .close-btn:hover {
+       background-color: rgba(255, 255, 255, 0.2);
+   }
+
+   .crop-body {
+       padding: 20px;
+       display: grid;
+       grid-template-columns: 2fr 1fr;
+       gap: 20px;
+       flex: 1;
+       overflow: hidden;
+   }
+
+   .crop-container {
+       background: #fff;
+       border-radius: 10px;
+       overflow: hidden;
+       position: relative;
+       min-height: 400px;
+   }
+
+   .crop-container img {
+       max-width: 100%;
+       max-height: 100%;
+       display: block;
+   }
+
+   .crop-preview h4 {
+       color: #5a5148;
+       margin: 0 0 15px 0;
+       font-family: "微軟正黑體", sans-serif;
+       text-align: center;
+   }
+
+   #cropPreview {
+       width: 200px;
+       height: 200px;
+       border: 2px solid #dcc7b3;
+       border-radius: 10px;
+       margin: 0 auto;
+       overflow: hidden;
+       background: #f5f5f5;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+
+   .crop-footer {
+       padding: 20px;
+       background: #f0ebe4;
+       display: flex;
+       justify-content: flex-end;
+       gap: 15px;
+   }
+
+   .crop-cancel,
+   .crop-confirm {
+       padding: 12px 25px;
+       border: none;
+       border-radius: 8px;
+       font-size: 16px;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       font-family: "微軟正黑體", sans-serif;
+   }
+
+   .crop-cancel {
+       background: #ccc;
+       color: #666;
+   }
+
+   .crop-cancel:hover {
+       background: #bbb;
+   }
+
+   .crop-confirm {
+       background: linear-gradient(135deg, #7a6553, #a68969);
+       color: white;
+   }
+
+   .crop-confirm:hover {
+       background: linear-gradient(135deg, #5a4841, #8a6f59);
+       transform: translateY(-1px);
+       box-shadow: 0 4px 12px rgba(122, 101, 83, 0.3);
+   }
+
+   #cropPreview {
+       display: block;
+       /* 覆蓋你原本的 flex */
+       align-items: initial;
+       justify-content: initial;
+   }
+
+   /* 2) 關鍵：不要讓 preview 裡的 img 被 max-width/max-height 影響 */
+   #cropPreview img {
+       max-width: none !important;
+       max-height: none !important;
+   }
+
+   /* 註釋說明區域 */
+   .note-section {
+       max-width: 700px;
+       margin: 2px auto;
+   }
+
+   /* 中間文字 提醒說明 */
+   .note {
+       text-align: left;
+       margin: 0;
+       padding: 10px;
+       background-color: #f9f6f2;
+       border: 1px solid #dcc7b3;
+       border-radius: 10px;
+       font-size: 18px;
+       font-weight: 900;
+       line-height: 1.6;
+       color: #5a5148;
+       font-family: "微軟正黑體", sans-serif;
+       box-shadow: 0 2px 8px rgba(122, 101, 83, 0.1);
+   }
+
+   /* 補充說明卡片 - 使用共用樣式 .card 和 .card-text */
+
+   .additional-info-section {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       margin: 50px auto;
+   }
+
+   .textarea-group {
+       display: flex;
+       flex-direction: column;
+       position: relative;
+       margin: 10px;
+   }
+
+   .textarea-label {
+       font-size: 18px;
+       color: #504033;
+       font-weight: 600;
+       margin-bottom: 8px;
+       display: block;
+       font-family: "微軟正黑體", sans-serif;
+   }
+
+   .textarea-counter {
+       align-self: flex-end;
+       font-size: 12px;
+       color: #777;
+       margin-bottom: 5px;
+       font-family: "微軟正黑體", sans-serif;
+       transition: color 0.3s ease;
+   }
+
+   /* 字數警告 */
+   .textarea-counter.warning {
+       color: #ff8c00;
+       font-weight: 600;
+   }
+
+   /* 字數警告 */
+   .textarea-counter.danger {
+       color: #e74c3c;
+       font-weight: 600;
+   }
+
+   textarea {
+       width: 100%;
+       min-height: 120px;
+       padding: 15px;
+       border: 2px solid #dcc7b3;
+       border-radius: 8px;
+       background-color: #fff;
+       font-size: 16px;
+       font-family: "微軟正黑體", sans-serif;
+       line-height: 1.5;
+       color: #5a5148;
+       resize: vertical;
+       transition: border-color 0.3s ease;
+       box-sizing: border-box;
+   }
+
+   textarea:focus {
+       outline: none;
+       border-color: #7a6553;
+       box-shadow: 0 0 0 3px rgba(122, 101, 83, 0.1);
+   }
+
+   textarea::placeholder {
+       color: #999;
+       font-style: italic;
+   }
+
+   /* 聯絡人資訊 - 使用共用樣式 .card 和 .card-text */
+
+   .contact-info {
+       margin: 20px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       color: #504033;
+
+   }
+
+   #contact-name {
+       width: 450px;
+       height: auto;
+       font-size: 16px;
+       text-align: center;
+   }
+
+
+   /* card5 的表單樣式已統一在上面處理 */
+
+   .form-group {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-bottom: 24px;
+       gap: 40px;
+       text-align: center;
+   }
+
+   .form-group [name="col"] {
+       display: flex;
+       flex-direction: column;
+       gap: 6px;
+   }
+
+   .form-group #contact-phone,
+   #contact-email {
+       width: 350px;
+   }
+
+   .card5 input,
+   .card5 select {
+       text-align: center;
+       padding: 10px 12px;
+       border: 2px solid #dcc7b3;
+       border-radius: 10px;
+       background-color: #fff;
+       font-size: 16px;
+       font-family: "微軟正黑體", sans-serif;
+       transition: border-color 0.3s ease, background-color 0.2s ease;
+   }
+
+   #email-display,
+   #phone-display {
+       text-align: left;
+
+   }
+
+   /* 領養要求 - 使用共用樣式 .card 和 .card-text */
+
+   .requirement-group {
+       width: 100%;
+       margin: 10px auto;
+       display: flex;
+       flex-direction: column;
+       gap: 5px;
+   }
+
+   .requirement-group-double {
+       display: flex;
+       width: 100%;
+       flex-direction: row;
+       gap: 30px;
+       justify-content: space-between;
+   }
+
+   .requirement-item {
+       flex: 1;
+       display: flex;
+       flex-direction: column;
+       gap: 8px;
+   }
+
+   .requirements-section {
+       margin: 50px auto;
+       padding: 0 30px;
+       display: flex;
+       flex-direction: column;
+       gap: 25px;
+       align-items: center;
+   }
+
+   /* card6 的 label 樣式已統一在上面處理 */
+
+   .card6 select {
+       width: 100%;
+       padding: 12px 15px;
+       border: 2px solid #dcc7b3;
+       border-radius: 6px;
+       background-color: #fff;
+       font-size: 16px;
+       font-family: "微軟正黑體", sans-serif;
+       transition: border-color 0.3s ease, background-color 0.2s ease;
+   }
+
+   .card6 select:focus {
+       outline: none;
+       border-color: #7a6553;
+       box-shadow: 0 0 0 3px rgba(122, 101, 83, 0.1);
+   }
+
+
+
+
+
+
+
+   /* 提交按鈕區域 */
+   .submit-section {
+       max-width: 300px;
+       margin: 50px auto;
+       padding: 30px;
+       text-align: center;
+   }
+
+   /* 提交按鈕樣式 */
+   .submit-btn {
+       padding: 15px 40px;
+       background: #97795D;
+       color: white;
+       border: none;
+       border-radius: 12px;
+       font-size: 22px;
+       font-weight: 600;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 4px 15px rgba(122, 101, 83, 0.3);
+       font-family: "微軟正黑體", sans-serif;
+       min-width: 200px;
+       position: relative;
+       overflow: hidden;
+   }
+
+   .submit-btn:hover {
+       background: #e3b87bc6;
+       transform: translateY(-3px);
+       box-shadow: 0 6px 20px rgba(122, 101, 83, 0.4);
+   }
+
+   .submit-btn:active {
+       transform: translateY(-1px);
+       box-shadow: 0 3px 10px rgba(122, 101, 83, 0.3);
+   }
+
+   /* 響應式設計 */
+   @media (max-width: 768px) {
+       .crop-body {
+           grid-template-columns: 1fr;
+           gap: 15px;
+       }
+
+       .crop-modal-content {
+           width: 95%;
+           height: 95%;
+       }
+
+       #cropPreview {
+           width: 150px;
+           height: 150px;
+       }
+   }
+
+   /* 響應式設計 - 保持水平排列 */
+   @media (max-width: 768px) {
+       .container {
+           max-width: 100%;
+           padding: 15px 10px;
+           margin: 15px auto;
+           /* 保持水平排列，不改變 flex-direction */
+       }
+
+       .step .title {
+           font-size: 10px;
+           text-align: center;
+       }
+
+       .step .label {
+           font-size: 14px;
+           padding: 4px 8px;
+       }
+
+       .line {
+           height: 6px;
+           margin: 12px 0 0;
+       }
+
+       .card1 {
+           margin: 20px 10px;
+           padding: 30px 15px;
+       }
+
+       .form-grid {
+           grid-template-columns: 1fr;
+           gap: 15px;
+       }
+   }
+
+   @media (max-width: 480px) {
+       .container {
+           padding: 10px 5px;
+           margin: 10px auto;
+       }
+
+       .step .title {
+           font-size: 9px;
+       }
+
+       .step .label {
+           font-size: 12px;
+           padding: 3px 6px;
+       }
+
+       .line {
+           height: 4px;
+           margin: 10px 0 0;
+       }
+
+       .card-text {
+           font-size: 16px;
+           padding: 3px 12px;
+       }
+
+       .card1 {
+           margin: 15px 5px;
+           padding: 25px 10px;
+       }
+   }
+
+   /* 下滑線動畫關鍵幀 */
+   @keyframes slideInUnderline {
+       0% {
+           width: 0;
+           opacity: 0;
+       }
+
+       50% {
+           opacity: 1;
+       }
+
+       100% {
+           width: 90%;
+           opacity: 1;
+       }
+   }
+
+   @keyframes slideOutUnderline {
+       0% {
+           width: 90%;
+           opacity: 1;
+       }
+
+       100% {
+           width: 0;
+           opacity: 0;
+       }
+   }
+
+   /* 脈動動畫效果 */
+   @keyframes pulse {
+
+       0%,
+       100% {
+           opacity: 1;
+           transform: scaleY(1);
+       }
+
+       50% {
+           opacity: 0.7;
+           transform: scaleY(1.2);
+       }
+   }

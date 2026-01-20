@@ -1,0 +1,59 @@
+/* ========== 需求 2: 右側懸浮緞帶按鈕 CSS (使用圖片方案) ========== */
+
+/* 基礎容器定位 (保持不變) */
+.ribbon-container {
+    position: fixed;
+    right: 0;
+    top: 75%; /* 垂直置中 */
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+   margin-right: 0;
+}
+
+
+/* 按鈕基礎樣式 - 移除複雜的偽元素設定 */
+.ribbon-btn {
+   
+    display: block;
+    width: 120px; /* 根據圖片寬度調整 */
+    height: 50px; /* 根據圖片高度調整 */
+    color: #FFFBF7;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 5px; 
+    position: relative;
+    overflow: hidden; /* 確保內容不會跑出按鈕 */
+    line-height: 1.2;
+    padding-top: 5px;
+    padding-right: 15px;
+    text-align: right;
+    margin-right: -10px;
+    
+    /* 圖片設定 */
+    background-size: contain; /* 確保圖片完整顯示在按鈕內 */
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+
+
+/* 走失刊登 (使用圖片) */
+.ribbon-lost {
+    /* 假設圖片放在與 CSS 相同的目錄 */
+    background-image: url('../../assets/img/material/red.png'); 
+}
+
+/* 送養刊登 (使用圖片) */
+.ribbon-adopt {
+    background-image: url('../../assets/img/material/green.png');
+}
+
+/* 懸停效果 (可選：讓圖片看起來有變化) */
+.ribbon-btn:hover {
+    filter: brightness(1.05); /* 讓顏色變亮一點 */
+    color: white;
+    right: 10px;
+}

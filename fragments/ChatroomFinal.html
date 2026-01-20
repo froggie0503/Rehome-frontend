@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="../css/modules/Chat_material.css" /> 
+
+<style>
+  /* 確保這些樣式只影響聊天室 */
+  .chat-isolation-wrapper .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #d9d9d9;
+    color: #504033;
+    cursor: pointer;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .chat-isolation-wrapper .header-title-area {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+  }
+  .chat-isolation-wrapper .header-title-area span {
+    margin-left: -10px;
+  }
+
+  /* 最小化功能的必要樣式 */
+  .chat-isolation-wrapper #chat-container.minimized {
+    height: auto !important;
+    max-height: 48px !important;
+    overflow: hidden !important;
+  }
+  .chat-isolation-wrapper #chat-container.minimized #conversation-list-view {
+    display: flex !important;
+    overflow: hidden;
+  }
+  .chat-isolation-wrapper #chat-container.minimized #single-chat-view,
+  .chat-isolation-wrapper #chat-container.minimized #conversation-list-view > div:not(.chat-header) {
+    display: none !important;
+  }
+
+  .chat-isolation-wrapper #conversation-list-view,
+  .chat-isolation-wrapper #single-chat-view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+  }
+  
+  /* 確保其他基礎 Flex 排版 */
+  .chat-isolation-wrapper #chat-box-list { flex-grow: 1; overflow-y: auto; }
+  .chat-isolation-wrapper #chat-box-single { display: flex; flex-direction: column; flex-grow: 1; overflow: hidden; position: relative; }
+  
+  .chat-isolation-wrapper .message-row { display: flex; margin-bottom: 10px; align-items: flex-end; }
+  .chat-isolation-wrapper .message-row.received { justify-content: flex-start; }
+  .chat-isolation-wrapper .message-row.sent { justify-content: flex-end; }
+  
+  .chat-isolation-wrapper .avatar-area { width: 50px; height: 50px; flex-shrink: 0; margin: 0 8px; }
+  .chat-isolation-wrapper .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+  
+  .chat-isolation-wrapper .message-content { display: flex; flex-direction: column; max-width: 65%; }
+  .chat-isolation-wrapper .message-header { font-size: 0.85em; color: #888; margin-bottom: 2px; text-align: left; }
+  
+  .chat-isolation-wrapper .message-bubble { padding: 8px 12px; border-radius: 18px; word-wrap: break-word; max-width: 100%; }
+  .chat-isolation-wrapper .sent-bubble { background-color: #d5c8b8; color: white; }
+  .chat-isolation-wrapper .received-bubble { background-color: #d5c8b8; color: white; }
+</style>
+
+<div class="chat-isolation-wrapper">
+    
+    <div id="chat-container" class="minimized">
+      
+      <div id="conversation-list-view" style="display: flex">
+        <div id="chat-header-list" class="chat-header" onclick="toggleChatWindow(event)">
+          <div style="cursor: pointer; padding: 0 10px">
+            <i id="list-chevron" class="fa-solid fa-chevron-up"></i>
+          </div>
+          <div class="header-title-area" style="cursor: pointer; margin-left: -10px">
+            <span>聊天室</span>
+          </div>
+          <div id="right-placeholder-list" style="display: flex; gap: 15px; align-items: center; padding: 0 10px;"></div>
+        </div>
+        <div id="chat-box-list">
+          <div class="conversation-list"></div>
+        </div>
+      </div>
+
+      <div id="single-chat-view" style="display: none">
+        <div id="chat-header-single" class="chat-header">
+          <div onclick="goBack(event)" style="cursor: pointer; padding: 0 10px">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="header-title-area" onclick="minimizeChat(event)" style="cursor: pointer">
+            <span id="current-chat-title">送養人</span>
+          </div>
+          <div id="right-placeholder-single" style="display: flex; gap: 15px; align-items: center; padding: 0 10px;"></div>
+        </div>
+
+        <div id="chat-box-single">
+          <div id="messages"></div>
+
+          <div id="sticker-area" style="display: none">
+             <img src="../assets/img/Chatphoto/img/STICKER3.PNG" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/C1.PNG" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/C2.PNG" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/迪多.jpg" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s1.jpg" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s2.jpg" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s3.PNG" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/迪多.jpg" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s4.png" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s4.png" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s4.png" class="sticker-item" />
+             <img src="../assets/img/Chatphoto/img/s4.png" class="sticker-item" />
+          </div>
+
+          <div id="input-area">
+            <div id="expanded-menu" class="expanded-menu" style="display: none">
+              <a href="#qna" target="_blank" class="menu-button" id="menu-faq" style="text-decoration: none; cursor: pointer; display: block;">
+                  <img src="../assets/img/Chatphoto/img/Q.png" alt="常見問題" class="menu-image" />
+              </a>
+              <a href="#qna" target="_blank" class="menu-button" id="menu-help" style="text-decoration: none; cursor: pointer; display: block;">
+                  <img src="../assets/img/Chatphoto/img/H.png" alt="聯絡我們!" class="menu-image2" />
+              </a>
+              <div class="menu-button" id="menu-survey" onclick="handleMenuClick('Survey')">
+                  <img src="../assets/img/Chatphoto/img/C.png" alt="滿意度調查" class="menu-image3" />
+              </div>
+            </div>
+
+            <div id="icon-controls">
+              <i id="plus-menu-icon" class="fa-solid fa-plus chat-icon" onclick="toggleMenu(event)"></i>
+              <i id="image-upload-icon" class="fas fa-camera chat-icon"></i>
+            </div>
+
+            <input type="file" id="file-input" accept="image/*, application/pdf" style="display: none" />
+
+            <div id="input-box-wrapper">
+              <input type="text" id="message-input" placeholder="輸入訊息..." />
+              <i id="emoji-keyboard-icon" class="fa-regular fa-face-smile chat-icon"></i>
+            </div>
+
+            <button onclick="sendMessage()">
+              <i class="fa-solid fa-paw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div> 
+<script src="../js/modules/chatRoom.js" defer></script>

@@ -1,0 +1,347 @@
+<head>
+    <link rel="stylesheet" href="../css/modules/petinf.css">
+</head>
+
+<body>
+    <br><br><br><br>
+    <!-- 至頂標籤 -->
+    <section class="banner-image">
+        <div class="container title-container">
+            <div class="custom-title-wrapper">
+
+                <img class="title-left-img" src="../assets/img/icon/form.png" alt="表單圖示">
+
+                <h3>
+                    填寫<span class="highlight-text">送養</span>表單
+                </h3>
+
+                <img class="title-right-img" src="../assets/img/page_hint/house.png" alt="房子圖示">
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 進度指示器 -->
+    <nav class="container" role="navigation" aria-label="進度步驟">
+        <div class="step" aria-current="step">
+            <span class="title">Step 1</span>
+            <div class="label-start">寵物履歷 </div>
+        </div>
+
+        <div class="line" role="separator"></div>
+
+        <div class="step">
+            <span class="title">Step 2</span>
+            <div class="label">確認資料 </div>
+        </div>
+
+        <div class="line" role="separator"></div>
+
+        <div class="step">
+            <span class="title">Step 3</span>
+            <div class="label">等待審核 </div>
+        </div>
+
+        <div class="line" role="separator"></div>
+
+        <div class="step">
+            <span class="title">Step 4</span>
+            <div class="label">上傳成功 </div>
+        </div>
+    </nav>
+
+    <div class="Divider"></div>
+
+
+    <main id="main-content">
+        <form id="pet-form" novalidate aria-describedby="form-instructions">
+            <section class="card1">
+                <div class="card-text1" id="pet-info-heading">寵物資訊</div>
+                <div class="form-grid" role="group" aria-label="寵物基本資訊">
+                    <!-- 左邊區域 -->
+
+                    <div class="form-col">
+                        <label for="pet-nickname">寵物暱稱</label>
+                        <input type="text" placeholder="請輸入寵物名稱" id="pet-nickname" required
+                            aria-describedby="pet-nickname-help">
+
+                        <label for="pet-gender">寵物性別</label>
+                        <select id="pet-gender" required>
+                            <option value="">請選擇</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                        <label for="pet-size">寵物體型</label>
+                        <select id="pet-size">
+                            <option value="">請選擇</option>
+                            <option value="small">小型</option>
+                            <option value="medium">中型</option>
+                            <option value="big">大型</option>
+                        </select>
+                        
+                        
+                        <label for="pet-breed">品種</label>
+                        <input type="text" placeholder="請輸入寵物品種 ex : 米克斯" id="pet-breed">
+                        
+                        <label for="pet-age">年齡</label>
+                        <select id="pet-age">
+                            <option value="">請選擇</option>
+                            <option value="child">幼年</option>
+                            <option value="adult">成年</option>
+                            <option value="old">老年</option>
+                        </select>
+                        
+                        <label for="pet-neutered">是否結紮</label>
+                        <select id="pet-neutered">
+                            <option value="">請選擇</option>
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 右邊區域 -->
+                    <div class="form-col">
+                        
+                        <label for="pet-microchip">是否有晶片</label>
+                        <select id="pet-microchip">
+                            <option value="">請選擇</option>
+                            <option value="true">有</option>
+                            <option value="false">無</option>
+                        </select>
+                        
+                        <label for="pet-microchip-number">晶片編號</label>
+                        <input type="text" placeholder="請先選擇是否有晶片" id="pet-microchip-number">
+                        
+                        <label for="pet-type">寵物種類</label>
+                        <select id="pet-type">
+                            <option value="">請選擇</option>
+                            <option value="other">其他</option>
+                        </select>
+
+                        <label for="pet-type-other">其他寵物種類</label>
+                        <input type="text" placeholder="請先選擇寵物物種" id="pet-type-other">
+                        
+                        <label for="pet-location">寵物所在地</label>
+                        <select id="pet-location">
+                            <option value="">請選擇縣市</option>
+                            
+                        </select>
+
+                        <label for="pet-district">區域</label>
+                        <select id="pet-district">
+                            <option value="">請先選擇縣市</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <section class="card2">
+                <div class="card-text2">可送養範圍</div>
+
+                <div class="area-grid">
+                    <label><input type="checkbox" name="adoptCity" value="1"> 新北市</label>
+                    <label><input type="checkbox" name="adoptCity" value="2"> 臺北市</label>
+                    <label><input type="checkbox" name="adoptCity" value="3"> 基隆市</label>
+                    <label><input type="checkbox" name="adoptCity" value="4"> 宜蘭縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="5"> 桃園市</label>
+                    <label><input type="checkbox" name="adoptCity" value="6"> 新竹縣</label>
+
+                    <label><input type="checkbox" name="adoptCity" value="7"> 新竹市</label>
+                    <label><input type="checkbox" name="adoptCity" value="8"> 苗栗縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="9"> 台中市</label>
+                    <label><input type="checkbox" name="adoptCity" value="10"> 彰化縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="11"> 南投縣</label>
+
+                    <label><input type="checkbox" name="adoptCity" value="12"> 雲林縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="13"> 嘉義縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="14"> 嘉義市</label>
+                    <label><input type="checkbox" name="adoptCity" value="15"> 台南市</label>
+                    <label><input type="checkbox" name="adoptCity" value="16"> 高雄市</label>
+
+                    <label><input type="checkbox" name="adoptCity" value="17"> 屏東縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="18"> 花蓮縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="19"> 台東縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="20"> 澎湖縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="21"> 金門縣</label>
+                    <label><input type="checkbox" name="adoptCity" value="22"> 連江縣</label>
+                </div>
+                <span class="area-note">*請至少選擇一個送養範圍</span>
+            </section>
+            <section class="card3">
+                <div class="card-text3">寵物照片</div>
+                <div class="photo-upload">
+                    <div class="photo-item">
+                        <div>照片 首張 </div>
+                        <div class="photo-preview">
+                            <img id="preview-image-1" src="" alt="照片預覽" class="preview-image-hidden">
+                            <div class="preview-placeholder">照片預覽</div>
+                        </div>
+                        <button type="button" class="upload-btn" data-target="1">選擇照片</button>
+                        <input type="file" id="pet-photo-1" accept="image/*" class="file-input-hidden"
+                            aria-label="上傳寵物照片1">
+                    </div>
+
+                    <div class="photo-item">
+                        <div>照片 </div>
+                        <div class="photo-preview">
+                            <img id="preview-image-2" src="" alt="照片預覽" class="preview-image-hidden">
+                            <div class="preview-placeholder">照片預覽</div>
+                        </div>
+                        <button type="button" class="upload-btn" data-target="2">選擇照片</button>
+                        <input type="file" id="pet-photo-2" accept="image/*" class="file-input-hidden"
+                            aria-label="上傳寵物照片2">
+                    </div>
+
+                    <div class="photo-item">
+                        <div>照片 </div>
+                        <div class="photo-preview">
+                            <img id="preview-image-3" src="" alt="照片預覽" class="preview-image-hidden">
+                            <div class="preview-placeholder">照片預覽</div>
+                        </div>
+                        <button type="button" class="upload-btn" data-target="3">選擇照片</button>
+                        <input type="file" id="pet-photo-3" accept="image/*" class="file-input-hidden"
+                            aria-label="上傳寵物照片3">
+                    </div>
+
+                    <div class="photo-item">
+                        <div>照片 </div>
+                        <div class="photo-preview">
+                            <img id="preview-image-4" src="" alt="照片預覽" class="preview-image-hidden">
+                            <div class="preview-placeholder">照片預覽</div>
+                        </div>
+                        <button type="button" class="upload-btn" data-target="4">選擇照片</button>
+                        <input type="file" id="pet-photo-4" accept="image/*" class="file-input-hidden"
+                            aria-label="上傳寵物照片4">
+                    </div>
+                </div>
+            </section>
+            <aside class="note-section">
+                <p class="note">由於所有送養訊息均須經過審核後才會公開， 請確實檢查以上資料是否正確，送出後將無法修改內容。
+                    建議可多提供一些寵物的個性、習慣、健康狀況等資訊，讓領養人更了解寵物，增加送養成功率。</p>
+            </aside>
+            <section class="card4">
+                <div class="card-text4">補充說明</div>
+                <div class="additional-info-section">
+
+                    <div class="textarea-group">
+                        <label for="additional-info" class="textarea-label">其他說明</label>
+                        <textarea id="additional-info" placeholder="請輸入詳細說明，例如：寵物個性、喜好、特殊習性等 (選填)"
+                            maxlength="500"></textarea>
+                        <div class="textarea-counter" id="additional-info-counter">已輸入0/500 字</div>
+                    </div>
+
+                    <div class="textarea-group">
+                        <label for="medical-info" class="textarea-label">醫療說明</label>
+                        <textarea id="medical-info" placeholder="請輸入醫療相關訊息，例如：疑苗接種、結紮狀態、健康狀況等 (選填)"
+                            maxlength="500"></textarea>
+                        <div class="textarea-counter" id="medical-info-counter">已輸入0/500 字</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="card5">
+                <div class="card-text5">聯絡人資料</div>
+                <div class="contact-info">
+                    <label for="contact-name">聯絡人姓名(暱稱):</label>
+                    <input type="text" id="contact-name" placeholder="請輸入聯絡人姓名">
+                </div>
+                <div class="form-group">
+                    <div name="col">
+                        <label for="contact-phone">聯絡電話:</label>
+                        <input type="tel" id="contact-phone" placeholder="請輸入聯絡電話">
+                    </div>
+                    <div name="col">
+                        <label for="phone-display">顯示</label>
+                        <select id="phone-display">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div name="col">
+                        <label for="contact-email">電子郵件:</label>
+                        <input type="email" id="contact-email" placeholder="請輸入電子郵件">
+                    </div>
+                    <div name="col">
+                        <label for="email-display">顯示</label>
+                        <select id="email-display">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card6">
+                <div class="card-text6">領養要求</div>
+                <div class="requirements-section">
+                    <div class="requirement-group">
+                        <label for="follow-up">後續追蹤</label>
+                        <select id="follow-up" name="followUp">
+                            <option value="agree">同意後續追蹤</option>
+                            <option value="disagree">不同意後續追蹤</option>
+                        </select>
+                    </div>
+                    <div class="requirement-group-double">
+                        <div class="requirement-item">
+                            <label for="family-consent">家人同意</label>
+                            <select id="family-consent" name="familyConsent">
+                                <option value="required">需家人同意領養</option>
+                                <option value="not-required">不需家人同意領養</option>
+                            </select>
+                        </div>
+                        <div class="requirement-item">
+                            <label for="age-limit">年齡限制</label>
+                            <select id="age-limit" name="ageLimit">
+                                <option value="required">需滿20歲</option>
+                                <option value="not-required">不需滿20歲</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-requirements">
+                    <div class="textarea-group">
+                        <label for="adoption-requirements" class="textarea-label">其他條件說明</label>
+                        <textarea id="adoption-requirements" placeholder="如有額外領養條件，請在此補充說明…例如：飼養環境、經濟能力、經驗等 (選填)"
+                            maxlength="500"></textarea>
+                        <div class="textarea-counter" id="adoption-requirements-counter">已輸入0/500 字</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="submit-section">
+                <button type="button" class="submit-btn" onclick="saveDataAndNavigate()">前往確認資料</button>
+            </div>
+        </form>
+    </main>
+    <!-- 照片裁剪框 -->
+    <div id="cropModal" class="crop-modal">
+        <div class="crop-modal-content">
+            <div class="crop-header">
+                <h3>裁剪照片</h3>
+                <button type="button" class="close-btn" onclick="closeCropModal()">&times;</button>
+            </div>
+            <div class="crop-body">
+                <div class="crop-container">
+                    <img id="cropImage" src="" alt="待裁剪圖片">
+                </div>
+                <div class="crop-preview">
+                    <h4>預覽 (300x300)</h4>
+                    <div id="cropPreview"></div>
+                </div>
+            </div>
+            <div class="crop-footer">
+                <button type="button" class="crop-cancel" onclick="closeCropModal()">取消</button>
+                <button type="button" class="crop-confirm" onclick="confirmCrop()">確認裁剪</button>
+            </div>
+        </div>
+    </div>
+    <!-- <button onclick="localStorage.clear()">清除暫存</button> -->
+
+    
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<br><br><br><br>
+<link rel="stylesheet" href="../css/modules/hint_tag.css">
+
+<section id="adoption" class="container">
+    
+    <!-- banner -->
+    <div class="container title-container">
+        <div class="custom-title-wrapper">
+        <!-- 生成 -->
+        </div>
+    </div>
+
+    <!-- search&filter -->
+    <div id="adoption_search" class="p-3 mb-4">
+        <!-- keyword -->
+        <div class="d-flex justify-content-center mb-3">
+            <input class="w-75 form-control search-keyword" placeholder="請輸入關鍵字...">
+        </div>
+
+        <!-- selectors -->
+        <div class="d-flex justify-content-center">
+            <div class="dropdown-group row w-75">
+                <div class="col-9 ps-0" id="adoption_selectors">
+                    <!-- 生成 -->
+                </div>
+
+                <div class="col-3 ms-auto d-flex justify-content-end">
+                    <button class="btn reset-btn"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <button class="btn search-btn ms-1">搜尋<i class="bi bi-search ms-1"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- tag&limit&order -->
+        <div id="search_criteria" class="d-flex justify-content-center">
+            <div class="row w-75">
+                <div class="col-8 ps-0">
+                    <div class="collapse show mb-3" id="search_criteria_tags">
+                        <!-- 動態生成 -->
+                        <!-- <button class="btn search-tag-btn fw-bold my-1">台中市 <i class="bi bi-x-lg"></i></button> -->
+                    </div>
+                    <button class="btn tag-collapse-btn d-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#search_criteria_tags" aria-expanded="true" aria-controls="search_criteria_tags">
+                        <span class="when-collapsed">... 更多篩選條件</span>
+                        <span class="when-expanded">^ 收起</span>
+                    </button>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="dropdown search-select d-inline-block" id="search_criteria_page_limit">
+                        <button class="btn dropdown-toggle" type="button" id="search_criteria_page_limit_btn"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                            每頁12筆
+                        </button>
+                        <ul class="dropdown-menu page" aria-labelledby="search_criteria_page_limit_btn">
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="12"
+                                        name="search_criteria_page_limit_radio" checked>
+                                    每頁12筆
+                                </label>
+                            </li>
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="24"
+                                        name="search_criteria_page_limit_radio">
+                                    每頁24筆
+                                </label>
+                            </li>
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="36"
+                                        name="search_criteria_page_limit_radio">
+                                    每頁36筆
+                                </label>
+                            </li>
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="60"
+                                        name="search_criteria_page_limit_radio">
+                                    每頁60筆
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown search-select d-inline-block" id="search_criteria_sort">
+                        <button class="btn dropdown-toggle" type="button" id="search_criteria_sort_btn"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                            新至舊
+                        </button>
+                        <ul class="dropdown-menu sort" aria-labelledby="search_criteria_sort_btn">
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="desc"
+                                        name="search_criteria_sort_radio" checked>
+                                    新至舊
+                                </label>
+                            </li>
+                            <li>
+                                <label class="dropdown-item">
+                                    <input class="form-check-input me-1" type="radio" value="asc"
+                                        name="search_criteria_sort_radio">
+                                    舊至新
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card list -->
+    <div id="adoption-list" class="row mx-auto">
+    </div>
+
+    <!-- page list -->
+    <div id="adoption_pagination" class="my-3"></div>
+</section>

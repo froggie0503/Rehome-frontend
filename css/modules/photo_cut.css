@@ -1,0 +1,190 @@
+/* ---------------------------------------------------------
+   裁剪彈窗樣式 (Modal Styles)
+   --------------------------------------------------------- */
+.modal-cropper-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #EAE3DA; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px; 
+    width: 90%;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #504033;
+    border-bottom: 2px solid #504033;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* 裁剪區域的容器 */
+.cropper-body {
+    max-width: 100%;
+    max-height: 50vh; 
+    margin-bottom: 20px;
+    overflow: hidden; 
+    z-index: 10001;
+}
+
+.image-container {
+    max-width: 100%;
+    max-height: 400px;
+}
+#imageToCrop {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 底部按鈕排版與顏色 */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-select-new {
+    background-color:#FFFBF7 ;
+    color: #504033;
+    
+}
+
+.btn-cancel {
+    background-color: #9C4332;
+    color: white;
+    margin-right: 10px;
+}
+.btn-confirm {
+    background-color: #81A868;
+    color: white;
+}
+
+/* =========================================================
+   照片上傳狀態視覺切換 (核心修正區)
+   ========================================================= */
+
+/* 確保容器可以定位內部的按鈕 */
+.photo-upload-item {
+    position: relative; 
+    /* 確保此處不影響您原本的響應式佈局 */
+}
+
+/* 確保 placeholder-box 是按鈕的點擊目標 */
+.placeholder-box {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 圖片樣式 */
+.photo-upload-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+/* 初始上傳按鈕樣式 */
+/* .btn-initial-upload {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #504033;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    z-index: 10;
+    cursor: pointer;
+} */
+
+/* 刪除按鈕樣式 */
+.btn-delete {
+    background-color: #9C4332; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 150px; 
+    font-weight: 800;
+    /* 預設狀態由下面的 :not(.is-filled) 控制 */
+}
+.btn-delete:hover {
+    background-color: #9c3923; 
+    
+}
+/* 選擇按鈕樣式 */
+.btn-initial-upload {
+    background-color: #AB9073; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px; 
+    font-weight: 800;
+    /* 預設狀態由下面的 :not(.is-filled) 控制 */
+}
+.btn-initial-upload:hover {
+    background-color: #756B61; 
+}
+
+/* ------------------- 圖片狀態切換類別 (.is-filled) ------------------- */
+
+/* 未上傳狀態 (預設狀態) */
+.photo-upload-item:not(.is-filled) .btn-delete {
+    display: none !important; 
+}
+.photo-upload-item:not(.is-filled) .btn-initial-upload {
+    display: block !important; /* 顯示選擇按鈕 */
+}
+.photo-upload-item:not(.is-filled) img {
+    opacity: 0.5; /* 圖片變淡 */
+}
+
+
+/* 已上傳狀態 */
+.photo-upload-item.is-filled .btn-initial-upload {
+    display: none !important; /* 隱藏選擇按鈕 */
+}
+.photo-upload-item.is-filled .btn-delete {
+    display: block !important; /* 顯示刪除按鈕 */
+}
+.photo-upload-item.is-filled img {
+    opacity: 1; /* 圖片清晰顯示 */
+}

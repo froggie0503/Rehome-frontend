@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReHome</title>
+
+    <!-- 非共用 -->
+    <link rel="stylesheet" href="../css/modules/hint_tag.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/modules/qna.css">
+
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container title-container">
+        <div class="custom-title-wrapper">
+
+            <img class=" title-left-img" src="../assets/img/page_hint/form.png"></img>
+
+            <h3>
+                常見<span class="highlight-text">問題</span>
+            </h3>
+
+            <img class=" title-right-img " style="width: 35px; margin-bottom: -20px;" src="../assets/img/page_hint/question.png"></img>
+
+        </div>
+    </div>
+
+    <main class="container faq-container">
+
+        <section class="search-section">
+            <div class="search-bar-wrapper">
+                <input type="text" class="faq-search-input" placeholder="請輸入問題關鍵字...." id="faq-search-input">
+                <button class="faq-delete-btn" id="faq-delete-btn"><i class="bi bi-x-lg"></i></button>
+                <button class="faq-search-btn">搜尋 <i class="bi bi-search"></i></button>
+            </div>
+            <hr class="section-divider">
+        </section>
+        <br>
+
+        <!-- 動態顯示問題 -->
+
+        <section id="all-question-section">
+            <section class="faq-section" id="member_qna">
+                <div class="faq-header">
+                    <h3 class="faq-category-title">會員相關</h3>
+                    <button  class="qna_more_link" id="member_qna_more">
+                        查看更多 <span class="external_icon">
+                            <i class="bi bi-chevron-double-down"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="faq-block">
+                    <div class="accordion" id="accordionMember">
+                        <div class="accordion-item">
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMem1" aria-expanded="false" aria-controls="collapseMem1">
+                                <span class="qna_question_text">我的寵物遺失了，想要通報案件，我要如何操作系統?</span>
+                                <span class="qna_icon">
+                                    <i class="bi bi-plus-lg"></i>
+                                </span>
+                            </button>
+
+                            <div id="collapseMem1" class="accordion-collapse collapse" aria-labelledby="headingMem1"
+                                data-bs-parent="#accordionMember">
+                                <div class="accordion-body">
+                                    會員中心相關說明...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMem2" aria-expanded="false" aria-controls="collapseMem2">
+                                <span class="qna_question_text">我的寵物遺失了，想要通報案件，我要如何操作系統?</span>
+                                <span class="qna_icon">
+                                    <i class="bi bi-plus-lg"></i>
+                                </span>
+                            </button>
+
+                            <div id="collapseMem2" class="accordion-collapse collapse" aria-labelledby="headingMem2"
+                                data-bs-parent="#accordionMember">
+                                <div class="accordion-body">
+                                    會員中心相關說明...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMem3" aria-expanded="false" aria-controls="collapseMem3">
+                                <span class="qna_question_text">我的寵物遺失了，想要通報案件，我要如何操作系統?</span>
+                                <span class="qna_icon">
+                                    <i class="bi bi-plus-lg"></i>
+                                </span>
+                            </button>
+
+                            <div id="collapseMem3" class="accordion-collapse collapse" aria-labelledby="headingMem3"
+                                data-bs-parent="#accordionMember">
+                                <div class="accordion-body">
+                                    會員中心相關說明...
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+
+        <section class="faq-section">
+            <h3 class="faq-category-title">聯絡我們</h3>
+
+            <div class="contact-form-block input_section">
+                <form action="" id="contactForm">
+                    <div class="form-grid px-5">
+
+                        <div class="form-group full">
+                            <label for="issueType" class="contact-title">問題種類</label>
+                            <select id="issueType" name="issueType" required>
+                                <option value="" disabled selected>請選擇</option>
+                                <option value="1">帳號問題</option>
+                                <option value="2">檢舉/申訴</option>
+                                <option value="3">建議與回饋</option>
+                                <option value="4">其他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="issueTitle" class="contact-title">問題標題</label>
+                            <input type="text" id="issueTitle" name="issueTitle" placeholder="請輸入您的問題標題...">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="issueDesc" class="contact-title">問題描述</label>
+                            <textarea id="issueDesc" name="issueDesc" rows="5" placeholder="請輸入您的問題描述..."></textarea>
+                        </div>
+
+                        <div class="form-group half">
+                            <label for="contactName" class="contact-title">稱謂</label>
+                            <input type="text" id="contactName" name="contactName" placeholder="請輸入您的稱呼...">
+                        </div>
+
+                        <div class="form-group half">
+                            <label for="contactEmail" class="contact-title">聯絡mail</label>
+                            <input type="email" id="contactEmail" name="contactEmail" placeholder="請輸入您的mail...">
+                        </div>
+
+                    </div>
+
+                    <div class="contact-submit-area">
+                        <button type="submit" class="btn-contact-submit" id="contect-form-submit">送出表單</button>
+                        <p class="submit-note">我們將會在1-3個工作天內回覆您</p>
+                    </div>
+                </form>
+
+                <img href="../assets/img/material/click_red.gif" style="float: inherit;" >
+
+                <!-- 表單送出的視窗 -->
+                <div id="contactSuccessModal" class="contact-modal-overlay" style="display: none;">
+                    <div class="contact-modal-card">
+                        <h3 class="contact-modal-title">聯絡我們</h3>
+
+                        <div class="contact-modal-body">
+                            <p>我們已寄送確認信件至您的聯絡信箱：</p>
+                            <p id="confirmEmailDisplay" style="color: #9C4332; font-weight: bold; "></p>
+                            <p>請留意郵件，我們將會於 1-3 個工作天內回覆您。</p>
+                        </div>
+
+                        <div class="contact-modal-footer">
+                            <button type="button" class="btn-contact-modal-confirm"
+                                id="closeContactModalBtn">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+</body>
+
+</html>

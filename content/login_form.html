@@ -1,0 +1,115 @@
+<head>
+    <link rel="stylesheet" href="/css/modules/login.css">
+    <link rel="stylesheet" href="/css/modules/member_common.css">
+    <script src="/js/modules/account_common.js" defer></script>
+    <script src="/js/modules/captcha.js" defer></script>
+    <script src="/js/modules/forgetpassword.js" defer></script>
+</head>
+<br><br>
+<br><br>
+<body>
+    <h2 id="login_Title">會員登入</h2>
+
+    <div class="mt-4">
+        <form id="login_form" class="p-5">
+
+            <!-- 帳號 -->
+            <div class="mb-3">
+                <label for="login_Account" class="form-label">帳號</label>
+                <input type="email" class="form-control placeholdertext" id="login_Account" placeholder="Email帳號" name="account" required>
+            </div>
+
+            <!-- 密碼 -->
+            <div class="mb-3">
+                <label for="login_Password" class="form-label">密碼</label>
+                <div style="display: flex;">
+                    <input type="password" class="form-control" id="login_Password" name="password" required>
+                    <i id="togglePassword" style="margin-left: -30px; font-size: 20px;" class="bi bi-eye"></i>
+                </div>
+            </div>
+
+            <!-- 記住帳號 -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="login_rememberAccount" name="input">
+                <label class="form-check-label" for="login_rememberAccount">記住帳號</label>
+            </div>
+
+            <!-- 驗證碼 -->
+            <div id="login_ConfirmCode">
+                <input type="text" class="form-control me-3 placeholdertext" name="confirmcode" placeholder="請輸入驗證碼" required>
+                <canvas id="captchaCanvas" width="180" height="40" class="ms-3" style="border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="genNewCaptcha()"></canvas>
+                <button class="btn" id="refreshbtn" type="button" onclick="genNewCaptcha()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                </button>
+            </div>
+
+            <!-- 送出 -->
+            <div class="d-grid"> 
+                <button type="submit" class="btn btn-block" id="login_Btn">送出</button>
+            </div>
+
+            <!-- 忘記密碼 / 沒有會員 -->
+            <div id="login_Help">
+                <a id="login_forgetPassword" 
+                    data-bs-toggle="modal"
+                    data-bs-target="#login_forgetpassword_modal">忘記密碼？</a>
+                <a href="#register" id="login_noMember">沒有會員？</a>
+            </div>
+
+            <!-- 忘記密碼 Modal -->
+            <div class="modal fade" 
+                    id="login_forgetpassword_modal" 
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false" 
+                    tabindex="-1" 
+                    aria-labelledby="staticBackdropLabel" 
+                    aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">忘記密碼</h5>
+                        </div>
+                        <div class="modal-body">
+                            <!-- 帳號 -->
+                            <div class="mb-3">
+                                <label for="login_Account2" class="form-label">帳號</label>
+                                <input type="text" 
+                                    class="form-control placeholdertext" 
+                                    id="login_Account2" 
+                                    placeholder="Email帳號">
+                            </div>
+                            <!-- 輸入圖形驗證碼 -->
+                            <div class="mb-3"  id="login_ConfirmCode">
+                                <input type="text" 
+                                    class="form-control me-3 placeholdertext" 
+                                    id="login_VerificationCode" 
+                                    placeholder="請輸入驗證碼">
+                                <canvas id="captchaCanvasModal" width="180" height="40" class="ms-3" style="border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="genNewCaptcha()"></canvas>
+                                <button class="btn" id="forgetpasswordbtn" type="button" onclick="genNewCaptcha()">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>                                  
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn" id="login_forgetpassword_submit">送出驗證碼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <hr id="login_hr"> -->
+
+            <!-- 其他登入方式 -->
+            <!-- <div id="login_other">
+                <label for="login_otherMethod" class="form-label">其他登入方式</label>
+                <button type="button" class="btn btn-circle" id="login_linebtn" href="">Line</button>
+                <button type="button" class="btn btn-circle" id="login_gmailbtn" href="">Gmail</button>
+            </div> -->
+
+        </form>
+    </div>
+
+</body>
+
+<br>

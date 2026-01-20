@@ -1,0 +1,503 @@
+/* -------- 關鍵字搜尋欄位 -------- */
+#adoption_search .search-keyword {
+    height: 60px;
+    border-radius: 3rem;
+    border: 5px solid var(--color-container);
+    padding: 1rem 2rem;
+    outline: none;
+    box-shadow: none;
+    /* 取消點擊後的藍框框 */
+}
+
+/* -------- 資料篩選下拉式選單列表 -------- */
+/* 下拉式按鈕基本樣式 */
+.dropdown-group .btn {
+    background-color: var(--font-color-highlight);
+    border-radius: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--font-color-primary);
+    box-shadow: none;
+    /* 取消點擊後的藍框框 */
+}
+
+/* 搜尋、重設按鈕基本樣式 */
+.dropdown-group .btn.search-btn,
+.btn.reset-btn {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+    font-size: 20px;
+}
+
+/* 搜尋、重設按鈕 hover */
+.dropdown-group .btn.search-btn:hover,
+.btn.reset-btn:hover {
+    background-color: var(--color-footer);
+}
+
+/* Button hover */
+/* Dropdown 開啟時維持 hover 配色 */
+.dropdown-group .dropdown:hover>.btn,
+.dropdown-group .dropdown.show>.btn {
+    background-color: var(--color-hover) !important;
+    color: var(--font-color-highlight) !important;
+}
+
+/* 讓滑鼠指上去時就顯示下拉選單 */
+.dropdown-group .dropdown:hover>.dropdown-menu,
+.dropdown-group .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+/* 下拉式選單基本樣式 */
+.dropdown-group .dropdown-menu {
+    background-color: var(--font-color-highlight);
+    min-width: 5rem;
+    border-radius: 0.5rem;
+    color: var(--font-color-primary);
+
+    /* 為了滾動條的預留空間 */
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+/* 下拉選單選項 hover顏色樣式 */
+.dropdown-group .dropdown-item:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight) !important;
+    border-radius: 2px;
+}
+
+/* 下拉選單: 為了讓點選與直接顯示位置都依樣 */
+.dropdown-group .dropdown>.dropdown-menu {
+    inset: 0px auto auto 0px;
+    transform: translate(-10px, 40px) !important;
+}
+
+/* 子 下拉選單樣式 */
+.dropdown-group .dropdown-submenu>.dropdown-menu {
+    margin-left: -0.5rem;
+    border-radius: 0.5rem;
+    inset: auto auto auto 100% !important;
+    transform: translate(0px, -40px) !important;
+}
+
+/* 子 下拉選單 Button hover */
+/* Dropdown 開啟時維持 hover 配色 */
+.dropdown-group .dropdown-submenu:hover,
+.dropdown-group .dropdown-submenu:hover>.dropdown-item {
+    background-color: var(--color-hover) !important;
+    color: var(--font-color-highlight) !important;
+}
+
+/* 實際捲動條放在內層 */
+.dropdown-group .dropdown-menu .menu-scroll {
+    max-height: 12rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+    text-align: left;
+
+    /* 與滾動條保持安全距離 */
+    padding-right: 2px;
+}
+
+/* 1. 整個滾動條的軌道 (Track) 區域 */
+.dropdown-group .dropdown-menu .menu-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* 2. 滾動條軌道的背景 */
+.dropdown-group .dropdown-menu .menu-scroll::-webkit-scrollbar-track {
+    background: var(--color-navbar);
+    border: 1px solid var(--color-navbar);
+    border-radius: 6px;
+}
+
+/* 3. 滾動條的滑塊 (Thumb) */
+.dropdown-group .dropdown-menu .menu-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-hover);
+    border-radius: 6px;
+}
+
+/* 4. 滑塊在 hover 狀態下的顏色 (可選，提供更好的使用者體驗) */
+.dropdown-group .dropdown-menu .menu-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--color-footer);
+}
+
+/* Checkbox */
+.dropdown-group .form-check-input:checked {
+    background-color: var(--color-hover) !important;
+    border-color: var(--color-hover) !important;
+}
+
+/* focus 狀態也改色（避免預設藍框）*/
+.dropdown-group .form-check-input:focus {
+    border-color: var(--color-background) !important;
+    box-shadow: 0 0 0 0.2rem var(--color-background) !important;
+}
+
+
+
+/* -------- search criteria -------- */
+/* tag 樣式 */
+#search_criteria .search-tag-btn {
+    border-radius: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--color-navbar);
+    color: var(--font-color-primary);
+}
+
+#search_criteria .search-tag-btn:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+/* select 樣式 */
+#search_criteria .search-select {
+    width: fit-content;
+    border-radius: 3rem;
+    background-color: var(--font-color-highlight);
+    color: var(--font-color-primary);
+}
+
+/* select 下拉選單樣式 */
+#search_criteria .search-select .dropdown-menu {
+    background-color: var(--font-color-highlight);
+    color: var(--font-color-primary);
+    border-radius: 0.5rem;
+
+    inset: 0px auto auto 0px;
+    transform: translate(0px, 40px) !important;
+}
+
+#search_criteria .search-select .dropdown-menu.page {
+    min-width: 7rem;
+}
+
+#search_criteria .search-select .dropdown-menu.sort {
+    min-width: 6rem;
+}
+
+/* 讓滑鼠指上去時就顯示下拉選單 */
+#search_criteria .search-select:hover .dropdown-menu {
+    display: block;
+}
+
+/* 下拉選單選項 hover */
+#search_criteria .search-select .dropdown-item:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+/* Checkbox */
+#search_criteria .form-check-input:checked {
+    background-color: var(--color-hover) !important;
+    border-color: var(--color-hover) !important;
+}
+
+/* focus 狀態也改色（避免預設藍框）*/
+#search_criteria .form-check-input:focus {
+    border-color: var(--color-background) !important;
+    box-shadow: 0 0 0 0.2rem var(--color-background) !important;
+}
+
+/* 展開收起按鈕 */
+#search_criteria .tag-collapse-btn {
+    border-radius: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--color-navbar);
+    color: var(--font-color-primary);
+}
+
+#search_criteria .tag-collapse-btn:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+/* 當按鈕的 aria-expanded="true" (展開狀態) 時：隱藏「更多」 */
+#search_criteria .tag-collapse-btn[aria-expanded="true"] .when-collapsed {
+    display: none;
+}
+
+/* 當按鈕的 aria-expanded="false" (收合狀態) 時：隱藏「收起」 */
+#search_criteria .tag-collapse-btn[aria-expanded="false"] .when-expanded {
+    display: none;
+}
+
+
+/* -------- card -------- */
+#adoption-list {
+    width: 85%;
+}
+
+/* card 基本樣式 */
+#adoption-list .card {
+    background-color: var(--font-color-highlight);
+    color: var(--font-color-primary);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* hover 動畫 */
+    cursor: pointer;
+    /* 顯示為可點擊 */
+}
+
+/* card hover 動畫 */
+#adoption-list .card:hover {
+    /* background-color: var(--color-card-hover);
+    color: var(--font-color-highlight); */
+    transform: translateY(-5px);
+    /* 向上浮動 */
+}
+
+#adoption-list .card .card-header-customer {
+    position: relative;
+}
+
+/* card img 成正方形 */
+#adoption-list .card .card-header-customer .card-img-wrapper {
+    /* 讓這個 div 保持 1:1 的長寬比 (正方形) */
+    aspect-ratio: 1 / 1;
+
+    /* 確保圖片不溢出 */
+    overflow: hidden;
+    
+    border: 1px solid var(--font-color-highlight);
+}
+
+/* card img 成正方形 */
+#adoption-list .card .card-header-customer .card-img-wrapper .card-img-customer {
+    /* 讓圖片完全覆蓋整個正方形區域 */
+    width: 100%;
+    height: 100%;
+
+    /* 關鍵：保持圖片比例，並裁切多餘部分 */
+    object-fit: cover;
+}
+
+/* 愛心蒐藏樣式 */
+#adoption-list .card .favorite-btn {
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    color: white;
+    font-size: 30px;
+    box-shadow: none;
+    /* 取消點擊後的藍框框 */
+
+
+    /* 增加陰影突出 */
+    text-shadow:
+        -1px -1px 0 var(--color-hover),
+        1px -1px 0 var(--color-hover),
+        -1px 1px 0 var(--color-hover),
+        1px 1px 0 var(--color-hover);
+}
+
+/* 寵物狀態樣式 */
+#adoption-list .card .pet-status {
+    position: absolute;
+    right: 5px;
+    bottom: -15px;
+    border-radius: 2rem;
+    padding: 4px 12px;
+    font-size: 14px;
+    border: 1px solid var(--font-color-highlight);
+    background-color: var(--color-green);
+    color: var(--font-color-highlight);
+}
+
+/* 領養額滿 */
+#adoption-list .card .pet-status.status-match {
+    background-color: var(--color-red);
+    color: var(--font-color-highlight);
+}
+
+/* 名稱 */
+#adoption-list .card .card-title {
+    max-width: 100%;
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+#adoption-list .card .card-text .card-text-line {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+#adoption-list .card .card-text i {
+    font-size: 20px;
+    padding-right: 8px;
+}
+
+#adoption-list .card .public-date {
+    font-size: 12px;
+    color: gray;
+}
+
+
+/* -----------------公立/私有標籤----------------------- */
+.public-Adoption,
+.private-Adoption {
+    background-color: #e06f46;
+    border: 1px solid var(--font-color-highlight);
+    padding: 3px 8px;
+    color: #FFFBF7;
+    font-weight: bolder;
+    /* border-radius: 50px; */  
+    transform: rotate(-3deg);
+    position: absolute;
+    top: 5px;
+    /* top: 265px; */
+    font-size: 14px;
+    left: 5px;
+    /* left: 15px; */
+    clip-path: polygon(0% 0%,
+            /* 1. 左上角 */
+            100% 0%,
+            /* 2. 右上角 (往左縮一點，配合右側尖角) */
+            99% 45%,
+            /* 3. 右側中間 (凸出去的尖角頂點) */
+            100% 100%,
+            /* 4. 右下角 (往左縮一點) */
+            2% 100%,
+
+            /* 5. 左下角 */
+            2% 70%
+            /* 6. 左側中間 (凹進去的轉折點) */
+        );
+}
+
+.private-Adoption {
+    background-color: #81A868;
+}
+
+
+.public-Adoption.memeber-center,
+.private-Adoption.memeber-center {
+    left: 40%;
+    top: 10px;
+    z-index: 100;
+    font-size: 1.2rem;
+}
+
+
+/* -------- 頁碼 -------- */
+#adoption_pagination .paginationjs-page,
+.paginationjs-prev,
+.paginationjs-next,
+.paginationjs-first,
+.paginationjs-last,
+.paginationjs-ellipsis {
+    background-color: var(--color-background);
+    color: var(--font-color-primary);
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#adoption_pagination .paginationjs-page:hover,
+.paginationjs-prev:hover,
+.paginationjs-next:hover {
+    background-color: var(--color-hover);
+    border-radius: 0.5rem;
+    color: var(--font-color-highlight);
+}
+
+#adoption_pagination .paginationjs-page.active {
+    background-color: var(--color-footer);
+    border-color: var(--color-footer);
+    border-radius: 0.5rem;
+    color: var(--font-color-highlight);
+}
+
+#adoption_pagination .paginationjs-ellipsis {
+    opacity: 0.5;
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+
+    .public-Adoption.memeber-center,
+    .private-Adoption.memeber-center {
+        left: 5%;
+        top: 54%;
+        z-index: 100;
+        font-size: 1rem;
+    }
+
+}
+/* ----------- 骨架屏 ------------ */
+/* 骨架屏基礎閃爍動畫 */
+#adoption .skeleton-box {
+    display: inline-block;
+    height: 1em;
+    position: relative;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+#adoption .skeleton-box::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 1.5s infinite;
+    content: '';
+}
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+/* 針對卡片微調的骨架外型 */
+#adoption .sk-img { width: 100%; aspect-ratio: 1/1; border-radius: 10px; }
+#adoption .sk-text { width: 80%; height: 15px; margin-bottom: 10px; }
+#adoption .sk-title { width: 40%; height: 24px; margin-bottom: 15px; }
+#adoption .sk-tag { width: 60px; height: 25px; border-radius: 5px; position: absolute; top: 15px; left: 15px; }
+
+#adoption .required{
+    color: #9C4332;
+    font-size: 10px;
+   
+
+    position: relative;
+    top: -8px;
+    left: 0px;
+}
+
+
+#adoption-list .click-hint-gif {
+    position: absolute;
+    bottom: 10px;
+    /* 距離卡片底部 10px */
+    right: 5px;
+    /* 距離卡片右側 10px */
+    width: 80px;
+    height: auto;
+    opacity: 0;
+    /* 預設為透明（隱藏） */
+    transition: opacity 0.3s ease;
+    /* 增加 0.3秒 的淡入淡出動畫 */
+    pointer-events: none;
+    /* 關鍵：讓滑鼠點擊可以「穿透」這張圖，才不會擋住卡片的連結 */
+    z-index: 10;
+    /* 確保圖片浮在文字上方 */
+}
+
+/* 當滑鼠 hover 到整張卡片 (.lost-pet-card) 時，讓 GIF 顯現 */
+#adoption-list .card:hover .click-hint-gif {
+    opacity: 1;
+    /* 變成不透明（顯示） */
+}

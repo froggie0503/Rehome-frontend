@@ -1,0 +1,52 @@
+
+/* map-modal 專用樣式 */
+.map-modal-content {
+    /* 讓地圖彈窗可以更大一點 */
+    max-width: 800px; 
+max-height: 600px;
+    width: 80%;
+}
+
+.map-modal-body {
+    margin-bottom: 15px;
+}
+
+.map-search-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    
+}
+
+/* 確保地圖容器有固定高度 */
+#map { 
+    max-height: 250px; 
+    height: 50%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* 可選：讓地圖邊界更清楚 */
+    border-radius: 4px;
+}
+
+.current-coords {
+    font-weight: bold;
+    color: #504033;
+    padding: 5px 0;
+    text-align: left;
+}
+
+/* 調整搜尋按鈕與確認按鈕使用相同的顏色 */
+.map-search-area .btn-confirm {
+    /* 搜尋按鈕可以重用確認按鈕的樣式，但您可能需要定義一個 .btn-primary */
+    /* 這裡暫時使用 .btn-confirm 的樣式 */
+    background-color: #97795D; 
+    color: #FFFBF7;
+    border: none;
+}
+.map-search-area #search {
+    background-color: #FFFBF7;  /* 跟您表單其他欄位一樣的淺米色 */
+    /* border: 1px solid #C5C5C5; */
+    color: #504033;             /* 深褐色文字 */
+    border-radius: 5px;         /* 圓角 */
+    flex-grow: 1;               /* 讓輸入框自動填滿剩餘空間 */
+}
+

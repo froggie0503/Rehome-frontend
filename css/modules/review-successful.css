@@ -1,0 +1,368 @@
+ /* 置頂標籤 */
+/* 外層容器：負責把整個區塊置中 */
+
+
+.title-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 核心設計：標題包裝器 */
+.custom-title-wrapper {
+    display: inline-flex;
+    align-items: flex-end;
+    /* 底部對齊 */
+    justify-content: center;
+    /* 水平置中 */
+    border-bottom: 5px solid #504033;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    /* 手機版減少內距 */
+    padding-right: 10px;
+    max-width: 100%;
+    /* 防止超出螢幕寬度 */
+    flex-wrap: nowrap;
+    /* 禁止換行，這是關鍵！ */
+}
+
+/* 文字樣式 */
+.custom-title-wrapper h3 {
+    margin: 0;
+    font-size: 36px;
+    /* 桌面版預設大小 */
+    color: #504033;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    padding: 0 10px;
+    /* 減少左右間距 */
+    white-space: nowrap;
+    /* 禁止文字換行 */
+}
+
+/* 特別強調「走失」兩個字 */
+.highlight-text {
+    color: #9C4332;
+}
+
+
+.title-left-img {
+    height: 60px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度為視窗寬度的 20%，避免擠壓文字 */
+    object-fit: contain;
+    /* 保持圖片比例 */
+}
+
+.title-right-img {
+    height: 80px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度 */
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+
+    .custom-title-wrapper h3 {
+        font-size: 24px;
+        /* 手機版文字變小 */
+        letter-spacing: 1px;
+    }
+
+    .title-left-img {
+        height: 40px;
+        /* 手機版圖片變小 */
+        margin-bottom: -10px;
+    }
+
+    .title-right-img {
+        height: 50px;
+        /* 手機版圖片變小 */
+        margin-bottom: -5px;
+    }
+
+    .placeholder-box>img {
+        width: 100px;
+        height: 100px;
+
+    }
+}
+
+/* 進度條 */
+.container {
+    max-width: 50%;
+    min-height: 100px;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "微軟正黑體", sans-serif;
+    box-sizing: border-box;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step .title {
+    font-size: 15px;
+    color: #5a5148;
+    width: 100%;
+    text-align: left;
+}
+
+.step .label {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #e2d4c1;
+    color: #7a6553;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.step .label-end {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #AB9073;
+    color: #FFFBF7;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.line-end {
+    flex: 1;
+    height: 5px;
+    background-color: #AB9073;
+    margin: 18px 0 0;
+}
+
+.label-start {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #756B61;
+    color: #FFFBF7;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.line {
+    flex: 1;
+    height: 5px;
+    background-color: #dcc7b3;
+    margin: 18px 0 0;
+}
+
+/* Divider 分隔線 */
+.Divider {
+    height: 5px;
+    background-color: #7a6553;
+    max-width: 50%;
+    margin: 50px auto;
+    border-radius: 50px;
+}
+
+/* 案件審核成功 */
+
+.adoption-note {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    background-color: #D5C8B8;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-title {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    background: #7a6a58;
+    padding: 4px 16px;
+    color: #fff;
+    font-size: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-content {
+    margin: 50px auto;
+    padding: 20px 20px 20px 40px;
+
+}
+
+.note-content img {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    right: 80px;
+}
+
+
+.note-content p {
+    border-bottom: 2px solid #AB9073;
+    font-size: 16px;
+    font-weight: 550;
+    color: #5c544e;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.icon-yes {
+    color: #c63c30;
+    font-size: 25px;
+}
+
+.go-membercenter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 50px auto;
+    padding: 5px;
+    max-width: 700px;
+    position: relative;
+}
+
+.go-membercenter-btn button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "微軟正黑體", sans-serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* 出現手 */
+}
+
+.btn-back-case {
+    background-color: #AB9073;
+    color: #FFFBF7;
+}
+
+.btn-back-case:hover {
+    background-color: #deb68b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(171, 144, 115, 0.3);
+}
+
+.btn-view-details {
+    background-color: #7a6553;
+    color: #FFFBF7;
+}
+
+.btn-view-details:hover {
+    background-color: #574a3cae;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(122, 101, 83, 0.3);
+}
+
+/* 插圖 */
+.success-image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    padding: 30px;
+}
+
+.success-img {
+    width: 100%;
+    height: auto;
+    max-width: 550px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* .success-img:hover {
+    transform: scale(1.1);
+} */
+
+.main-illustration {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.success-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    pointer-events: none;
+}
+
+.star-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 10;
+}
+
+.check-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 10;
+}
+
+
+.check-icon {
+    top: 170px;
+    right: 100px;
+}
+
+
+
+/* 審核成功細項動畫 */
+.hover-lift {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(122, 101, 83, 0.15);
+    background-color: rgba(255, 251, 247, 0.378);
+}
+
+.hover-lift:hover .icon-yes {
+    transform: scale(1.1);
+    color: #28a745;
+}

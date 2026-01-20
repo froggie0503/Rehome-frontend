@@ -1,0 +1,94 @@
+/* 置頂標籤 */
+/* 外層容器：負責把整個區塊置中 */
+
+
+.title-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 核心設計：標題包裝器 */
+.custom-title-wrapper {
+    display: inline-flex;
+    align-items: flex-end;
+    /* 底部對齊 */
+    justify-content: center;
+    /* 水平置中 */
+    border-bottom: 5px solid #504033;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    /* 手機版減少內距 */
+    padding-right: 10px;
+    max-width: 100%;
+    /* 防止超出螢幕寬度 */
+    flex-wrap: nowrap;
+    /* 禁止換行，這是關鍵！ */
+}
+
+/* 文字樣式 */
+.custom-title-wrapper h3 {
+    margin: 0;
+    font-size: 36px;
+    /* 桌面版預設大小 */
+    color: #504033;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    padding: 0 10px;
+    /* 減少左右間距 */
+    white-space: nowrap;
+    /* 禁止文字換行 */
+}
+
+/* 特別強調「走失」兩個字 */
+.highlight-text {
+    color: #9C4332;
+}
+
+
+.title-left-img {
+    height: 60px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度為視窗寬度的 20%，避免擠壓文字 */
+    object-fit: contain;
+    /* 保持圖片比例 */
+}
+
+.title-right-img {
+    height: 80px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度 */
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+
+    .custom-title-wrapper h3 {
+        font-size: 24px;
+        /* 手機版文字變小 */
+        letter-spacing: 1px;
+    }
+
+    .title-left-img {
+        height: 40px;
+        /* 手機版圖片變小 */
+        margin-bottom: -10px;
+    }
+
+    .title-right-img {
+        height: 50px;
+        /* 手機版圖片變小 */
+        margin-bottom: -5px;
+    }
+
+    .placeholder-box>img {
+        width: 100px;
+        height: 100px;
+
+    }
+}

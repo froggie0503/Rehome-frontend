@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReHome</title>
+
+    <!-- 自寫 -->
+    <link rel="stylesheet" href="../css/modules/photo_cut.css">
+    <link rel="stylesheet" href="../css/modules/missing_publish_1.css">
+    <link rel="stylesheet" href="../css/modules/missing_publish_map.css">
+    <link rel="stylesheet" href="../css/modules/missing_publish_status.css">
+    <link rel="stylesheet" href="../css/modules/hint_tag.css">
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container title-container">
+        <div class="custom-title-wrapper">
+
+            <img class=" title-left-img" src="../assets/img/page_hint/bow.png"></img>
+
+            <h3>
+                填寫<span class="highlight-text">走失</span>表單
+            </h3>
+
+            <img class=" title-right-img" src="../assets/img/page_hint/new_house.png"></img>
+
+        </div>
+    </div>
+
+
+    <section class="missing_publish_step_bar">
+        <div class="container">
+            <div class="steps-progress ">
+                <div class="step current">
+                    <div class="step-circle" id="step1">Step 1</div>
+                    <div class="step-label">輸入資料</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" id="step2">Step 2</div>
+                    <div class="step-label">確認資料</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" id="step3">Step 3</div>
+                    <div class="step-label">等待審核</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle" id="step4">Step 4</div>
+                    <div class="step-label">上傳成功</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <form action="" id="publishForm">
+        <section class="missing_publish_section1">
+
+            <h3 class="block-title">寵物資訊</h3>
+            <div class="form-block pet-info-block input_section">
+                <div class="form-grid">
+
+                    <div class="form-group half ">
+                        <label for="petName">寵物姓名<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="petName" name="petName" placeholder="範例:阿尼 Choco" maxlength="50" required>
+                    </div>
+
+                    <div class="form-group half ">
+                        <label for="petGender">寵物性別<i class="bi bi-asterisk required"></i></label>
+                        <select id="petGender" name="petGender" required>
+                            <option value="" disabled selected>請選擇</option>
+                            <option value="male">公</option>
+                            <option value="female">母</option>
+                            <option value="unknown">未知</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group half ">
+                        <label for="petBreed">寵物品種<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="petBreed" name="petBreed" placeholder="範例:米克斯" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group half ">
+                        <label for="petColor">寵物毛色<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="petColor" name="petColor" placeholder="範例:米黃" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group half ">
+                        <label for="petFeature">寵物外觀特徵<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="petFeature" name="petFeature" placeholder="範例:背後有一塊黑色" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group half ">
+                        <label for="petEarClip">寵物剪耳狀態<i class="bi bi-asterisk required"></i></label>
+                        <select id="petEarClip" name="petEarClip" required>
+                            <option value="" disabled selected>請選擇</option>
+                            <option value="yes">有剪耳</option>
+                            <option value="no">無剪耳</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group half conditional-group">
+                        <label for="petType">寵物種類<i class="bi bi-asterisk required"></i></label>
+                        <select id="petType" name="petType" required>
+                            <option value="" disabled selected>請選擇</option>
+                            <option value="cat">貓</option>
+                            <option value="dog">狗</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <input type="text" id="petTypeOther" name="petTypeOther" class="dark-input" placeholder="請輸入種類" 
+                            maxlength="20" style="display: none;" required>
+                    </div>
+
+                    <div class="form-group half conditional-group">
+                        <label for="petChip">寵物晶片<i class="bi bi-asterisk required"></i></label>
+                        <select id="petChip" name="petChip" required>
+                            <option value="" disabled selected>請選擇</option>
+                            <option value="no">無晶片</option>
+                            <option value="yes">有晶片</option>
+                        </select>
+                        <input type="text" id="petChipNumber" name="petChipNumber" class="dark-input" placeholder="晶片號碼"
+                             maxlength="15" style="display: none;" required>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </section>
+        <br><br>
+        <section class="missing_publish_section2">
+
+            <div class="form-block pet-photo-block">
+                <h3 class="missing_title">寵物照片</h3>
+                <div class="photo-upload-grid input_section">
+
+
+                    <div class="photo-upload-grid">
+                        <div class="photo-upload-item">
+                            <span><span class="photo-cover">封面圖</span><i class="bi bi-asterisk required"></i></span>
+                            <div class="placeholder-box" id="uploadTrigger_1">
+                                <img src="../assets/img/emptyIcon.png" alt="寵物照片預覽" id="previewImage_1">
+                                <button type="button" class="btn-initial-upload" id="initialBtn_1">選擇照片</button>
+                            </div>
+
+                            <button type="button" class="btn-delete" id="deleteBtn_1">
+                                <i class="bi bi-x-circle-fill"></i> 刪除
+                            </button>
+
+                            <input type="file" id="fileInput_1" accept="image/*" style="display: none;">
+                        </div>
+
+
+                        <div class="photo-upload-item">
+                            <br>
+                            <div class="placeholder-box" id="uploadTrigger_2">
+                                <img src="../assets/img/emptyIcon.png" alt="寵物照片預覽" id="previewImage_2">
+                                <button type="button" class="btn-initial-upload" id="initialBtn_2">選擇照片</button>
+                            </div>
+
+                            <button type="button" class="btn-delete" id="deleteBtn_2">
+                                <i class="bi bi-x-circle-fill"></i> 刪除
+                            </button>
+
+                            <input type="file" id="fileInput_2" accept="image/*" style="display: none;">
+                        </div>
+
+                        <div class="photo-upload-item">
+                            <br>
+                            <div class="placeholder-box" id="uploadTrigger_3">
+                                <img src="../assets/img/emptyIcon.png" alt="寵物照片預覽" id="previewImage_3">
+                                <button type="button" class="btn-initial-upload" id="initialBtn_3">選擇照片</button>
+                            </div>
+
+                            <button type="button" class="btn-delete" id="deleteBtn_3">
+                                <i class="bi bi-x-circle-fill"></i> 刪除
+                            </button>
+
+                            <input type="file" id="fileInput_3" accept="image/*" style="display: none;">
+                        </div>
+
+
+                        <div class="photo-upload-item">
+                            <br>
+                            <div class="placeholder-box" id="uploadTrigger_4">
+                                <img src="../assets/img/emptyIcon.png" alt="寵物照片預覽" id="previewImage_4">
+                                <button type="button" class="btn-initial-upload" id="initialBtn_4">選擇照片</button>
+                            </div>
+
+                            <button type="button" class="btn-delete" id="deleteBtn_4">
+                                <i class="bi bi-x-circle-fill"></i> 刪除
+                            </button>
+
+                            <input type="file" id="fileInput_4" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+        <br><br>
+        <section class="missing_publish_section3">
+
+            <div class="form-block missing-info-block">
+                <h3 class="missing_title">遺失資訊</h3>
+                <div class="form-grid input_section">
+
+                    <div class="form-group full">
+                        <label for="missingDate">遺失日期<i class="bi bi-asterisk required"></i></label>
+                        <input type="date" id="missingDate" name="missingDate" required>
+                    </div>
+
+                    <div class="form-group half">
+                        <label for="missingCity">縣市<i class="bi bi-asterisk required"></i></label>
+                        <select id="missingCity" name="missingCity" required>
+                            <option value="" disabled selected>請選擇</option>
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group half">
+                        <label for="missingDistrict">鄉鎮區<i class="bi bi-asterisk required"></i></label>
+                        <select id="missingDistrict" name="missingDistrict" required>
+                            <option value="" disabled selected>請選擇</option>
+                           
+                        </select>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="lostLocationDisplay">街道地址/地標描述<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="lostLocation" name="lostLocation" placeholder="範例:高雄大學西側門" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="lostLocationDisplay">您選定的地標<i class="bi bi-asterisk required"></i></label>
+                        <input type="text" id="lostLocationText" name="lostLocationDisplay" placeholder="點擊下方按鈕選擇地標"
+                            readonly>
+                    </div>
+
+                    <input type="hidden" id="lostLocationLat" name="lostLocationLat">
+                    <input type="hidden" id="lostLocationLng" name="lostLocationLng">
+
+                    <div class="form-group full map-select-group">
+                        <button type="button" class="btn-map-select" id="openMapModalBtn">
+                            <i class="bi bi-geo-alt-fill"></i> 點擊選擇地標
+                        </button>
+                    </div>
+
+                    <div class="form-group full" id="previewMapContainer" style="display: none; text-align: center;">
+
+                        <label style="width: 100%; text-align: left; ">已選地標預覽</label>
+
+                        <div id="previewMap"
+                            style="width: 100%; height: 250px; border-radius: 10px; border: 2px solid #D5C8B8; max-width: 500px; margin: 0 auto;">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group full">
+                        <label for="missingStory">遺失經過<i class="bi bi-asterisk required"></i></label>
+                        <textarea id="missingStory" name="missingStory" maxlength="500" rows="4" placeholder="請輸入遺失經過...." required></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="missingNotes">其他補充事項</label>
+                        <textarea id="missingNotes" name="missingNotes" maxlength="500" rows="2" placeholder="請輸入其他補充事項...." required></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <br><br>
+        <section class="missing_publish_section4">
+
+            <div class="form-block contact-info-block">
+                <h2 class="missing_title">聯絡資訊</h2>
+                <div class="form-grid input_section">
+
+                    <div class="form-group full">
+                        <label for="contactName">聯絡人/暱稱</label>
+                        <input type="text" id="contactName" name="contactName" maxlength="50" placeholder="">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="contactPhone">連絡電話</label>
+                        <input type="tel" id="contactPhone" name="contactPhone" maxlength="50" placeholder="">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="contactEmail">聯絡mail</label>
+                        <input type="email" id="contactEmail" name="contactEmail" maxlength="50" placeholder="">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="contactOther">其他聯絡方式</label>
+                        <input type="text" id="contactOther" name="contactOther" maxlength="50" placeholder="例如：Line ID, FB 帳號">
+                    </div>
+
+                    <div class="form-group full note-box warning-text">
+                        <p class="publish_warn">!!請注意!!</p>
+                        <div>
+                            <p>此聯絡資訊將公開於刊登內容</p>
+                            <p>若不填寫資訊➜僅採用站內通報系統聯繫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <br>
+    </form>
+    <div class="submit-action">
+        <button type="submit" class="" id="submitButton">前往確認資料</button>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- 地圖選擇 -->
+    <div class="modal-cropper-overlay" id="mapModal">
+        <div class="modal-content map-modal-content">
+            <h3 class="modal-title">地標選擇</h3>
+
+            <div class="map-modal-body">
+                <div class="map-search-area">
+                    <input id="search" type="text" class="form-control" placeholder="請輸入地址或地標名稱">
+                    <button id="searchBtn" type="button" class="btn btn-primary btn-confirm">搜尋
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+
+                <div id="map" style="height: 400px; width: 100%;"></div>
+
+                <div class="current-coords">
+                    當前選定位置: <span id="rs">尚未選定</span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="footer-actions">
+                    <button type="button" id="cancelMapSelect" class="btn-cancel">取消</button>
+                    <button type="button" id="confirmMapSelect" class="btn-confirm">確認選定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 照片選擇 -->
+    <div class="modal-cropper-overlay" id="cropperModal">
+        <div class="modal-content">
+            <h3 class="modal-title">裁切圖片</h3>
+
+            <div class="cropper-body">
+                <div class="image-container">
+                    <img id="imageToCrop" src="" alt="待裁剪圖片">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="selectNewImage" class="btn-select-new">選擇圖片</button>
+                <div class="footer-actions">
+                    <button type="button" id="cancelCrop" class="btn-cancel">取消</button>
+                    <button type="button" id="confirmCrop" class="btn-confirm">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="modalFileInput" style="display: none;" accept="image/*">
+
+
+
+
+</body>
+
+</html>

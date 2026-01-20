@@ -1,0 +1,89 @@
+<link rel="stylesheet" href=".././css/modules/memcenter.css">
+
+<br><br><br><br>
+<div id="memcontainer">
+    
+    <!--側邊選單-->
+    <div id="memcenter_sidebar">
+
+        <nav id="sidebar">
+
+            <!-- 展開 / 縮起來 按鈕 -->
+            <button id="toggleSidebarBtn" class="btn collapse-btn" type="button">
+                <i class="bi bi-layout-sidebar layout-sidebar"></i>
+            </button>
+
+            <!-- List 列表 -->
+            <ul class="list-unstyled">
+
+                <!--頭像區塊-->
+                <div class="sidebaravatardiv">
+                    <!-- 頭像容器，包含圖片和遮罩 -->
+                    <div class="avatar-container">
+                        <img src="../assets/img/logo/Logo.png" id="memberAvatar" alt="">
+                        <!-- 遮罩層 -->
+                        <div class="avatar-overlay">
+                            <i class="bi bi-camera-fill"></i>
+                            <span>更換頭像</span>
+                        </div>
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <p id="nickname">暱稱</p>
+                </div>
+
+                <!--選單-->
+                <!--個人資料-->
+                <p class="sidebartitle">個人資料</p>
+                <li>
+                    <a href="#" class="sidebarhref" data-file="account.html">基本資料</a>
+                </li>
+
+
+                <!--送養管理-->
+
+                <p class="sidebartitle">送養管理</p>
+                <li>
+                    <a href="#" class="sidebarhref" data-file="adoptionAnnoun.html">送養刊登狀態</a>
+                </li>
+                <hr style="margin: 0;">
+                <li>
+                    <a href="#" class="sidebarhref" data-file="adoptionReview.html">送養審核</a>
+                </li>
+                
+
+                <!--領養管理-->
+                <p class="sidebartitle">領養管理</p>
+                <li>
+                    <a href="#" class="sidebarhref" data-file="submittedAdoptionApplication.html">已申請領養</a>
+                </li>
+                   <!--走失管理-->
+                <p class="sidebartitle">走失管理</p>
+                <li>
+                    <a href="#" class="sidebarhref" data-file="publicationStatus.html">走失刊登狀態</a>
+                </li>
+
+
+                <!--收藏管理-->
+                <p class="sidebartitle">收藏管理</p>
+                <li>
+                    <a href="#" class="sidebarhref" data-file="adoptCollect.html">領養收藏</a>
+                </li>
+                <hr  style="margin: 0;">
+                <li>
+                    <a href="#" class="sidebarhref" data-file="lostCollection.html">走失收藏</a>
+                </li>
+
+             
+                <!--登出-->
+                <li>
+                    <button class="nav-link" id="logoutBtn">登出</button>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+
+    <!--內容-->
+    <div id="memcontent"></div>
+</div>

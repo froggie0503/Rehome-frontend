@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/modules/resetpasswd.css">
+    <link rel="stylesheet" href="/css/modules/member_common.css">
+    <script src="/js/modules/captcha.js"></script>
+    <script src="/js/modules/account_common.js"></script>
+</head>
+<br>
+<br>
+<br>
+<br>
+<body>
+    <h2 id="repasswd_Title">重設密碼</h2>
+
+    <div class="mt-4">
+        <form id="repasswd_form" class="p-5">
+
+            <!-- 輸入新密碼 -->
+            <div class="mb-3">
+                <label for="passwd_NewPasswd" class="form-label">輸入新密碼</label>
+                <div style="display: flex;">
+                    <input type="password" class="form-control" id="passwd_NewPasswd" required>
+                    <i id="togglePassword" style="margin-left: -30px; font-size: 20px;" class="bi bi-eye"></i>
+                </div>
+                <div id="passwordRule">
+                    <p id="lowercase" class="invalid">至少 1 個小寫字母</p>
+                    <p id="uppercase" class="invalid">至少 1 個大寫字母</p>
+                    <p id="onenum" class="invalid">至少 1 個數字</p>
+                    <p id="passwordlength" class="invalid">至少 8 個字元</p>
+                </div>
+            </div>
+
+            <!-- 再次輸入新密碼 -->
+            <div class="mb-3">
+                <label for="passwd_againNewPasswd" class="form-label">再次輸入新密碼</label>
+                <input type="password" class="form-control" id="passwd_againNewPasswd" required>
+                <div id="confirmPasswordError" class="text-danger small mt-1"></div>
+            </div>
+
+            <!-- 圖形驗證碼 -->
+            <div class="mb-3" id="repasswd_ConfirmCode">
+                <input type="text" class="form-control me-3 placeholdertext" id="repasswd_VerificationCode" placeholder="輸入驗證碼" required>
+                <canvas id="captchaCanvas" width="180" height="40" class="ms-3" style="border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="genNewCaptcha()"></canvas>
+                <button class="btn" id="refreshbtn" type="button" onclick="genNewCaptcha()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                </button>
+            </div>
+
+            <!-- 送出 -->
+            <div id="repasswd_send" class="d-grid">
+                <button type="submit" class="btn btn-block" id="repasswd_Btn">送出</button>
+            </div>
+
+        </form>
+    </div>
+
+    <br>
+</body>

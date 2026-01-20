@@ -1,0 +1,350 @@
+/* -------- 刊登日期 -------- */
+/* 刊登日期區塊 */
+#adoption_detail .publish-date {
+    position: absolute;
+    border-radius: 1rem 1rem 0 0;
+    top: -3rem;
+    background-color: var(--color-navbar);
+    z-index: 10;
+}
+
+/* 刊登日期容器 */
+#adoption_detail .publish-date-wrapper {
+    background-color: transparent;
+    font-size: 24px;
+    z-index: 1;
+}
+
+/* 刊登日期白色區塊 */
+#adoption_detail .publish-date-wrapper::before {
+    content: '';
+    /* 讓偽元素相對於父元素定位 */
+    position: absolute;
+    /* 讓偽元素佔滿父元素 */
+    top: 3px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    margin: 10px;
+    background-color: var(--font-color-highlight);
+
+    /* 調整角度來控制傾斜程度 */
+    transform: rotate(-2deg);
+    z-index: -1;
+}
+
+/* -------- 分享按鈕 -------- */
+#adoption_detail_main .facebook-btn {
+    color: #1877F2;
+    font-size: 36px;
+}
+
+#adoption_detail_main .line-btn {
+    color: #00C300;
+    font-size: 36px;
+}
+
+#adoption_detail_main .twitter-x-btn {
+    background-color: black;
+    color: var(--font-color-highlight);
+    border-radius: 2rem;
+}
+
+/* -------- 詳細內容 -------- */
+/* 底色 */
+.detail-content {
+    background-color: var(--color-navbar);
+    border-radius: 0.5rem;
+}
+
+/* img 成正方形 */
+#adoption_detail .img-wrapper {
+    max-width: 600px;
+
+    /* 讓這個 div 保持 1:1 的長寬比 (正方形) */
+    aspect-ratio: 1 / 1;
+
+    /* 確保圖片不溢出 */
+    overflow: hidden;
+}
+
+/* img 成正方形 */
+#adoption_detail .img-wrapper .img-customer {
+    /* 讓圖片完全覆蓋整個正方形區域 */
+    width: 100%;
+    height: 100%;
+
+    /* 關鍵：保持圖片比例，並裁切多餘部分 */
+    object-fit: cover;
+}
+
+/* 寵物狀態 */
+#adoption_detail .detail-status {
+    border-radius: 1rem;
+    padding: 8px;
+    font-size: 20px;
+    background-color: var(--color-green);
+    color: var(--font-color-highlight);
+}
+
+/* 領養媒合中 */
+#adoption_detail .detail-status.status-match {
+    background-color: var(--color-red);
+    color: var(--font-color-highlight);
+}
+
+/* 收藏按鈕 */
+#adoption_detail .favorite-btn {
+    color: white;
+    font-size: 30px;
+    box-shadow: none;
+    /* 取消點擊後的藍框框 */
+
+
+    /* 增加陰影突出 */
+    text-shadow:
+        -1px -1px 0 var(--color-hover),
+        1px -1px 0 var(--color-hover),
+        -1px 1px 0 var(--color-hover),
+        1px 1px 0 var(--color-hover);
+}
+
+/* 名稱 */
+#adoption_detail .content-title {
+    font-size: 32px;
+}
+
+/* 內容 */
+#adoption_detail .content-body {
+    font-size: 20px;
+}
+
+/* 地區 */
+#adoption_detail .content-region {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+    border-radius: 1rem;
+}
+
+/* 地區按鈕 */
+#adoption_detail .content-region .scroll-to-map-btn {
+    font-size: 42px;
+    padding: 0;
+    color: var(--font-color-highlight);
+    box-shadow: none;
+}
+
+#adoption_detail .content-region .scroll-to-map-btn:hover {
+    color: var(--color-green);
+}
+
+/* 切換圖片按鈕 */
+#adoption_detail .page-link {
+    font-size: 32px;
+    background-color: transparent;
+    color: var(--font-color-primary);
+    box-shadow: none;
+}
+
+#adoption_detail .page-link:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+
+/* -------- 聯絡 -------- */
+/* 聯絡人 */
+#adoption_detail .contact {
+    border-radius: 1rem;
+    background-color: var(--font-color-highlight);
+    color: var(--font-color-primary);
+    font-size: 24px;
+}
+
+/* 動作按鈕 */
+#adoption_detail .action-btn {
+    font-size: 24px;
+    min-width: 160px;
+    height: 110px;
+    background-color: var(--color-green);
+    color: var(--font-color-highlight);
+    box-shadow: none;
+}
+
+#adoption_detail .action-btn:hover {
+    color: var(--color-hover);
+}
+
+/* -------- 描述 -------- */
+/* 描述區塊 */
+#adoption_detail .description {
+    background-color: var(--color-navbar);
+}
+
+#adoption_detail .description-body {
+    position: relative;
+    padding: 2.5rem 3rem 1.5rem 3rem;
+}
+
+/* 描述標題 */
+#adoption_detail .description-title {
+    position: absolute;
+    top: 0;
+}
+
+#adoption_detail .description-title-wrapper {
+    background-color: var(--color-background);
+    border-radius: 1rem 1rem 0 0;
+    font-size: 28px;
+}
+
+#adoption_detail .description-content {
+    background-color: var(--color-background);
+}
+
+/* 條件打叉 */
+#adoption_detail .description-content .bi-x-circle {
+    color: var(--color-red);
+}
+
+/* 條件打勾 */
+#adoption_detail .description-content .bi-check-circle {
+    color: var(--color-green);
+}
+
+/* -------- 我要領養 -------- */
+#adopt_question .modal-content {
+    background-color: var(--color-background);
+    border-radius: 1rem;
+}
+
+#adopt_question .modal-content .modal-header {
+    background-color: var(--color-navbar);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+#adopt_question .modal-body .info-wrapper {
+    background-color: var(--color-navbar);
+    border-radius: 0.5rem;
+    margin-top: 3rem;
+}
+
+/* 資本資料 */
+#adopt_question .modal-body .info-wrapper .info-wrapper-title {
+    position: absolute;
+    background-color: var(--color-navbar);
+    font-size: 24px;
+    border-radius: 1rem;
+    top: -2.5rem;
+}
+
+/* 資訊標題 */
+#adopt_question .modal-body .info-wrapper .info-title {
+    padding-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 800;
+}
+
+/* 資訊內容框 */
+#adopt_question .modal-body .info-wrapper .info-answer {
+    width: 100%;
+    background-color: var(--color-background);
+    border: none;
+    border-radius: 0.3rem;
+    padding: 5px 10px;
+}
+
+/* 設置 Header 的基本樣式和可點擊性 */
+#adopt_question .modal-body .info-wrapper .question-trigger {
+    /* 模擬圖片中的顏色 */
+    background-color: var(--color-background);
+    color: var(--font-color-primary);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#adopt_question .modal-body .info-wrapper .question-trigger:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+/* 預設狀態：內容展開時 (aria-expanded="true") */
+#adopt_question .modal-body .info-wrapper .question-trigger[aria-expanded="true"] .icon-toggle {
+    /* 保持箭頭向上 (0 度) */
+    transform: rotate(0deg);
+    /* 加入過渡動畫 */
+    transition: transform 0.3s ease;
+}
+
+/* 收合狀態：內容隱藏時 (aria-expanded="false") */
+#adopt_question .modal-body .info-wrapper .question-trigger[aria-expanded="false"] .icon-toggle {
+    /* 旋轉 180 度，看起來就像向下箭頭 */
+    transform: rotate(180deg);
+}
+
+#adopt_question .modal-body .info-wrapper textarea {
+    background-color: var(--font-color-highlight);
+}
+
+/*送出按鈕 */
+#adopt_question .question-btn {
+    background-color: var(--color-container);
+    border-radius: 1rem;
+    font-size: 32px;
+}
+
+#adopt_question .question-btn:hover {
+    background-color: var(--color-hover);
+    color: var(--font-color-highlight);
+}
+
+/* -------- 站內通報 -------- */
+#missing_post .modal-content {
+    background-color: var(--color-background);
+    border-radius: 1rem;
+}
+#missing_post .modal-title {
+    border-bottom: 3px solid var(--font-color-primary);
+}
+
+#missing_post textarea {
+    background-color: var(--font-color-highlight);
+    box-shadow: none;
+    outline: none;
+}
+
+#missing_post .missing-cancel-btn {
+    background-color: var(--color-red);
+    color: var(--font-color-highlight);
+}
+
+#missing_post .missing-post-btn {
+    background-color: var(--color-green);
+    color: var(--font-color-highlight);
+}
+
+/* ----------- 骨架屏 ------------ */
+/* 骨架屏基礎背景 */
+#adoption_detail .skeleton {
+    background: #e0e0e0;
+    background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* 光影流動動畫 */
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 針對不同部位的大小定義 */
+#adoption_detail .skeleton-text { width: 100%; height: 1.2rem; margin-bottom: 0.5rem; }
+#adoption_detail .skeleton-title { width: 60%; height: 2rem; margin-bottom: 1rem; }
+#adoption_detail .skeleton-img { width: 100%; height: 400px; border-radius: 15px; }
+#adoption_detail .skeleton-btn { width: 120px; height: 40px; }

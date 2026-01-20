@@ -1,0 +1,345 @@
+/* ========================================
+   ReHome Admin - Dashboard Styles
+   ======================================== */
+
+/* ========== 頁面標題 ========== */
+.content h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #504033;
+    flex-shrink: 0;
+}
+
+/* ========== 儀表板網格佈局 ========== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* ========== 儀表板卡片 ========== */
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #8D7058;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+    min-height: 300px;
+    height: auto;
+}
+
+.dashboard-card.full-width {
+    grid-column: 1 / -1;
+    min-height: 350px;
+}
+
+.dashboard-card h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    margin-top: 0;
+    color: #504033;
+}
+
+/* ========== 圖表區域 ========== */
+
+/* 圓餅圖容器 */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    color: #504033;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 確保 canvas 和 tooltip 在最上層 */
+.chart-container canvas {
+    position: relative;
+    z-index: 10;
+}
+
+/* 圖例 */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    list-style: none;
+    padding: 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #504033;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 6px;
+    border-radius: 3px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.dot.orange {
+    background-color: #F59E0B;
+}
+
+.dot.black {
+    background-color: #000000;
+}
+
+.dot.gray {
+    background-color: #a7a9ae;
+}
+
+/* ========== 統計數據區域 ========== */
+
+/* 大型數字顯示 */
+.big-number {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #22C55E;
+    margin-bottom: 10px;
+}
+
+/* 統計列表 */
+.stats-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 圖示圓圈 */
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a7a9ae;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.icon-circle.black {
+    background-color: #000000;
+}
+
+.icon-circle.orange {
+    background-color: #F59E0B;
+}
+
+/* 統計詳情 */
+.stat-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #504033;
+    display: block;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #504033;
+    display: block;
+}
+
+.stat-change {
+    color: #9CA3AF;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* ========== 折線圖區域 ========== */
+.line-chart-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+/* Canvas 通用樣式 */
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+/* ========================================
+   響應式設計
+   ======================================== */
+
+/* 平板裝置 (1024px 以下) */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content h1 {
+        font-size: 26px;
+    }
+    
+    .dashboard-card h2 {
+        font-size: 20px;
+    }
+}
+
+/* 手機裝置 (768px 以下) */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .content {
+        padding: 20px 15px;
+    }
+    
+    .content h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .dashboard-card {
+        padding: 12px;
+        min-height: 250px;
+    }
+    
+    .dashboard-card h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .big-number {
+        font-size: 36px;
+    }
+    
+    .chart-center-text {
+        font-size: 24px;
+    }
+    
+    .chart-legend {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .legend-item {
+        font-size: 14px;
+    }
+    
+    .stat-label,
+    .stat-value {
+        font-size: 16px;
+    }
+    
+    .stat-change {
+        font-size: 13px;
+    }
+    
+    .icon-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
+
+/* 小型手機 (480px 以下) */
+@media (max-width: 480px) {
+    .content {
+        padding: 15px 10px;
+    }
+    
+    .content h1 {
+        font-size: 20px;
+    }
+    
+    .dashboard-card {
+        padding: 10px;
+        min-height: 220px;
+    }
+    
+    .dashboard-card h2 {
+        font-size: 16px;
+    }
+    
+    .big-number {
+        font-size: 32px;
+    }
+    
+    .chart-center-text {
+        font-size: 20px;
+    }
+    
+    .icon-circle {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+    
+    .stat-row {
+        gap: 8px;
+    }
+    
+    .stat-label,
+    .stat-value {
+        font-size: 14px;
+    }
+    
+    .stat-change {
+        font-size: 12px;
+    }
+    
+    .chart-legend {
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .legend-item {
+        font-size: 12px;
+    }
+    
+    .line-chart-container {
+        height: 200px;
+    }
+}

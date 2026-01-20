@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReHome</title>
+
+    <link rel="stylesheet" href="../css/modules/missing_publish_3.css">
+    <link rel="stylesheet" href="../css/modules/missing_publish_status.css">
+    <link rel="stylesheet" href="../css/modules/hint_tag.css">
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container title-container">
+        <div class="custom-title-wrapper">
+
+            <img class=" title-left-img" src="../assets/img/page_hint/help.png"></img>
+
+            <h3>
+                審查<span class="highlight-text">走失</span>案件
+            </h3>
+
+            <img class=" title-right-img" src="../assets/img/page_hint/house.png"></img>
+
+        </div>
+    </div>
+
+
+    <section class="missing_publish_step_bar">
+        <div class="container">
+            <div class="steps-progress steps-complete3">
+                <div class="step complete">
+                    <div class="step-circle " id="step1">Step 1</div>
+                    <div class="step-label">輸入資料</div>
+                </div>
+                <div class="step complete">
+                    <div class="step-circle " id="step2">Step 2</div>
+                    <div class="step-label">確認資料</div>
+                </div>
+                <div class="step complete">
+                    <div class="step-circle " id="step3">Step 3</div>
+                    <div class="step-label">等待審核</div>
+                </div>
+                <div class="step current">
+                    <div class="step-circle" id="step4">Step 4</div>
+                    <div class="step-label">審查失敗</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- -----------主要---------- -->
+    <main class="success-page-content">
+        <div class="illustration-container">
+            <img src="../assets/img/missing_publish/publish_4_base.png" alt="Folder Base" class="base-image"
+                id="folder-base">
+            <img src="../assets/img/missing_publish/failed.png" alt="Stamp Mark" class="stamp-mark" id="stamp-mark">
+            <img src="../assets/img/missing_publish/stamp.png" alt="Approved Stamp" class="moving-element" id="stamp">
+        </div>
+
+        <h1 class="success-title">您的案件審核失敗</h1>
+        <hr class="success-title-line">
+        <div class="success-message">
+            <span class="caseNumberSpan">您的案號：<span id="caseNumber">DK000000000000</span></span>
+            <br><br>
+            <p id="reason" class="failed">圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法圖片違法</p>
+            <p class="">如有其他問題請聯繫客服，或是修正失敗原因重新送出表單，感謝您</p>
+        </div>
+
+        <div class="action-area">
+            <button class="btn-action" id="manageCaseBtn"><i class="bi bi-arrow-left"></i> 返回管理案件</button>
+        </div>
+    </main>
+
+
+
+</body>
+
+</html>

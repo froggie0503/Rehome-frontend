@@ -1,0 +1,79 @@
+#ui-overlay-element .ui-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+}
+
+#ui-overlay-element .ui-overlay.hidden {
+  display: none;
+}
+
+#ui-overlay-element .overlay-box {
+  text-align: center;
+  color: #fff;
+  padding: 24px 40px;
+  border-radius: 12px;
+  min-width: 200px;
+  animation: scaleIn .35s ease;
+  transition: background 0.3s ease;
+}
+
+/* Loading 狀態底色透明 */
+#ui-overlay-element .overlay-box.loading {
+  background: rgba(0,0,0,0.45);
+}
+
+/* 成功 / 失敗底色 */
+#ui-overlay-element .overlay-box.success {
+  background-color: #28a745; /* 綠色 */
+}
+
+#ui-overlay-element .overlay-box.error {
+  background-color: #dc3545; /* 紅色 */
+}
+
+#ui-overlay-element .icon {
+  font-size: 72px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+#ui-overlay-element .icon.success, .icon.error {
+  color: #fff; /* 白色圖示 */
+}
+
+/* Loading spinner */
+#ui-overlay-element .spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 12px;
+  display: none;
+}
+
+#ui-overlay-element .message {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

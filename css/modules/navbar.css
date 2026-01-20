@@ -1,0 +1,457 @@
+/* 載入動畫 */
+
+.navbar-brand img {
+    opacity: 0;
+    /* 一開始隱藏 */
+    transition: opacity 0.5s ease;
+    /* 0.5秒淡入 */
+}
+
+/* 當我們給它加上 .visible class 時，它就會出現 */
+.navbar-brand img.visible {
+    opacity: 1;
+}
+
+/* =========登入後=========== */
+/* 電腦版預設隱藏歡迎文字 */
+.welcome-msg {
+    display: none;
+}
+
+.login_profile {
+    width: 50px;
+    height: 50px;
+
+    object-fit: cover;
+}
+
+.login_profile>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#profileDropdown::after {
+    display: none !important;
+}
+
+/* 確保頭像連結不會因為 hover 而繼承底線樣式 */
+.nav-item.dropdown>#profileDropdown::after {
+    width: 0 !important;
+}
+
+.dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* ========== 基本設定 ========== */
+
+.nav15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn_dark {
+    background-color: #FFFBF7;
+    color: #504033;
+    font-weight: bolder;
+    border-radius: 50px;
+    font-size: larger;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn_logout {
+    margin-top: 5px;
+    color: #FFFBF7;
+    background-color: #9C4332;
+    font-weight: bolder;
+    border-radius: 50px;
+    font-size: larger;
+}
+
+.btn_logout:hover {
+    margin-top: 5px;
+    color: #ffffff;
+    background-color: #833829;
+    font-weight: bolder;
+    border-radius: 50px;
+    font-size: larger;
+}
+
+.btn_dark:hover {
+    background-color: #756B61;
+    color: #FFFBF7;
+    font-weight: 600;
+}
+
+body {
+    background-color: #E9E2D8;
+}
+
+.custom-nav {
+    background-color: #D5C8B8;
+}
+
+#logo {
+    height: 75px;
+    margin-left: 10px;
+}
+
+.nav-link {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #504033 !important;
+    position: relative;
+    display: inline-block;
+    /* padding-bottom: 5px; */
+    /* overflow: hidden; */
+}
+
+/* .navbar-toggler {
+    margin-right: 20px;
+} */
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.dropdown-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== 新增：下拉選單圖標旋轉 CSS ========== */
+
+/* .dropdown-toggle .bi-chevron-down {
+    transition: transform 0.3s ease;
+    display: inline-block;
+} */
+
+
+.dropdown-toggle.show .bi-chevron-down {
+    transform: scaleY(-1);
+}
+
+@media (min-width: 992px) {
+
+    /* 當滑鼠懸停在 .nav-item.dropdown 父層上時，將圖標旋轉 180 度 */
+    .nav-item.dropdown:hover .bi-chevron-down {
+        transform: scaleY(-1);
+    }
+}
+
+
+/* ============================= */
+
+/* 下拉選單背景色 */
+.dropdown-menu {
+    background-color: #FFFBF7 !important;
+    margin-top: 0;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* 下拉項 hover 底線效果 */
+.dropdown-item {
+    position: relative;
+    overflow: hidden;
+    font-weight: 700;
+    color: #504033 !important;
+}
+
+.dropdown-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #756B61;
+    transition: width 0.3s ease;
+}
+
+.dropdown-item:hover::after {
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #E9E2D8;
+    color: #756B61 !important;
+}
+
+/* ========== hover 底線動畫 ========== */
+
+/* 僅為非下拉選單的 nav-link 定義 ::after 基礎樣式 */
+.nav-item:not(.dropdown)>.nav-link::after,
+.nav-item.dropdown>.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 0;
+    background-color: #756B61;
+    transition: width 0.3s ease;
+}
+
+/* 刪除或註釋掉原本的 .nav-link::after 區塊！ */
+/* 1. 針對非下拉選單項 (毛孩領養, 走失協尋, 常見問題) */
+.nav-item:not(.dropdown)>.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 2. 針對下拉選單主項 (我要刊登) - 必須使用父元素 hover，才能在桌面版持續顯示底線和選單 */
+.nav-item.dropdown:hover>.nav-link::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #756B61 !important;
+}
+
+.navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    /* 用 transform 讓動畫更滑順 */
+}
+
+/* 隱藏 navbar（往上移動） */
+.navbar.hide {
+    transform: translateY(-100%);
+}
+
+/* 顯示 navbar（回到頂端） */
+.navbar.show {
+    transform: translateY(0);
+}
+
+.navbar-brand {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ========== 手機版漢堡動畫 ========== */
+.custom-toggler {
+    border: none;
+    padding: 0;
+}
+
+.toggler-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.toggler-icon span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #504033;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-only-icon {
+    display: none;
+}
+
+/* ========== 新增：漢堡選單從右側滑出效果 (手機版) ========== */
+
+@media (max-width: 991.98px) {
+
+    .mobile-only-icon {
+        display: inline-block;
+        /* 顯示圖示 */
+        margin-left: 5px;
+        /* 增加一點左邊距，不要貼著文字 */
+        font-size: 0.9em;
+        /* 稍微縮小一點點，看起來較精緻 (可選) */
+        transition: transform 0.3s ease;
+        /* 保留旋轉動畫 */
+    }
+
+    /* 展開 → 變 X */
+    .custom-toggler.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .custom-toggler.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .custom-toggler.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* 1. 覆寫 .navbar-collapse 的樣式，讓它變成側邊欄 */
+    .navbar-collapse {
+        position: fixed;
+        /* 固定在視窗中 */
+        top: 100px;
+        /* 從導航列下方開始（需根據您的導航列高度調整，這裡假設約 100px）*/
+        right: 0;
+        bottom: 0;
+        width: 45%;
+        /* 設定選單寬度（可調整）*/
+        background-color: #D5C8B8;
+        /* 使用導航列背景色 */
+        transform: translateX(100%);
+        /* 預設將選單推到視窗右側外面 */
+        transition: transform 0.3s ease-in-out;
+        /* 滑動動畫 */
+        z-index: 1020;
+        /* 確保它在其他內容上方 */
+        overflow-y: auto;
+        /* 允許內容過長時滾動 */
+    }
+
+    /* 2. 當選單展開時，將選單滑入視窗 */
+    .navbar-collapse.show {
+        transform: translateX(0);
+    }
+
+    /* 3. 調整選單內容佈局，垂直置中並移除邊距 */
+    .navbar-collapse.show .navbar-nav {
+        /* 移除手機版置中樣式造成的影響 */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        /* 確保內容靠左或根據需求調整 */
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* 4. 確保 nav-item 內的連結可以佔滿寬度 */
+    .navbar-collapse.show .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 5. 調整登入按鈕的樣式，使其看起來更好 */
+    .navbar-collapse.show form.d-flex {
+        display: block !important;
+        padding: 0;
+    }
+
+
+
+    .navbar-collapse.show form.d-flex .btn_dark {
+        width: 100%;
+    }
+
+    #profileDropdown+.dropdown-menu {
+        display: block !important;
+        /* 強制顯示 */
+        opacity: 1 !important;
+        /* 確保不透明 */
+        visibility: visible !important;
+        /* 確保可見 */
+
+        position: static !important;
+        /* 關鍵：取消浮動，讓它變成普通元素，不會蓋住別人 */
+        transform: none !important;
+        /* 取消位移 */
+
+        width: 100%;
+        /* 寬度佔滿 */
+        background-color: transparent !important;
+        /* 移除背景色，讓它看起來像直接寫在選單上 */
+        border: none !important;
+        /* 移除邊框 */
+        /* box-shadow: none !important; */
+        /* 移除陰影 */
+        margin-top: 10px;
+        /* 與頭像保持一點距離 */
+        padding: 0;
+        /* 重置內距 */
+    }
+
+    .welcome-msg {
+        display: block;
+        /* 顯示文字 */
+        font-size: 18px;
+        /* 設定字體大小 */
+        font-weight: bold;
+        /* 粗體 */
+        color: #504033;
+        background-color: #FFFBF7;
+    }
+
+    /* 2. 設定頭像按鈕的排版，讓圖片跟文字橫向排列且置中 */
+    #profileDropdown {
+        display: flex;
+        /* 啟用 Flexbox */
+        align-items: center;
+        /* 垂直置中 */
+        justify-content: center;
+        /* 水平置中 (讓圖片+文字整體置中) */
+        background-color: #FFFBF7;
+        /* 如果您之前設定了 margin-bottom: 0，這裡可以依需求微調 */
+        padding-bottom: 10px;
+
+    }
+
+    /* 確保容器有空間可以推擠 */
+    .navbar-collapse .navbar-nav {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    /* 只針對擁有這個 class 的項目 (也就是登入後的區塊) 進行沉底 */
+    .navbar-collapse .navbar-nav>li.login-bottom-align {
+        margin-top: auto;
+        /* 這行會把它推到底部 */
+        width: 100%;
+        /* 寬度佔滿 */
+    }
+
+    #btn_login {
+        margin-top: 10px;
+    }
+
+
+}
+
+/* 電腦版 hover 展開下拉 */
+@media (min-width: 992px) {
+
+    /* 大於等於 lg 的螢幕 */
+    .navbar-nav .dropdown:hover>.dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-nav .dropdown-menu {
+        display: block;
+        /* 預設隱藏 */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+}
+
+/* 覆寫 Bootstrap 預設的向下箭頭，因為我們使用了自訂的圖標 (bi-chevron-down) */
+/* 這樣可以確保只有我們定義的底線 ::after 偽元素生效，避免雙重 ::after 疊加 */
+.dropdown-toggle::after {
+    /* 移除箭頭的邊框樣式，這是造成粗底線和卡住的主因 */
+    border-style: none !important;
+    /* 移除箭頭的預設間距 */
+    margin-left: 0 !important;
+    vertical-align: 0 !important;
+}

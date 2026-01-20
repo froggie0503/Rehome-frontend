@@ -1,0 +1,365 @@
+
+
+/* ------------------- 標題與區塊容器設定 ------------------- */
+/* 修改標題對齊方式，讓它跟下方的內容區塊對齊 */
+.missing_title,
+.block-title {
+    padding: 10px 15px;
+    background-color: #D5C8B8;
+    color: #504033;
+    font-weight: 800;
+    display: block;
+    width: fit-content;
+    border-radius: 10px 10px 0 0;
+    /* 計算方式：(100% - 75%寬度) / 2 = 12.5% 左右邊距 */
+    margin: 0 auto 0 12.5%;
+    font-weight: bolder;
+}
+
+.input_section {
+    background-color: #D5C8B8;
+    padding: 30px;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    /* 確保內容區塊本身是置中的 */
+}
+
+/* ------------------- 表單群組通用設定 ------------------- */
+
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+/* 這是控制每一個輸入欄位(Label+Input)的容器 */
+.form-group {
+    /* 改用 Flex 佈局來達成完美置中，取代原本的 margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 這是水平置中的關鍵 */
+    text-align: left;
+    /* 讓 label 文字保持靠左(在它自己的框框內) */
+    gap: 5px;
+}
+
+/* 調整 Label */
+.form-group label {
+    width: 100%;
+    max-width: 500px;
+    /* 跟 Input 同寬 */
+    min-width: 200px;
+    font-weight: bold;
+    margin-bottom: 0;
+    /* 移除導致偏移的 10% margin */
+    margin-left: 0;
+    margin-right: 0;
+    /* 確保文字是靠左對齊的 */
+    text-align: left;
+}
+
+/* ------------------- 輸入框樣式 (Input/Select/Textarea) ------------------- */
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    flex-grow: 1;
+    /* 移除導致偏移的 10% margin */
+    margin-left: 0;
+    margin-right: 0;
+
+    /* 樣式設定 */
+    padding: 8px 10px;
+    border: 1px solid #C5C5C5;
+    border-radius: 10px;
+    background-color: #E9E2D8;
+    font-size: 1rem;
+    font-weight: bolder;
+
+    /* 寬度控制：確保在大螢幕與手機都好看 */
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+}
+
+/* 針對 Select 箭頭調整 */
+select {
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+/* ------------------- RWD 響應式佈局設定 (關鍵修改) ------------------- */
+
+/* 預設 (手機版/小螢幕 < 992px)：所有欄位佔滿一行 */
+.form-group.half,
+.form-group.third,
+.form-group.full {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* 桌面版 (大螢幕 >= 992px)：恢復兩欄或三欄佈局 */
+@media (min-width: 992px) {
+    .form-group.half {
+        /* 設定寬度為 50% 減去 gap 的一半 */
+        width: calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+
+    .form-group.third {
+        width: calc(33.33% - 14px);
+    }
+
+    .form-group.full {
+        width: 100%;
+    }
+
+    /* ------------- */
+    /* 1. 設定這個區塊專屬的間距為 30px */
+    .missing-info-block .form-grid {
+        gap: 30px;
+        justify-content: center;
+        /* 確保整體置中 */
+    }
+
+    /* 2. 針對這裡面的 half 欄位設定精準寬度 */
+    .missing-info-block .form-group.half {
+        /* 計算公式：(總寬 400px - 間距 30px) / 2 = 185px */
+        max-width: 235px;
+        width: calc(50% - 15px);
+        /* 確保 RWD 縮放時比例正確 */
+    }
+
+    /* 確保選單填滿這個寬度 */
+    .missing-info-block .form-group.half select {
+        width: 100%;
+    }
+
+}
+
+/* 您提到的「三四部分不需要依照畫面寬度改變排列」
+   由於上面的設定是通用的，如果您希望某些特定區塊(如遺失資訊)
+   在手機版也保持併排(例如縣市/區域)，可以額外加上這段，
+   但通常手機版建議單行比較好點擊。
+   若要強制置中，上面的 align-items: center 已經處理好了。
+*/
+
+/* ------------------- 照片上傳區塊 ------------------- */
+
+.placeholder-box>img {
+    width: 120px;
+    height: 120px;
+    background-color: #504033;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.photo-upload-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    /* 讓照片區塊整體置中 */
+    justify-content: center;
+}
+
+.photo-upload-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    /* 手機版預設：兩張一排 */
+    width: calc(50% - 7.5px);
+}
+
+/* 桌機版：四張一排，且置中 */
+@media (min-width: 992px) {
+    .photo-upload-item {
+        width: calc(25% - 11.25px);
+        /* 精準計算四等分扣除 gap */
+        margin-bottom: 0;
+    }
+}
+
+/* ------------------- 按鈕與其他裝飾樣式 (保持原樣或微調) ------------------- */
+
+.btn-delete {
+    background-color: #D9534F;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 150px;
+    /* 按鈕最大寬度 */
+}
+
+.btn-delete i {
+    margin-right: 5px;
+}
+
+.map-select-group {
+    /* 確保按鈕區塊也置中 */
+    align-items: center;
+}
+
+.map-select-group>button {
+    background-color: #AB9073;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 150px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.submit-action {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-action>button {
+    background-color: #AB9073;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.submit-action>button:hover {
+    background-color: #756B61;
+}
+
+/* ------------------- 狀態顏色與 Focus 樣式 (保留原本邏輯) ------------------- */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #756B61;
+    background-color: #ffffff;
+
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #BDB3AC;
+    opacity: 1;
+    font-style: italic;
+}
+
+input,
+select,
+textarea {
+    color: #756B61;
+    background-color: #E9E2D8;
+}
+
+
+
+select:required:invalid,
+select[value=""] {
+    font-style: italic;
+}
+
+input[type="date"]:required:invalid {
+    background-color: #FFFBF7;
+    /* 未填寫時的淺色背景 */
+    color: #BDB3AC;
+    /* 未填寫時的文字顏色 (年/月/日 的預設文字) */
+}
+
+
+/* 當輸入框 顯示 placeholder 時 (代表使用者還沒打字) */
+input:not(:focus):placeholder-shown,
+textarea:not(:focus):placeholder-shown {
+
+
+    background-color: #FFFBF7;
+    /* 範例：邊框顏色也可以不同 */
+    color: #BDB3AC;
+    /* 文字顏色較淡 */
+}
+
+/* 確保 Select 也有一樣的效果 (利用 required 和 invalid) */
+/* 注意：HTML 的 select 標籤必須加上 required 屬性才有效 */
+select:required:invalid {
+    background-color: #FFFBF7;
+    color: #BDB3AC;
+    font-style: italic;
+    /* 這也同時解決了您的第 4 點 */
+}
+
+option {
+    color: #504033;
+    font-style: normal;
+    background-color: #FFFBF7;
+    font-weight: bolder;
+
+}
+
+option:hover {
+    color: #FFFBF7;
+    background-color: #756B61;
+
+
+
+}
+
+option {
+    color: #333333;
+    /* 這裡使用深灰色，您可以替換成 #000000 (黑色) */
+    /* 確保背景與文字有足夠對比，讓選項在下拉列表中清晰可見 */
+}
+
+/* -----欄位提示(紅字)------ */
+.warning-text p {
+    margin-bottom: 0;
+    font-weight: bolder;
+    color: #756B61;
+}
+
+.warning-text .publish_warn {
+    background-color: #FFFBF7;
+    padding: 5px 10px 5px 10px;
+    color: #D9534F;
+}
+
+.photo-cover {
+    font-weight: bolder;
+    background-color: #756B61;
+    color: #FFFBF7;
+    /* color: #504033; */
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 0%;
+    margin-right: 5px;
+    margin-left: 10px;
+    /* border-radius: 5px; */
+}
+.required{
+    color: #9C4332;
+    font-size: 10px;
+   
+
+    position: relative;
+    top: -8px;
+    left: 0px;
+}
+

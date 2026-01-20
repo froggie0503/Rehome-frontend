@@ -1,0 +1,65 @@
+/* -------------------導覽列------------------- */
+.navbar {
+    height: 106px;
+    background-color: var(--color-navbar);
+}
+
+.navbar .nav-link {
+    font-size: 20px;
+    color: var(--font-color-primary);
+}
+
+.navbar .nav-link.active {
+    color: var(--color-hover) !important;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.navbar #nav-login-btn {
+    width: 94px;
+    background-color: var(--font-color-highlight);
+    border-radius: 2rem;
+}
+
+/* ------------------- footer ------------------- */
+.footer,
+.footer a {
+    background-color: var(--color-footer);
+    color: var(--font-color-highlight);
+}
+
+
+/* ------------------- 浮動按鈕 ------------------- */
+.floating-btns {
+    margin-bottom: 250px;
+    z-index: 1000;
+}
+
+.floating-btns a {
+    right: 0;
+    width: 100px;
+    border-radius: 0px;
+    font-size: 20px;
+    padding-left: 2rem;
+    color: var(--font-color-highlight);
+
+    clip-path: polygon(
+        30% 50%,        /* 拉扯點的位置 */
+        0% 0%,          /* 左上角 */
+        100% 0%,        /* 右上角 */
+        100% 100%,      /* 右下角 */
+        0% 100%         /* 左下角 */
+    );
+}
+
+.floating-btns a:hover {
+    color: var(--color-hover);
+}
+
+.floating-btns .lost-floating-btn {
+    background-color: var(--color-red);
+}
+
+.floating-btns .adopt-floating-btn {
+    background-color: var(--color-green);
+}

@@ -1,0 +1,133 @@
+/* --- Modal 外層遮罩 --- */
+.modal-overlay {
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑底 */
+    z-index: 9999; /* 確保在最上層 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 顯示時的狀態 */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* --- Modal 本體 --- */
+.modal-container {
+    background-color: #FFFBF7; /* 米白底色 */
+    width: 90%;
+    max-width: 600px; /* 最大寬度 */
+    height: 80vh;     /* 高度佔螢幕 80% */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column; /* 讓內容垂直排列 */
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #5D4033; /* 外框 */
+}
+
+/* --- 標題區 --- */
+.modal-header {
+    padding: 20px;
+    border-bottom: 2px solid rgba(93, 64, 51, 0.1);
+    flex-shrink: 0; /* 防止被壓縮 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #5D4033;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 3px solid #5D4033; /* 標題下底線 */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.close-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #5D4033;
+}
+
+/* --- 列表內容區 (關鍵：滾動區) --- */
+.modal-body {
+    flex-grow: 1; /* 佔滿剩餘空間 */
+    padding: 20px;
+    overflow-y: auto; /* 只有這裡可以捲動 */
+    background-color: #FFFBF7;
+}
+
+/* 客製化捲軸 (Chrome/Safari) */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* --- 單則留言卡片 --- */
+.message-item {
+    background-color: #E9E2D8; /* 淺灰褐底色 (參考圖片) */
+    color: #5D4033;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-content {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.msg-time {
+    font-size: 0.8rem;
+    color: #887766;
+    text-align: right; /* 時間靠右 */
+    margin-top: auto;
+}
+
+/* --- 底部區 --- */
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    text-align: right;
+    background-color: #FFFBF7;
+    flex-shrink: 0;
+}
+
+.confirm-btn {
+    background-color: #7C9A61; /* 綠色按鈕 (參考圖片) */
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* transition: background 0.3s; */
+}
+
+.confirm-btn:hover {
+    background-color: #6b8552;
+}
+
+/* 載入中文字 */
+.loading-spinner {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,211 @@
+/* ========================================
+   ReHome Admin - Sidebar Styles
+   側邊欄樣式與漢堡選單
+   ======================================== */
+
+/* ========== 側邊欄基本樣式 ========== */
+.sidebar {
+    width: 250px;
+    background-color: #AB9073;
+    flex-shrink: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: left 0.3s ease;
+}
+
+/* ========== 選單列表 ========== */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 15px 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar li a:hover {
+    background-color: #8D7058;
+}
+
+.sidebar li a:active {
+    background-color: #756B61;
+}
+
+/* ========== 登出區域 ========== */
+.sidebar .logout {
+    margin-top: auto;
+    padding: 30px;
+}
+
+.sidebar .logout a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar .logout a:hover {
+    opacity: 0.8;
+}
+
+/* ========== 漢堡選單按鈕 ========== */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 20px; /* 調整至 Header 高度內 (80px 的垂直置中) */
+    left: 15px;
+    z-index: 1000;
+    width: 45px;
+    height: 45px;
+    background-color: #AB9073;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.sidebar-toggle:hover {
+    background-color: #8D7058;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle:active {
+    transform: scale(0.95);
+}
+
+.sidebar-toggle:focus-visible {
+    outline: 2px solid #504033;
+    outline-offset: 2px;
+}
+
+/* 漢堡選單三條橫線 */
+.sidebar-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #FFFFFF;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* 漢堡選單動畫 - 保持顯示漢堡圖示 (不變成 X) */
+.sidebar-toggle.active span:nth-child(1) {
+    /* transform: rotate(45deg) translate(8px, 8px); */
+}
+
+.sidebar-toggle.active span:nth-child(2) {
+    /* opacity: 0; */
+}
+
+.sidebar-toggle.active span:nth-child(3) {
+    /* transform: rotate(-45deg) translate(7px, -7px); */
+}
+
+/* ========== 遮罩層 ========== */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ========================================
+   響應式設計
+   ======================================== */
+
+/* 平板裝置 (1024px 以下) */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .sidebar li a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+    
+    .sidebar .logout {
+        padding: 20px;
+    }
+}
+
+/* 手機裝置 (768px 以下) */
+@media (max-width: 768px) {
+    /* 側邊欄變成滑出式選單 */
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 80px;
+        width: 250px;
+        height: calc(100vh - 80px);
+        z-index: 999;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    /* 顯示漢堡選單按鈕 */
+    .sidebar-toggle {
+        display: flex;
+    }
+    
+    /* Content 區域佔滿寬度 */
+    .content {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* 小型手機 (480px 以下) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+    
+    .sidebar li a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+    
+    .sidebar-toggle {
+        top: 15px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .sidebar-toggle span {
+        width: 22px;
+        height: 2.5px;
+    }
+}

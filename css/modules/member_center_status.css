@@ -1,0 +1,340 @@
+        :root {
+            --c-main-bg: #E9E2D8;
+            /* 背景色 */
+            --c-container: #f1e8df;
+            /* 狀態列底色 */
+            --c-interactive: #97795D;
+            /* 進行中 / 滑桿 */
+            --c-danger: #9C4332;
+            /* 失敗紅 */
+            --c-hover: #756B61;
+            /* 文字/說明 */
+            --c-text-dark: #504033;
+            /* 深色字 */
+            --c-success: #81A868;
+            /* 成功綠 */
+            --c-text-light: #FFFBF7;
+            /* 淺色字/Icon色 */
+
+        }
+
+
+
+        /* --- 2. 狀態列核心 CSS --- */
+        .status-bar-section {
+            padding: 32px 0;
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .status-steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .status-steps-container::before {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 15%;
+            right: 15%;
+            height: 4px;
+            background-color: rgba(80, 64, 51, 0.15);
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        .status-list {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            align-items: stretch;
+            gap: 15px;
+        }
+
+        /* [Desktop] 單個項目 */
+        .status-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 12px;
+            padding: 15px 10px;
+        }
+
+        .status-icon-box {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            /* 讓中間區域佔據空間，確保視覺平衡 */
+        }
+
+        /* 圓點外框與 Icon (對應新結構的 .status-dot) */
+        .status-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #FFFBF7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        .double-icon .status-dot {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* 狀態顏色定義 */
+        /* 完成 (Done) - 深棕 */
+        .status-item.done .status-dot {
+            background-color: var(--c-text-dark);
+            border-color: var(--c-text-dark);
+            color: var(--c-text-light);
+        }
+
+        /* 進行中 (Active) */
+        .status-item.active .status-dot {
+            background-color: var(--c-interactive);
+            border-color: var(--c-interactive);
+            color: var(--c-text-light);
+        }
+
+        /* 成功 (Success) - 綠色 */
+        .status-item.success .status-dot {
+            background-color: var(--c-success);
+            border-color: var(--c-success);
+            color: var(--c-text-light);
+        }
+
+        /* 失敗 (Fail) - 紅色 */
+        .status-item.fail .status-dot {
+            background-color: var(--c-danger);
+            border-color: var(--c-danger);
+            color: var(--c-text-light);
+        }
+
+        /* 文字樣式 */
+        .status-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--c-text-dark);
+            margin-bottom: 4px;
+        }
+
+        .status-desc {
+            font-size: 1rem;
+            color: #504033;
+            line-height: 1.3;
+            font-weight: bolder;
+        }
+
+        .status-hint {
+            margin-top: auto;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #504033;
+            border-radius: 5px;
+            padding: 8px;
+            height: 100px;
+
+            color: #504033;
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+
+
+
+        /* 雙球並排 */
+
+        .multi-dots {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .multi-dots .status-dot {
+            margin-bottom: 0;
+        }
+
+
+        /* 成功球 - 綠色 */
+        .status-item .status-dot.dot-success {
+            background-color: var(--c-success);
+            /* */
+            border-color: var(--c-success);
+            color: var(--c-text-light);
+        }
+
+        /* 失敗球 - 紅色 */
+        .status-item .status-dot.dot-fail {
+            background-color: var(--c-danger);
+            /* */
+            border-color: var(--c-danger);
+            color: var(--c-text-light);
+        }
+
+        .status-item .multi-dots {
+            justify-content: center;
+            gap: 4px;
+            margin-right: 0;
+            flex-shrink: 0;
+            background-color: #FFFBF7;
+            border-radius: 50px;
+            padding: 8px;
+            width: auto;
+            margin-top: -10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /*  手機版設定 ( --- */
+       /* --- 手機版設定 (螢幕小於 768px) --- */
+@media (max-width: 768px) {
+
+    .status-steps-container {
+        padding: 0 10px;
+    }
+
+    /* 1. 隱藏電腦版的橫線 */
+    .status-steps-container::before {
+        display: none;
+    }
+
+    .status-list {
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    /* 2. 背景直線：設定在正中間 */
+    .status-list::before {
+        content: '';
+        position: absolute;
+        top: 24px;   /* 從球心開始 */
+        bottom: 20%;
+        left: calc(28% + 24px);
+        transform: translateX(-50%); 
+        width: 4px;
+        background-color: rgba(80, 64, 51, 0.15);
+        z-index: 0;
+    }
+
+    .status-item {
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+        padding: 15px 0;
+        position: relative;
+    }
+
+    /* 3. 左側：標題區 */
+    .status-header {
+        flex: 0 0 28%; 
+        max-width: 28%;
+        text-align: right;
+        
+        /* ★ 關鍵：這裡設 15px，跟右邊的 margin 對稱，球才會在中間 */
+        padding-right: 20px; 
+        
+        width: auto;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 12px;
+    }
+
+    .status-title {
+        margin-bottom: 0;
+        font-size: 0.95rem;
+    }
+
+    .status-desc {
+        font-size: 0.85rem;
+    }
+
+    /* 4. 中間：圓球區 */
+    .status-icon-box {
+        flex: 0 0 auto; /* 固定寬度不縮放 */
+        width: 48px;
+        margin: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
+    .status-dot {
+        margin-bottom: 0;
+    }
+
+ /* 1. 容器設定 */
+            .status-item .multi-dots {
+                display: flex;
+                flex-direction: column; /* ★ 關鍵：改成垂直 (Column) */
+                align-items: center;    /* 讓球在中間對齊 */
+                justify-content: center;
+                gap: 6px;               /* 上下球的間距 */
+                
+                /* 尺寸設定 */
+                width: 48px;            /* 設定跟單顆球一樣寬，確保對齊中線 */
+                margin: 0;              /* 清除外距 */
+                position: static;
+                transform: none;
+            }
+
+            /* 2. 球體設定 */
+            .multi-dots .status-dot {
+                /* 因為變成上下排，稍微縮小一點點比較好看，不然會太長 */
+                width: 48px; 
+                height: 48px; 
+                font-size: 0.8rem;
+                margin-bottom: 0;
+            }
+
+    .multi-dots .status-dot {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    .double-icon .status-header,
+    .double-icon .status-hint {
+        margin-top: 30px;
+    }
+
+    /* 5. 右側：提示區 (灰色方塊) */
+    .status-hint {
+        flex: 1; /* 佔滿右半邊 */
+        
+        /* ★ 關鍵修改：用 margin (外距) 推開，底色就不會黏在球上 */
+        margin-left: 20px; 
+        margin-right: 10px; /* 右邊留一點邊界 */
+        margin-top: 10px; /* 右邊留一點邊界 */
+        
+        /* 給文字一點呼吸空間 */
+        padding: 8px 12px; 
+        padding-top: 12px;
+        align-items: flex-start; /* 確保文字靠上 */
+        
+        /* 其他樣式 */
+        text-align: left;
+        width: auto;
+        height: auto;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.04); /* 確保底色存在 */
+        border-radius: 6px;
+        align-items: flex-start;
+    }
+}

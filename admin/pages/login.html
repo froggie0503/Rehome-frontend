@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 後台登入">
+    <title>後台登入 | ReHome 後台管理系統</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="/js/lib/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <main class="login-container">
+        <div class="login-left">
+            <div class="login-icon">
+                <img src="../../assets/img/admin/login.png" alt="ReHome 後台管理系統登入頁面插圖">
+            </div>
+        </div>
+        <div class="login-right">
+            <h1>後台登入</h1>
+            <form class="loginForm" id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="account" class="visually-hidden">帳號</label>
+                    <input 
+                        type="text" 
+                        id="account" 
+                        name="account" 
+                        placeholder="帳號 (Account)" 
+                        required
+                        autocomplete="username"
+                        aria-label="請輸入帳號">
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="visually-hidden">密碼</label>
+                    <div class="password-input">
+                        <img src="../../assets/img/admin/Lock.svg" alt="" class="lock-icon" aria-hidden="true">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="密碼 (Password)" 
+                            required
+                            minlength="6"
+                            autocomplete="current-password"
+                            aria-label="請輸入密碼">
+                    </div>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink" role="button" aria-haspopup="dialog">忘記密碼？</a>
+                </div>
+
+                <button type="submit" class="login-btn">登入</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ========== 忘記密碼 Modal ========== -->
+    <div class="modal-overlay" id="forgotPasswordModal" role="dialog" aria-modal="true" aria-labelledby="forgotPasswordTitle" hidden>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="closeModal" aria-label="關閉忘記密碼視窗">&times;</button>
+            
+            <h2 id="forgotPasswordTitle">忘記密碼</h2>
+            
+            <form id="forgotPasswordForm" novalidate>
+                <div class="form-group">
+                    <label for="resetAccount">登入帳號：</label>
+                    <input 
+                        type="text" 
+                        id="resetAccount" 
+                        name="resetAccount"
+                        placeholder="請輸入您的帳號" 
+                        required
+                        autocomplete="username"
+                        aria-required="true">
+                </div>
+
+                <div class="form-group captcha-group">
+                    <label for="captchaInput">輸入驗證碼：</label>
+                    <div class="captcha-wrapper">
+                        <input 
+                            type="text" 
+                            id="captchaInput" 
+                            name="captchaInput"
+                            placeholder="請輸入驗證碼" 
+                            required 
+                            maxlength="6"
+                            autocomplete="off"
+                            aria-required="true"
+                            aria-describedby="captchaHint">
+                        <div class="captcha-display" id="captchaDisplay">
+                            <canvas 
+                                id="captchaCanvas" 
+                                width="180" 
+                                height="60" 
+                                role="button"
+                                tabindex="0"
+                                aria-label="驗證碼圖片,點擊更換"></canvas>
+                        </div>
+                    </div>
+                    <small class="hint" id="captchaHint">點擊驗證碼圖片可更換</small>
+                </div>
+
+                <button type="submit" class="submit-btn">送出驗證碼</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== 重設密碼 Modal ========== -->
+    <div class="modal-overlay" id="resetPasswordModal" role="dialog" aria-modal="true" aria-labelledby="resetPasswordTitle" hidden>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="closeResetModal" aria-label="關閉重設密碼視窗">&times;</button>
+            
+            <h2 id="resetPasswordTitle">重設密碼</h2>
+            
+            <form id="resetPasswordForm" novalidate>
+                <div class="form-group">
+                    <label for="newPassword">新密碼：</label>
+                    <div class="password-input">
+                        <img src="../../assets/img/admin/Lock.svg" alt="" class="lock-icon" aria-hidden="true">
+                        <input 
+                            type="password" 
+                            id="newPassword" 
+                            name="newPassword"
+                            placeholder="請輸入新密碼" 
+                            required 
+                            minlength="6"
+                            autocomplete="new-password"
+                            aria-required="true"
+                            aria-describedby="passwordHint">
+                    </div>
+                    <small class="hint" id="passwordHint">密碼至少 6 個字元</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">確認密碼：</label>
+                    <div class="password-input">
+                        <img src="../../assets/img/admin/Lock.svg" alt="" class="lock-icon" aria-hidden="true">
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword"
+                            placeholder="請再次輸入密碼" 
+                            required 
+                            minlength="6"
+                            autocomplete="new-password"
+                            aria-required="true"
+                            aria-describedby="passwordError">
+                    </div>
+                    <small class="hint error-message" id="passwordError" role="alert"></small>
+                </div>
+
+                <button type="submit" class="submit-btn">送出</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+  <head>
+    <link rel="stylesheet" href="../css/modules/chatServer.css" /> 
+  </head>
+  <body>
+    <div id="floating-chat" class="expanded">
+      
+      <div id="minimized-ball-icon">
+        <i class="fa-solid fa-comments"></i>
+      </div>
+
+      <div id="global-navbar">
+        <div class="global-navbar-left"></div>
+
+        <div class="global-center-header">
+          <span class="global-title">客服Room</span>
+          <div class="global-user-icon">
+            <img id="header-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00czLTEuNzktNC00LTRzLTQgMS43OS00IDRzMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYy04LTIuNjYtOC00LTh6Ii8+PC9zdmc+" alt="User Avatar"/>
+          </div>
+        </div>
+
+        <div class="global-navbar-right">
+          <button class="close-button" id="minimize-button">
+            <i id="minimize-arrow" class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        
+        <div class="sidebar-left">
+          <div class="tab-menu">
+            <button class="active-tab">待處理</button>
+            <button>已完成</button>
+            <button>Email <i class="fa-regular fa-envelope"></i></button>
+          </div>
+
+          <div class="conversation-list" id="chat-list-container">
+            <div class="list-item selected">
+              <div class="avatar">
+                <img class="user-list-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00czLTEuNzktNC00LTRzLTQgMS43OS00IDRzMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYy04LTIuNjYtOC00LTh6Ii8+PC9zdmc+" alt="Avatar"/>
+              </div>
+              <div class="list-content">
+                <div class="list-header">
+                  <span class="list-title">送養人 id-0726</span>
+                  <span class="list-time">11/11 09:11</span>
+                </div>
+                <div class="list-preview">
+                  請客服人員幫我聯絡對方修改問卷...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-main">
+          <div id="messages">
+            <div class="message-row received">
+                <div class="avatar-area">
+                    <img class="chat-msg-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00czLTEuNzktNC00LTRzLTQgMS43OS00IDRzMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYy04LTIuNjYtOC00LTh6Ii8+PC9zdmc+" alt="Avatar">
+                </div>
+                <div class="message-content">
+                    <div class="message-header">送養人 id-0726</div>
+                    <div class="message-bubble received-bubble">你好，我想詢問關於領養的問題。</div>
+                </div>
+                <div class="message-timestamp">11:10</div>
+            </div>
+          </div>
+
+          <div class="chat-footer">
+          
+    
+<div id="expanded-menu" style="display: none;">
+    
+    <div class="menu-item" onclick="toggleQuickReplies(event)">
+    <div class="menu-icon-big" style="background-color: #e3f2fd; color: #1976d2;">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    <span>常用語</span>
+</div>
+
+    <div class="menu-item" onclick="openPrivateNote()">
+        <div class="menu-icon-big" style="background-color: #fff3e0; color: #f57c00;">
+            <i class="fa-solid fa-note-sticky"></i>
+        </div>
+        <span>備忘錄</span>
+    </div>
+
+    <div class="menu-item" onclick="archiveChat()">
+        <div class="menu-icon-big" style="background-color: #e8f5e9; color: #388e3c;">
+            <i class="fa-solid fa-check-double"></i>
+        </div>
+        <span>結束對話</span>
+    </div>
+
+</div>
+
+<div id="quick-reply-menu" class="quick-reply-menu">
+    <div class="quick-reply-header">
+        <span><i class="fa-solid fa-paw"></i> 常用語</span>
+        <span onclick="toggleQuickReplies()" style="cursor: pointer;">&times;</span>
+    </div>
+    <div class="quick-reply-list">
+        </div>
+</div>
+
+            <div id="sticker-area" style="display: none;">
+              <div style="padding: 20px; color: #888;">(貼圖載入區)</div>
+            </div>
+
+            <div class="input-row">
+              <div class="footer-icons">
+                <i id="plus-menu-icon" class="fa-solid fa-plus footer-icon-btn"></i>
+                <i id="image-upload-icon" class="fa-regular fa-image footer-icon-btn"></i>
+              </div>
+              <input type="file" id="file-input" style="display: none;" accept="image/*">
+              <div class="input-wrapper">
+                <input type="text" id="message-input" placeholder="輸入訊息...">
+                <i id="emoji-keyboard-icon" class="fa-regular fa-face-smile input-face-icon"></i>
+              </div>
+              <button class="send-btn" onclick="sendMessage()">
+                <i class="fa-solid fa-paw"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sidebar-right">
+          <div class="info-header">用戶資料</div>
+          <div class="info-list">
+            <div class="info-item item-user">
+              <div class="item-icon user-avatar">
+                  <img id="right-sidebar-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00czLTEuNzktNC00LTRzLTQgMS43OS00IDRzMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYy04LTIuNjYtOC00LTh6Ii8+PC9zdmc+"/>
+              </div>
+              <span class="item-text">送養人 id-0726</span>
+            </div>
+            <div class="info-item">
+              <i class="item-icon fas fa-envelope"></i>
+              <span class="item-text">aaa@gmail.com</span>
+            </div>
+            </div>
+          <button class="action-button">封鎖用戶</button>
+        </div>
+      </div>
+    </div>
+    
+    <script src="../js/modules/chatServer.js"></script>
+
+    <script>
+      // 假設這是您之後從後端 API 拿到的資料
+      function setAvatarFromBackend(userId, avatarUrl) {
+          console.log(`正在更新用戶 ${userId} 的頭像...`);
+          
+          // 1. 更新 Header 頭像
+          const headerImg = document.getElementById('header-avatar');
+          if(headerImg) headerImg.src = avatarUrl;
+
+          // 2. 更新右側欄頭像
+          const rightImg = document.getElementById('right-sidebar-avatar');
+          if(rightImg) rightImg.src = avatarUrl;
+
+          // 3. 更新所有對話紀錄中的頭像 (使用 class 選取)
+          const chatImgs = document.querySelectorAll('.chat-msg-avatar');
+          chatImgs.forEach(img => img.src = avatarUrl);
+      }
+
+      // 測試用：過 3 秒後模擬載入成功 (您可以觀察圖片變化)
+      // setTimeout(() => {
+      //    setAvatarFromBackend('0726', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix');
+      // }, 3000);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,260 @@
+<head>
+    <link rel="stylesheet" href="../css/modules/petinfCon.css">
+</head>
+
+<body>
+    <br><br><br><br>
+
+    <!-- 至頂標籤 -->
+    <section class="banner-image">
+        <div class="container title-container">
+            <div class="custom-title-wrapper">
+
+                <img class="title-left-img" src="../assets/img/icon/form.png" alt="表單圖示">
+
+                <h3>
+                    送養資料<span class="highlight-text">確認</span>
+                </h3>
+
+                <img class="title-right-img" src="../assets/img/page_hint/house.png" alt="房子圖示">
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="step">
+            <span class="title">Step 1</span>
+            <div class="label-end">寵物履歷 </div>
+        </div>
+
+        <div class="line-end"></div>
+
+        <div class="step">
+            <span class="title">Step 2</span>
+            <div class="label-start">確認資料 </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+            <span class="title">Step 3</span>
+            <div class="label">等待審核 </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+            <span class="title">Step 4</span>
+            <div class="label">上傳成功 </div>
+        </div>
+
+
+    </div>
+
+    <div class="Divider"></div>
+    <main class="">
+        <form id="confirmation-form">
+            <!-- 寵物資訊 -->
+            <section class="content">
+                <div class="content-header">寵物資訊 <i class="bi bi-clipboard2-pulse"></i></div>
+                <div class="info-box">
+                    <!-- 左邊資訊 -->
+                    <div class="info-left">
+                        <div class="info-section">
+                            <div class="info-label">寵物暱稱:</div>
+                            <div class="info-value"></div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">寵物性別:</div>
+                            <div class="info-value"></div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">寵物體型:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">品種:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">年齡:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                    </div>
+                    <!-- 右邊資訊 -->
+                    <div class="info-right">
+                        <div class="info-section">
+                            <div class="info-label">是否有晶片:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">晶片編號:</div>
+                            <div class="info-value"></div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">寵物種類:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">其他寵物種類:</div>
+                            <div class="info-value"> </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-label">是否結紮:</div>
+                            <div class="info-value"> </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- 照片區塊 -->
+            <section class="content">
+                <div class="content-header">照片<i class="bi bi-card-image"></i></div>
+                <div class="photo-grid">
+                    <div class="photo-section">
+                        <p>首張 照片</p>
+                        <img src="/assets/img/logo/Logo.png" alt="寵物照片" class="pet-photo">
+                        <div class="preview-placeholder">照片預覽</div>
+                    </div>
+                    <div class="photo-section">
+                        <p>照片 </p>
+                        <img src="/assets/img/logo/Logo.png" alt="寵物照片" class="pet-photo">
+                        <div class="preview-placeholder">照片預覽</div>
+                    </div>
+                    <div class="photo-section">
+                        <p>照片 </p>
+                        <img src="/assets/img/logo/Logo.png" alt="寵物照片" class="pet-photo">
+                        <div class="preview-placeholder">照片預覽</div>
+                    </div>
+                    <div class="photo-section">
+                        <p>照片 </p>
+                        <img src="/assets/img/logo/Logo.png" alt="寵物照片" class="pet-photo">
+                        <div class="pet-photo-hidden">照片預覽</div>
+                    </div>
+                </div>
+            </section>
+            <!-- 寵物所在地 -->
+            <section class="content-Folder">
+                <div class="content-header-top">地區</div>
+                <div class="page"></div>
+                <div class="area-content">
+                    <div class="area-row">
+                        <div class="area-label">寵物所在地:</div>
+                        <div class="area-value"></div>
+                    </div>
+                    <div class="area-row">
+                        <div class="area-label">可送養地點:</div>
+                        <div class="area-value"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- 其他說明 -->
+            <section class="content-Folder">
+                <div class="content-header-top">其他說明</div>
+                <div class="page"></div>
+                <div class="page-1"></div>
+                <div class="other-content">
+                    <div class="other-value" id="additional-info-display"></div>
+                </div>
+            </section>
+            <!-- 醫療說明 -->
+            <section class="content-Folder">
+                <div class="content-header-top">醫療說明</div>
+                <div class="page"></div>
+                <div class="page-1"></div>
+                <div class="page-2"></div>
+                <div class="other-content">
+                    <div class="other-value" id="medical-info-display"></div>
+                </div>
+            </section>
+
+            <!-- 聯絡人資訊 -->
+            <section class="content">
+                <div class="content-header">聯絡人資訊 <i class="bi bi-person-rolodex"></i></div>
+                <div class="info-box-user">
+                    <div class="info-section-user">
+                        <div class="info-label-user">姓名:</div>
+                        <div class="info-value-user"></div>
+                    </div>
+                    <div class="info-section-user">
+                        <div class="info-label-user">電話:</div>
+                        <div class="info-value-user"></div>
+                    </div>
+                    <div class="info-section-user">
+                        <div class="info-label-user">電子郵件:</div>
+                        <div class="info-value-user"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- 領養要求 -->
+            <section class="content">
+                <div class="content-header">領養要求 <i class="bi bi-pin-angle"></i></div>
+                <div class="requirement-list">
+                    <div class="requirement-item"><i class="bi bi-check2-circle icon-yes"></i> 須同意後續追蹤</div>
+                    <div class="requirement-item"><i class="bi bi-check2-circle icon-yes"></i> 不需家人同意領養</div>
+                    <div class="requirement-item"><i class="bi bi-check2-circle icon-yes"></i> 須滿20歲</div>
+                </div>
+            </section>
+            <!-- 其他要求 -->
+            <section class="content-Folder">
+                <div class="content-header-top">其他要求</div>
+                <div class="page"></div>
+                <div class="page-1"></div>
+                <div class="page-2"></div>
+                <div class="page-3"></div>
+                <div class="other-content">
+                    <div class="other-value" id="adoption-requirements-display"></div>
+                </div>
+            </section>
+            <!-- 注意事項 -->
+            <aside class="note-section">
+                <p class="note">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登</p>
+            </aside>
+            <!-- 條款確認 -->
+            <section class="terms">
+                <div class="terms-title">請確認以下條款</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="upload-rules" name="agreements" value="upload-rules" required>
+                        <button type="button" class="terms-btn" onclick="showTermsModal('upload')">「上傳規範」</button>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacy-policy" name="agreements" value="privacy-policy" required>
+                        <button type="button" class="terms-btn" onclick="showTermsModal('privacy')">「使用者隱私條款」</button>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms-data" name="agreements" value="terms-data" required>
+                        <button type="button" class="terms-btn" onclick="showTermsModal('data')">「使用者資料提供」</button>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 彈窗-->
+            <div id="termsModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="modalTitle">條款內容</h3>
+                        <button type="button" class="close-btn" onclick="closeTermsModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modalContent" class="terms-content"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="modal-cancel" onclick="closeTermsModal()">關閉</button>
+                        <button type="button" class="modal-confirm" onclick="acceptTerms()">同意並核取</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="button-group">
+                <button type="button" class="edit-button btn" onclick="goBackToEdit()">返回編輯</button>
+                <button type="button" class="confirm-button btn" onclick="validateAndSubmit()">確認提交</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+
+</html>

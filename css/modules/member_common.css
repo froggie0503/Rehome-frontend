@@ -1,0 +1,102 @@
+/* 主頁背景 */
+body {
+    background-color: #e9e2d8 !important;
+}
+
+/* 註冊區塊背景 */
+form {
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+@media (min-width: 700px) {
+    form{
+        width: 600px;
+        margin: auto;
+    }
+}
+
+/* 註冊區塊文字 */
+label {
+    color: #5D4033;
+    font-weight: bold;
+}
+
+/* 註冊區塊輸入框 */
+input {
+    border-radius: 10px !important;
+    border: 0 !important;
+    background-color: #e9e2d8 !important;
+    text-align: center;
+}
+
+/* 帳號 placeholder */
+.placeholdertext::placeholder {
+    text-align: center;
+}
+
+/*---------------------------------
+    密碼規則 
+ --------------------------------*/
+#passwordRule {
+    display: block;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    padding: 10px;
+    font-size: 12px;
+    display: none;
+}
+
+.invalid {
+    color: #9c4332;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid::before {
+    position: relative;
+    left: -5px;
+    content: "!";
+}
+
+.valid::before {
+    position: relative;
+    left: -5px;
+    content: "\2713";
+}
+
+/* 分隔線 */
+#login_form hr {
+    height: 3px;
+}
+
+/* 其他登入方式按鈕 */
+.btn-circle {
+    font-weight: bolder !important;
+    color: #5D4033 !important;
+    width: 70px;          
+    height: 70px;         
+    border-radius: 50% !important;   /* 圓形 */
+    border: 2px solid #5D4033 !important; 
+}
+
+/* 其他登入方式按鈕 hover */
+.btn-circle:hover {
+    color: #FFFBF7 !important;
+    background-color: #756b61;
+}
+
+/* 驗證碼重整 refreshbtn */
+#refreshbtn, #forgetpasswordbtn {
+    background-color: #e9e2d8;  
+    border: none;                 /* 去掉邊框 */
+    padding: 10px;                 /* 調整按鈕大小 */
+    margin-left: 3px;
+}
+
+/* 驗證碼重整 icon */
+.bi-arrow-clockwise {
+    color: #5D4033;
+}

@@ -1,0 +1,108 @@
+<head>
+    <link rel="stylesheet" href="/css/modules/register.css">
+    <link rel="stylesheet" href="/css/modules/member_common.css">
+    <script src="/js/modules/register_otp.js" defer></script>
+    <script src="/js/modules/account_common.js" defer></script>
+</head>
+<br>
+<br>
+<br>
+<br>
+<body>
+    <!--註冊標題-->
+    <h2 id="register_Title">註冊會員</h2>
+
+    <!--註冊區塊-->
+    <div class="mt-4">
+
+        <form id="register_form" class="p-5">
+
+            <!--帳號 / 信箱驗證-->
+            <div class="mb-3">
+                <label for="register_Account" class="form-label">帳號</label>
+                <div id="register_SendOtpEmail">
+                    <input type="email" class="form-control placeholdertext" placeholder="Email帳號" id="register_Account" required>
+                    <button type="button" class="btn form-control ms-3 placeholdertext" id="register_SendOtpbtn">發送驗證碼</button>
+                </div>
+                <br>
+                <div id="register_ConfirmEmail">
+                    <input type="text" class="form-control placeholdertext" id="register_VerifyCode" placeholder="請輸入 6 位數驗證碼" maxlength="6" required>
+                    <button type="button" class="btn form-control ms-3 placeholdertext" id="register_ConfirmEmailbtn">驗證</button>
+                </div>
+            </div>
+
+            <!--密碼-->
+            <div class="mb-3">
+                <label for="register_Password" class="form-label">密碼</label>
+                <div style="display: flex;">
+                    <input type="password" class="form-control" id="register_Password" required>
+                    <i id="togglePassword" style="margin-left: -30px; font-size: 20px;" class="bi bi-eye"></i>
+                </div>
+                <div id="passwordRule">
+                    <p id="lowercase" class="invalid">至少1個小寫字母</p>
+                    <p id="uppercase" class="invalid">至少1個大寫字母</p>
+                    <p id="onenum" class="invalid">至少1個數字</p>
+                    <p id="passwordlength" class="invalid">至少8個字母/數字</p>
+                </div>
+            </div>
+
+            <!--確認密碼-->
+            <div class="mb-3">
+                <label for="register_ConfirmPassword" class="form-label">確認密碼</label>
+                <input type="password" class="form-control" id="register_ConfirmPassword" required>
+                <!-- 規則 -->
+                <div id="confirmPasswordError" class="text-danger small mt-1"></div>
+            </div>
+
+            <!--姓名-->
+            <div class="mb-3">
+                <label for="register_Name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="register_Name" required>
+            </div>
+
+            <!--性別-->
+            <div class="mb-3">
+                <label for="register_Gender" class="form-label">性別</label>
+                <div id="register_Gender">
+                    <input type="radio" name="gender" class="btn-check" autocomplete="off" id="register_Male">
+                    <label class="btn" for="register_Male" value="true">男</label>   
+                    <input type="radio" name="gender" class="btn-check" autocomplete="off" id="register_Female">
+                    <label class="btn" for="register_Female" value="false">女</label>
+                </div>
+            </div>
+
+            <!--生日-->
+            <div class="mb-3">
+                <label for="register_Birthday" class="form-label">生日</label>
+                <input type="date" class="form-control" id="register_Birthday" required>
+            </div>
+
+            <!--手機號碼-->
+            <div class="mb-3">
+                <label for="register_Phonenumber" class="form-label">手機號碼</label>
+                <input type="tel" class="form-control placeholdertext" id="register_Phonenumber" placeholder="0912345678" required>
+                <!-- 規則 -->
+                <div id="phoneNumberError" class="text-danger small mt-1"></div>
+            </div>
+
+            <!--送出-->
+            <div id="register_send" class="d-grid">
+                <button type="submit" class="btn btn-block" id="register_Btn">送出</button>
+            </div>
+
+            <!-- <hr id="register_hr"> -->
+
+            <!--其他登入方式-->
+            <!-- <div id="register_other">
+                <label for="register_otherMethod" class="form-label">其他註冊方式</label>
+                    <button type="button" class="btn btn-circle" id="register_linebtn">Line</button>
+                    <button type="button" class="btn btn-circle" id="register_gmailbtn">Gmail</button>
+            </div> -->
+
+        </form>
+    </div>
+
+
+</body>
+
+<br>

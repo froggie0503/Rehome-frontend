@@ -1,0 +1,20 @@
+/* src/main/resources/static/css/base/variables.css */
+
+:root {
+    /* 顏色變數 */
+    --color-navbar: #D5C8B8;
+    --color-background: #E9E2D8;
+    --color-footer: #504033;
+    --color-hover: #756B61;
+
+    --font-color-primary: #504033;
+    --font-color-highlight: #FFFBF7;
+
+    --color-container: #DAC4AC;
+
+    --color-card-hover: #AB9073;
+
+    --color-red: #9C4332;
+    --color-green: #81A868;
+
+}

@@ -1,0 +1,360 @@
+/*---------------------------------------
+    會員中心
+---------------------------------------*/
+
+/* 主頁背景 */
+body {
+    background-color: #e9e2d8 !important;
+}
+
+#memcontainer {
+    display: block; 
+    position: relative;
+    min-height: 100vh;
+}
+
+/* content - 內容置中，不受側邊欄擠壓 */
+#memcontent {
+    /* margin: 0 auto; 水平置中 */
+    /* padding: 0 auto; */
+    margin-top: 50px;
+    display: flex; 
+    flex-direction: column; /* 讓內容垂直排列 */
+    align-items: center; /* 水平置中 (沿著主軸 X 軸) */
+    justify-content: center; /* 垂直置中 (沿著交叉軸 Y 軸) */
+    /* width: 90%;     或 max-width: 1200px 視需求而定 */
+    /* max-width: 1200px; */
+}
+
+/* 內容標題 */
+.containertitle {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #5D4033;
+    padding-bottom: 10px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 5px;   /* 底線寬度 */
+    text-underline-offset: 10px;      /* 底線間距 */
+    
+}
+
+@media (max-width:700px) {
+    .containertitle {
+        font-size: 25px;
+        margin: 10px;
+        text-align: center;
+    }
+}
+
+/*---------------------------------------
+    側邊欄 Sidebar
+---------------------------------------*/
+/* 外層容器：設定為固定定位，浮動在視窗左側 */
+#memcenter_sidebar {
+    position: fixed;
+    top: 45px;
+    left: 0;
+    bottom: 0; /* 佔滿高度 */
+    z-index: 1050; /* 確保在最上層 */
+    width: 0; /* 容器本身不佔寬度，避免阻擋點擊底下的內容 */
+}
+
+/* 內層選單：實際有背景色的區塊 */
+#memcenter_sidebar #sidebar {
+    /* top: 200px; */
+    width: 200px;
+    /* height: 100vh;  */
+    height: 100%; 
+    background-color: #d5c8b8;
+    margin-top: 0; /* 移除原本的 margin */
+    padding-top: 50px; /* 改用 padding 避開頂部 */
+    transition: transform 0.4s ease; /* 使用 transform 效能較好 */
+    
+    /* 陰影增加立體感 */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1); 
+    
+    /* 預設狀態：顯示 (transform: 0) */
+    transform: translateX(0);
+
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+/* 狀態：收合 (利用 class 控制位移) */
+#memcenter_sidebar #sidebar.closed {
+    transform: translateX(-200px); /* 往左移出畫面 */
+}
+
+/* 頭像區塊 */
+#memcenter_sidebar .sidebaravatardiv {
+    margin: 15px;
+    display: flex; 
+    flex-direction: column; /* 讓內容垂直排列 */
+    align-items: center; /* 水平置中 (沿著主軸 X 軸) */
+    justify-content: center; /* 垂直置中 (沿著交叉軸 Y 軸) */
+}
+
+/* 頭像 */
+#memcenter_sidebar img {
+    width: 130px ;
+    height: 130px ;
+    border: 3px solid #FFFBF7;
+    border-radius: 50%;
+}
+
+/* 頭像容器 - 新增相對定位 */
+#memcenter_sidebar .avatar-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* 遮罩層 - 預設隱藏 */
+#memcenter_sidebar .avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色 */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0; /* 預設透明 */
+    transition: opacity 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 滑鼠懸停時顯示遮罩 */
+#memcenter_sidebar .avatar-container:hover .avatar-overlay {
+    opacity: 1;
+}
+
+/* 遮罩內的圖示 */
+#memcenter_sidebar .avatar-overlay i {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+/* 遮罩內的文字 */
+#memcenter_sidebar .avatar-overlay span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 暱稱 */
+#memcenter_sidebar #nickname {
+    font-family: 'Microsoft JhengHei', sans-serif;
+    font-size: 18px;
+    color: #5D4033 !important;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px; /* 底線寬度 */
+    text-underline-offset: 10px;    /* 底線間距 */
+    text-decoration-color: #fffbf7;
+}
+
+/* 側邊選單 標題 */
+#memcenter_sidebar .sidebartitle {
+    font-family: 'Microsoft JhengHei', sans-serif;
+    font-size: 18px;
+    font-weight: bold ;
+    height: 35px;
+    color: #fffbf7;
+    display: flex;            /* 啟用 Flexbox */
+    align-items: center;      /* 水平置中 (沿著主軸 X 軸) */
+    justify-content: left;  /* 垂直置中 (沿著交叉軸 Y 軸) */
+    background-color: #ab9073;
+    margin: 0;
+    padding: 5px;
+}
+
+/* 側邊選單 連結 */
+#memcenter_sidebar .sidebarhref {
+    /* font-family: 'Microsoft JhengHei', sans-serif; */
+    font-size: 16px;
+    color: #5D4033 !important;
+    background-color: #fffbf7 !important;
+    font-weight: bold;
+    height: 35px;
+    display: flex;            /* 啟用 Flexbox */
+    align-items: start;      /* 水平置中 (沿著主軸 X 軸) */
+    justify-content: center;  /* 垂直置中 (沿著交叉軸 Y 軸) */
+    background-color: transparent;
+}
+
+/* 側邊選單 連結 hover */
+#memcenter_sidebar .sidebarhref:hover {
+    background-color: #8f8a84 !important;
+    color: #FFFBF7 !important;
+}
+
+/* 側邊選單 連結 active */
+#memcenter_sidebar .sidebarhref.active {
+    background-color: #756b61 !important;
+    color: #FFFBF7 !important;
+}
+
+/* 側邊選單 連結 去底線 */
+#memcenter_sidebar a {
+    text-decoration: none;
+}
+
+/* 訊息通知 badge */
+#memcenter_sidebar .membadge {
+    color: #5D4033;
+    font-size: large;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 10px;
+    padding: 5px;
+    background-color: #dac4ac;
+    border-color: #5D4033;
+    border-style: solid;
+    border-width: 2px;
+}
+
+/* 登出按鈕 */
+#memcenter_sidebar #logoutBtn {
+    width: 100%;
+    display: block;
+    color: #FFFBF7 !important;
+    border: 0;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #9c4332;
+}
+
+
+/* ----------------------------------------------------
+    未讀提示
+---------------------------------------------------- */
+/* 確保父元素是相對定位 */
+.sidebarhref {
+    position: relative;
+    display: block;
+    padding: 5px 0;
+}
+
+.notification-badge {
+    background-color: #756b61;
+    color: white;
+    font-size: 10;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    right: 5px;
+    margin: auto;
+    display: inline-block;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+}
+
+/*---------------------------------------
+    收合按鈕 (Tab Style)
+---------------------------------------*/
+/* 修改按鈕樣式，讓它掛在側邊欄右側 */
+#toggleSidebarBtn {
+    position: absolute;
+    right: -35px; /* 掛在側邊欄右邊外部 */
+    left: auto;
+    top: 150px;    /* 高度位置 */
+    width: 35px;
+    height: 35px;
+    background-color: #d5c8b8; /* 與側邊欄同色 */
+    border-radius: 0 10px 10px 0; /* 右邊圓角 */
+    border: none;
+    box-shadow: 4px 2px 5px rgba(0,0,0,0.1); /* 讓按鈕也有陰影 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5D4033;
+    font-size: 20px;
+    z-index: 1100;
+}
+
+/* 覆寫原本的 hover 效果 */
+#toggleSidebarBtn:hover {
+    background-color: #756b61;
+    color: #FFFBF7;
+}
+
+/* ----------------------------------------------------
+    標題 + 按鈕
+---------------------------------------------------- */
+/* announ 區塊 */
+.announ {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+/* 刊登送養按鈕 */
+.announ .publish-btn {
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+    color: #5D4033;
+    background-color: #d5c8b8;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;    /* 圓角 */
+    align-items: end;
+    z-index: 100;
+}
+
+/* 刊登送養按鈕 hover */
+.announ .publish-btn:hover {
+    background-color: #756b61;
+    color: #FFFBF7 !important;
+}
+
+
+/* ============================ */
+/* 讓側邊欄內部的列表可以捲動 */
+#memcenter_sidebar ul.list-unstyled {
+    flex: 1;            /* 自動佔滿剩餘高度 */
+    overflow-y: auto;   /* 垂直方向出現捲軸 */
+    overflow-x: hidden; /* 隱藏水平捲軸 */
+    margin-bottom: 0;   /* 移除預設邊距 */
+    padding-bottom: 20px; /* 底部留一點空間方便閱讀 */
+}
+
+/* --- 自訂捲軸樣式 (美化捲軸以搭配您的色系) --- */
+
+/* 捲軸整體寬度 */
+#memcenter_sidebar ul.list-unstyled::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* 捲軸軌道背景 */
+#memcenter_sidebar ul.list-unstyled::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* 捲軸本體顏色 */
+#memcenter_sidebar ul.list-unstyled::-webkit-scrollbar-thumb {
+    background-color: #ab9073; 
+    border-radius: 10px;
+}
+
+/* 捲軸 hover 顏色 */
+#memcenter_sidebar ul.list-unstyled::-webkit-scrollbar-thumb:hover {
+    background-color: #756b61; 
+}
+
+
+

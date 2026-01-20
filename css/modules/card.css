@@ -1,0 +1,274 @@
+/*---------------------------------------
+    card 
+---------------------------------------*/
+/* 卡片絕對定位 */
+.memcenter-container .card-body {
+    position: relative;
+}
+
+/* 卡片 大小 */
+.card {
+    background-color: #ab9073 !important;
+    border: 0 !important;
+    margin-bottom: 10px;
+    position: relative; /* 重要：讓 card-overlay 絕對定位生效 */
+}
+
+@media (min-width: 700px) {
+    .card{
+        width: 800px;
+    }
+}
+
+/*---------------------------------------
+    card body
+---------------------------------------*/
+/* 卡片 img區塊 */
+.memcenter-container .col-md-4 {
+    /* padding: 16px; */
+    margin: 25px;
+    background-color: #FFFBF7;
+    display: flex;
+    align-items: center;     /* 垂直置中 */
+    justify-content: center; /* 水平置中 */   
+}
+
+/* 卡片 img */
+.memcenter-container .petimg {
+    width: 100%;
+    max-width: 250px ;
+    height: auto;
+    object-fit: cover; /* 讓圖片不變形 */
+}
+
+@media (max-width:770px) {
+    .memcenter-container .col-md-4 {
+        max-width: 250px;
+        /* background-color: transparent; */
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .memcenter-container .petimg {
+        max-width: 250px;
+    }
+}
+
+/* 卡片文字 */
+.memcenter-container .card-text {
+    font-size: 20px;
+    color: #FFFBF7 !important;
+    font-weight: bold ;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+/* card_btn 位置 */
+.memcenter-container #card_btn {
+    position: absolute;
+    right: 10px;     /* 靠右距離 */
+    bottom: 10px;    /* 靠下距離 */
+}
+
+/* 取消絕對定位，改為跟隨文件流，避免覆蓋文字 */
+@media (max-width:700px) {
+   .memcenter-container #card_btn {
+    position: static;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    flex-wrap: wrap;      /* 讓按鈕可以換行 */
+    gap: 8px;             /* 按鈕之間留點空間 */
+    margin-top: 5px;      /* 與文字保持距離 */
+    margin-bottom: 5px;
+    justify-content: center; /* 置中排列 */
+    width: 100%;
+   }
+}
+
+/* card_btn */
+.memcenter-container .card_btn {
+    color: #5D4033;
+    font-weight: bold;
+    border: 0;
+    border-width: 2px;
+    background-color: #e9e2d8;
+}
+
+/* 卡片聊天室按鈕 hover */
+.card .btn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 按鈕間距 */
+.memcenter-container #card_btn .btn {
+    margin-left: 5px;
+}
+
+/*---------------------------------------
+    下架 Modal
+---------------------------------------*/
+.modal-header, .modal-footer {
+    border: none;
+}
+
+/* 下架 Modal標題 */
+.modal-title {
+    font-weight: bold;
+    color: #504033;
+    margin: auto;
+}
+
+/* 下架 Modal footer */
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 下架 Modal按鈕 */
+.modal-footer .btn {
+    font-weight: bold;
+    color: #FFFBF7;
+    background-color: #ab9073;
+    border: none;   /* 去掉邊框 */
+    padding: 10px;   /* 調整按鈕大小 */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#confirmRemoveBtn {
+    background-color: #9c4332;
+}
+
+/* 下架 Modal按鈕 hover */
+.modal-footer .btn:hover {
+    background-color: #756b61;
+}
+/* --- 移除 Modal 中間的分隔線 --- */
+
+/* 移除 Header 底下的線 */
+.cardremovemodalcontent .modal-header {
+    border-bottom: none !important;
+}
+
+/* 移除 Footer 上面的線 */
+.cardremovemodalcontent .modal-footer {
+    border-top: none !important;
+}
+
+
+/*---------------------------------------
+    下架 遮罩
+---------------------------------------*/
+/* 下架後遮罩 */
+.card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* 半透明黑色 */
+  display: none; /* 初始不顯示 */
+  z-index: 10; /* 遮住卡片內容 */
+  border-radius: 0.25rem; /* 可選：和卡片圓角一致 */
+}
+
+/*---------------------------------------
+    icon
+---------------------------------------*/
+/* 收藏 icon */
+.memcenter-container .heart-fill {
+    position: absolute ;
+    right: 30px ;
+    top: 10px ;
+    font-size: 30px;
+    color: red;
+    cursor: pointer;
+}
+
+/* 連結 icon */
+.memcenter-container .outlink {
+    position: absolute ;
+    right: 30px ;
+    top: 10px ;
+    font-size: 30px;
+    color: #FFFBF7;
+    cursor: pointer;
+}
+
+.memcenter-container .outlink:hover {
+    color: #9c4332;
+}
+
+/* 手風琴 icon */
+.memcenter-container #chevron-down {
+    background-color: #fffbf700;
+    border: 0;
+    font-size: 20px;
+    color: #FFFBF7;
+    cursor: pointer;
+
+}
+
+.memcenter-container #chevron-down:hover {
+    background-color: #756b61;
+}
+
+/*---------------------------------------
+    手風琴 Accordion
+---------------------------------------*/
+#adoptionReviewAccordion .accordioncontainer{
+    display: flex !important;
+    flex-direction:row; /* 左右水平排列 */
+    justify-content: space-between; /* 左右分散 */
+    width: 100%;
+    gap: 16px;
+    padding: 10px;
+    color: #5D4033;
+    border: 0;
+    border-width: 2px;
+    background-color: #FFFBF7 !important;
+}
+
+/* 手風琴 頭像 + 亂數 區塊 */
+#adoptionReviewAccordion .accordionimg{
+    display: flex;
+    flex-direction: row; /* 左右排列：圖片在左，文字在右 */
+    align-items: center; /* 垂直置中文字與圖片 */
+    gap: 12px;
+}
+
+/* 手風琴 頭像 */
+#adoptionReviewAccordion img {
+    max-width: 70px;
+    margin: 10px;
+}
+
+/* 手風琴 亂數 */
+.accordionimg p {
+    text-align: left;
+    margin: 0;
+    color: #5D4033;
+    font-weight: bold;
+}
+
+/* 手風琴 按鈕 */
+#adoptionReviewAccordion .accordionbtn{
+    color: #5D4033;
+    font-weight: bold;
+    background-color: #e9e2d8;
+}
+
+/* 手風琴 按鈕群組 */
+#adoptionReviewAccordion .accordionbtngroup {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+/* 手風琴進度條 */
+#adoptionReviewAccordion .accordionbtngroup .link{
+    width: 30px;
+    height: 3px;
+    background-color: #bfbfbf;
+}

@@ -1,0 +1,126 @@
+
+/* 整體 footer */
+.footer {
+    background-color: #504033;   /* 咖啡色背景 */
+    padding: 20px 0;
+    color: #FFFBF7;
+    text-align: center;
+   
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 左邊 icon */
+.footer-icon img {
+    margin-top: 22px;
+    width: 55px;
+    border-radius: 50%;
+}
+
+.logo-link {
+    display: inline-block; /* 讓連結變成塊狀，緊貼圖片 */
+    text-decoration: none; /* 確保沒有底線 */
+    border: none;          /* 確保沒有邊框 */
+}
+
+/* 桌機版：讓兩邊更靠左右 */
+.footer-icon {
+    margin-right: auto; /* 靠左 */
+    
+}
+
+.back-to-top {
+    margin-left: auto; /* 靠右 */
+}
+/* 中間選單 */
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.footer-menu li a {
+    color: #FFFBF7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.footer-menu li a:hover {
+    color:#DAC4AC  ;
+}
+
+/* 右邊回頂部按鈕 */
+.back-to-top {
+    margin-top: 22px;
+    font-weight: 800;
+    width: 55px;
+    height: 55px;
+    background: #FFFBF7 ;
+    border-radius: 50%;
+    border: 2px solid #4a372c;
+    color: #504033;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+
+  
+}
+
+.back-to-top:hover {
+    background-color: #DAC4AC;
+    
+}
+
+/* 下方小字 */
+.footer-bottom {
+    font-weight: 600;
+    color:#DAC4AC;
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+
+    /* 手機版：調整四個選單間距與字體 */
+    .footer-menu {
+        gap: 12px;         /* 原本 25px → 縮小 */
+        font-size: 13px;   /* 字體稍微變小更好排 */
+        flex-wrap: wrap;   /* 必要時可以自動換行 */
+        justify-content: center;
+    }
+
+    .footer-menu a {
+        font-size: 13px;   /* 避免太大 */
+    }
+}
+
+/* ----- 400px 以下的手機版專用設定 ----- */
+@media (max-width: 490px) {
+    .footer-menu {
+        flex-wrap: wrap;        /* 允許換行 */
+        justify-content: center; /* 內容置中 */
+        
+        /* 設定寬度限制，避免因為螢幕稍微寬一點時又變成一行 */
+        max-width: 240px;       
+        
+        /* 調整間距：第一個值是行距(上下)，第二個值是列距(左右) */
+        gap: 5px 5px;          
+    }
+
+    .footer-menu li {
+        /* 關鍵：設定每個項目佔據 45% 寬度 (預留空間給 gap)，這樣一行就會剛好塞兩個 */
+        flex: 0 0 45%;          
+        text-align: center;     /* 文字置中 */
+    }
+}

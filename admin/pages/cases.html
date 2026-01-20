@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 走失協尋 / 送養審核">
+    <title>走失協尋 / 送養審核 | ReHome 後台管理系統</title>
+    <script src="../js/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cases.css">
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main-container">
+        <div class="sidebar"></div>
+        <main class="content">
+            <div class="cases-container">
+                <!-- 標題列：標題 + 篩選器 -->
+                <div class="page-header">
+                    <h1 class="page-h1">刊登審核</h1>
+                    <div class="filter-bar">
+                        <label for="statusFilter">篩選狀態：</label>
+                        <select id="statusFilter" class="status-filter">
+                            <option value="all">全部</option>
+                            <option value="pending">待審核</option>
+                            <option value="approved">已同意</option>
+                            <option value="rejected">不同意</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 審核列表表格 -->
+                <div class="cases-table-container">
+                    <table class="cases-table">
+                        <thead>
+                            <tr>
+                                <th>案件編號</th>
+                                <th>申請刊登</th>
+                                <th>申請會員</th>
+                                <th>審核狀態</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casesTableBody">
+                            <!-- <tr>
+                                <td>CS202511121742Q1</td>
+                                <td>走失協尋</td>
+                                <td>ReHome</td>
+                                <td class="action-buttons">
+                                    <button class="btn-approve"
+                                        data-case-id="approveCase('CS202511121742Q1')">同意</button>
+                                    <button class="btn-reject"
+                                        data-case-id="rejectCase('CS202511121742Q1')">不同意</button>
+                                    <button class="btn-contact"
+                                        data-case-id="contactMember('CS202511121742Q1')">聯繫會員</button>
+                                </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td>SY202511121742Q2</td>
+                                <td>送養</td>
+                                <td></td>
+                                <td class="action-buttons">
+                                    <button class="btn-approve"
+                                        data-case-id="approveCase('SY202511121742Q2')">同意</button>
+                                    <button class="btn-reject"
+                                        data-case-id="rejectCase('SY202511121742Q2')">不同意</button>
+                                    <button class="btn-contact"
+                                        data-case-id="contactMember('SY202511121742Q2')">聯繫會員</button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分頁按鈕 -->
+                <div class="pagination">
+                    <button class="pagination-btn btn-page-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path
+                                d="M24 16L16 24M16 24L24 32M16 24H32M44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24Z"
+                                stroke="#DAC4AC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <!-- 頁數顯示 -->
+                    <div class="page-info">
+                        <span id="currentPage">1</span> | <span id="totalPages">10</span>
+                    </div>
+
+                    <button class="pagination-btn btn-page-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path
+                                d="M24 32L32 24M32 24L24 16M32 24H16M44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24Z"
+                                stroke="#DAC4AC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/cases.js"></script>
+</body>
+
+<!-- 不同意 Modal -->
+<div id="rejectModal" class="modal">
+    <div class="modal-content reject-modal">
+        <div class="modal-header">
+            <h2 class="modal-title">不同意原因</h2>
+            <button class="close-btn" onclick="closeRejectModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="reject-case-id">案件編號: <span id="rejectCaseId"></span></p>
+            <textarea id="rejectReason" class="reject-textarea" placeholder="請輸入不同意的原因..." rows="6"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeRejectModal()">取消</button>
+            <button class="btn-submit" onclick="submitReject()">送出</button>
+        </div>
+    </div>
+</div>
+
+</html>

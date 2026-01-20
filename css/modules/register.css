@@ -1,0 +1,98 @@
+/* 註冊標題 */
+#register_Title {
+    font-weight: bold;
+    color: #5D4033;
+    text-align: center;
+    padding: 20px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 5px; /* 底線寬度 */
+    text-underline-offset: 10px;    /* 底線間距 */
+}
+
+/* 輸入信箱 */
+#register_SendOtpEmail {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+
+/* 輸入驗證碼 */
+#register_ConfirmEmail {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+
+/* 信箱驗證按鈕 */
+#register_ConfirmEmailbtn, #register_SendOtpbtn {
+    width: 160px;
+    font-size: large;
+    font-weight: bold;            
+    background-color: #ab9073;
+    color: #FFFBF7;
+    border-radius: 10px;           /* 圓角 */
+}
+
+/* 信箱驗證按鈕 hover */
+#register_ConfirmEmailbtn:hover {
+    color: #FFFBF7;            
+    background-color: #756b61;
+}
+
+/* 性別區塊 */
+#register_Gender {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+    border-radius: 5px;  
+}
+
+/* 性別按鈕 */
+#register_Gender .btn {
+    font-size: large;
+    font-weight: bold;            
+    color: #5D4033;
+    background-color: #e9e2d8;
+    padding-inline: 80px;         /* 調整按鈕寬度 */
+    border-radius: 10px;           /* 圓角 */
+}
+
+@media (max-width: 500px) {
+    #register_Gender .btn {
+    padding-inline: 40px;         /* 調整按鈕寬度 */
+}
+}
+
+/* 性別按鈕 */
+#register_Gender .btn-check:checked + .btn {          
+    color: #FFFBF7;            
+    background-color: #756b61;
+
+}
+
+/* 送出按鈕 */
+#register_Btn {
+    font-size: large;
+    font-weight: bold;            
+    color: #FFFBF7;             
+    background-color: #ab9073;  
+    border: none;                 /* 去掉邊框 */
+    padding: 5px;                 /* 調整按鈕大小 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;           /* 圓角 */
+}
+
+/* 送出按鈕 hover */
+#register_Btn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}
+
+/* 其他登入方式 */
+#register_other {
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+

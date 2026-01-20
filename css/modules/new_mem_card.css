@@ -1,0 +1,865 @@
+:root {
+    --card-bg: #ab9073;
+    /* 深色底 (卡片外框/背景) */
+    --card-inner-bg: #ab9073;
+    --text-color: #FFFBF7;
+    /* 字體白 */
+    --accent-red: #A83F28;
+    /* 紅色標籤 (已上架/結案) */
+    --tab-bg: #FFFBF7;
+    /* 淺色標籤背景 */
+    --tab-text: #5D4033;
+    /* 淺色標籤文字 */
+}
+
+/* 載入動畫容器樣式 */
+#loading-spinner,
+#error-message {
+    padding: 50px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 確保一開始標題區塊是隱藏的 (雙重保險) */
+.missing-publish {
+    display: none;
+}
+
+
+.pub-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    /* 上下留空間給彈出的標籤 */
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+}
+
+
+/* --- 主要卡片本體 --- */
+.pub-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    /* 確保蓋在標籤上面 */
+    color: var(--text-color);
+    min-height: 280px;
+    margin-bottom: 60px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 圖片區塊 */
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.pet-img {
+    max-width: 240px;
+    object-fit: cover;
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+}
+
+/* 資訊區塊 */
+.info-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.case-number {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #E9E2D8;
+    color: #504033;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+
+    border: 3px solid #756B61;
+    border-right: 3px solid #756B61;
+}
+
+/* 螢光筆文字效果 */
+.highlight-text {
+    background-image: linear-gradient(#f7edb5, #f9e678);
+
+    /* 2. 設定螢光筆的大小：寬度100%，高度 8px (這裡控制線條粗細) */
+    background-size: 120% 20px;
+
+    /* 3. 設定位置：靠左、靠最底部 */
+    /* background-position: left bottom; */
+
+    /* 4. 不重複背景 */
+    background-repeat: no-repeat;
+    display: inline;
+    padding-bottom: -5px;
+}
+
+
+.pub-card::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px solid rgba(118, 103, 87, 0.5);
+    border-radius: 5px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pub-card::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px dashed #D5C8B8;
+    border-radius: 5px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pet-details p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+/* 底部按鈕區 (查看站內信) */
+.bottom-btn-group {
+    /* margin-top: auto; */
+    text-align: right;
+}
+
+.chat-btn {
+    background-color: var(--tab-bg);
+    color: var(--tab-text);
+    font-weight: bold;
+    border: none;
+    padding: 5px 15px;
+    transition: 0.2s;
+    margin-top: 10px;
+}
+
+.chat-btn:hover {
+    background-color: #FFFBF7;
+}
+
+/* --- 隱藏/滑出的標籤元件 --- */
+
+/* 1. 上方連結標籤 */
+.top-link-tab {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    height: 80px;
+    width: 60%;
+    /* transform: translateX(-50%); */
+    background-color: #FFFBF7;
+    color: #504033;
+    padding: 20px;
+    /* border-radius: 5px 5px 0 0; */
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1rem;
+    z-index: 1;
+    /* 在卡片下面 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+
+/* 3. 右側功能標籤 (我要結案) */
+.right-action-tab {
+    position: absolute;
+    top: 10%;
+    right: -20px;
+    width: 60px;
+    height: 90%;
+    background-color: #9C4332;
+    color: #FFFBF7;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    writing-mode: vertical-lr;
+    padding-right: 20px;
+    /* 直書 */
+    text-align: top;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    z-index: 1;
+    transition: right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.right-action-tab:hover {
+    background-color: #9b3824;
+}
+
+/* --- 互動效果 (Hover 或 .active) --- */
+
+/* 預設狀態：隱藏標籤 */
+
+/* 觸發狀態 (Hover 或 .is-expanded) */
+.pub-card-wrapper:hover .top-link-tab,
+.pub-card-wrapper.is-expanded .top-link-tab {
+    top: -40px;
+    /* 往上彈出 */
+    /* opacity: 1; */
+    transform: rotate(1.5deg);
+    padding: 10px;
+    color: #756B61;
+    font-weight: bolder;
+}
+
+.pub-card-wrapper:hover .right-action-tab,
+.pub-card-wrapper.is-expanded .right-action-tab {
+    right: -35px;
+    /* 往右彈出 */
+    padding-left: 25px;
+    opacity: 1;
+    z-index: 1;
+}
+
+.pub-card-wrapper:hover .status-ribbon,
+.pub-card-wrapper.is-expanded .status-ribbon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 固定展開時的樣式微調 (可選：加上外框提示) */
+.pub-card-wrapper.is-expanded .pub-card {
+    /* border:3px solid #5D4033 ; */
+    box-shadow: 0 0 0 2px #504033;
+    /* background-color: #a6937d; */
+}
+
+.missing-publish>h4 {
+    background-color: #eace6b;
+    color: #504033;
+    padding: 10px 30px 10px 10px;
+    display: inline-block;
+    font-weight: bolder;
+
+    /* 核心語法：定義5個點的座標 */
+    clip-path: polygon(0% 0%,
+            /* 1. 左上角 */
+            100% 0%,
+            /* 2. 右上角 */
+            85% 50%,
+            /* 3. 右側中間的凹點 (關鍵) */
+            100% 100%,
+            /* 4. 右下角 */
+            0% 100%
+            /* 5. 左下角 */
+        );
+}
+
+/* 結案印章圖片樣式 */
+.closed-stamp-img {
+    position: absolute;
+    top: 60%;
+    left: 85%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    z-index: 10;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+
+    pointer-events: none;
+}
+
+/* 失敗印章圖片樣式 */
+.failed-stamp-img {
+    position: absolute;
+    top: 60%;
+    left: 85%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    z-index: 10;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+
+}
+
+/* --- 右側愛心標籤 --- */
+.right-heart-tab {
+    position: absolute;
+    top: -40px;
+    /* 距離頂部的位置，可依需求調整 */
+    right: 8%;
+    width: 10%;
+    height: 100px;
+    background-color: #FFFBF7;
+    color: #A83F28;
+    z-index: 1;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --------------------------------------------------------
+   響應式(RWD Optimization)
+-------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+
+    /* 1. 外層容器設定 */
+    .memcenter-container {
+        display: block;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .failed-stamp-img,
+    .closed-stamp-img {
+        top: auto;
+        left: auto;
+        bottom: 30px;
+        right: 15px;
+        width: 150px;
+        max-width: 40%;
+        height: auto;
+        transform: rotate(-15deg);
+        z-index: 10;
+        opacity: 0.85;
+
+
+    }
+
+    /* 1. 縮減卡片內部的周圍留白 */
+    .info-container {
+        padding: 10px 15px;
+        /* 上下縮減為 10px，左右 15px */
+    }
+
+    /* 2. 縮小「案件編號」那格黃色框框 */
+    .case-number {
+        font-size: 1rem;
+        /* 字體變小 (原本是 1.2rem) */
+        padding: 8px;
+        /* 內距變小 (原本是 15px) */
+        margin-bottom: 8px;
+        /* 下方留白變小 */
+    }
+
+    /* 3. 縮小詳細資料 (姓名、性別...) 的文字與行距 */
+    .pet-details p,
+    .pet-details div {
+        font-size: 0.9rem;
+        /* 字體縮小 (建議 0.85rem ~ 0.9rem) */
+        margin-top: 2px;
+        /* 大幅減少上方間距 */
+        margin-bottom: 2px;
+        /* 大幅減少下方間距 */
+        line-height: 1.4;
+        /* 設定行高，讓行與行之間更緊密 */
+        padding-left: 20px;
+    }
+
+    /* 4. 如果有螢光筆特效，也要調整一下位置 */
+    .highlight-text {
+        background-size: 100% 12px;
+        /* 螢光筆線條變細一點 */
+    }
+
+
+}
+
+/* 針對 id="closed-case" 裡面的卡片進行樣式覆寫 */
+.closed-case .pub-card-wrapper {
+    filter: grayscale(50%) brightness(0.9);
+    /* opacity: 0.9; */
+    pointer-events: none;
+}
+
+
+
+.favorite-page {
+    right: 20%;
+    width: 50%;
+}
+
+
+
+
+/* 愛心 Icon 大小 */
+.right-heart-tab i {
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+    padding-top: 5px;
+}
+
+/* Hover 互動效果：當滑鼠滑過整個卡片區域時 */
+.pub-card-wrapper:hover .right-heart-tab,
+.pub-card-wrapper.is-expanded .right-heart-tab {
+    top: -60px;
+    transform: rotate(1.5deg);
+}
+
+/* 滑鼠移到愛心按鈕上時，愛心放大一點 */
+.right-heart-tab:hover i {
+    color: #c26653;
+
+}
+
+/* ======================================================
+   針對「領養收藏頁 - 已結案」的權重覆寫
+   (使用更高權重的選擇器來避免 !important)
+   ====================================================== */
+
+/* 1. 外層容器：完全乾淨，無濾鏡、無透明度 */
+/* 增加 .missing-publish 前綴是為了提升權重 */
+.missing-publish.closed-collect-case .pub-card-wrapper {
+    filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+}
+
+
+/* 2. 內層卡片：將原本的灰階濾鏡移到這裡 */
+.missing-publish.closed-collect-case .pub-card-wrapper .pub-card {
+    filter: grayscale(40%) brightness(0.9);
+    /* opacity: 0.7; */
+    transition: all 0.3s ease;
+}
+
+
+/* Hover 互動：只有背景卡片變暗，不影響上面的按鈕 */
+.missing-publish.closed-collect-case .pub-card-wrapper:hover .pub-card,
+.missing-publish.closed-collect-case .pub-card-wrapper.is-expanded .pub-card {
+    filter: grayscale(30%) brightness(0.7);
+    /* 背景壓暗 */
+    opacity: 1;
+}
+
+/* 3. 凍結標籤：將標籤設為灰色，並利用高權重「抵銷」原本的彈出動畫 */
+
+/* (A) 上方連結標籤 (Top Link) */
+.missing-publish.closed-collect-case .pub-card-wrapper:hover .top-link-tab,
+.missing-publish.closed-collect-case .pub-card-wrapper.is-expanded .top-link-tab,
+.missing-publish.closed-collect-case .pub-card-wrapper .top-link-tab {
+    top: -20px;
+    transform: none;
+    padding: 20px;
+    color: #504033;
+    filter: grayscale(50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* (B) 右側愛心標籤 (Heart Tab) */
+.missing-publish.closed-collect-case .pub-card-wrapper:hover .right-heart-tab,
+.missing-publish.closed-collect-case .pub-card-wrapper.is-expanded .right-heart-tab,
+.missing-publish.closed-collect-case .pub-card-wrapper .right-heart-tab {
+    top: -40px;
+    transform: none;
+    filter: grayscale(50%);
+    pointer-events: none;
+}
+
+.missing-publish.closed-collect-case .pub-card-wrapper .right-action-tab {
+    filter: grayscale(40%) brightness(0.9);
+    transition: all 0.3s ease;
+    top: 10%;
+    right: -20px;
+    padding-right: 10px;
+    padding-left: 100%;
+}
+
+
+/* 4. 中間按鈕：保持鮮豔，不受灰階影響 */
+.missing-publish.closed-collect-case .center-floating-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+
+    /* 這裡不用設 filter，因為外層容器已經乾淨了 */
+    opacity: 0;
+    /* 平常隱藏 */
+    z-index: 50;
+    /* 確保在最上層 */
+
+    /* 按鈕樣式 */
+    background-color: #9C4332;
+    color: #FFFBF7;
+    border: none;
+    /* border: 1px solid #141312; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+}
+
+/* Hover 觸發按鈕顯示 */
+.missing-publish.closed-collect-case .pub-card-wrapper:hover .center-floating-btn,
+.missing-publish.closed-collect-case .pub-card-wrapper.is-expanded .center-floating-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+    /* 顯示後才可點擊 */
+
+}
+
+/* 按鈕本身的 Hover 放大效果 */
+.missing-publish.closed-collect-case .center-floating-btn:hover {
+    background-color: #914030;
+    /* border: 2px solid #504033; */
+    /* transform: translate(-50%, -50%) scale(1.1); */
+}
+
+/* ======================================================
+   修復印章顏色過亮的問題
+   ====================================================== */
+
+/* 1. 讓印章跟著卡片一起變暗、變灰 */
+.missing-publish.closed-collect-case .closed-stamp-img {
+    /* 這裡的數值跟你的卡片 (.pub-card) 保持一致 */
+    filter: grayscale(20%) brightness(0.7);
+
+    /* 加上混合模式，讓印章顏色「吃」進背景裡，更有真實感 */
+    /* mix-blend-mode: multiply;  */
+
+    opacity: 0.8;
+    /* 稍微透明一點 */
+    transition: all 0.3s ease;
+    z-index: 2;
+    /* 確保在卡片上，但在按鈕下 */
+}
+
+/* 2. Hover 時，印章也要跟著變得更暗 */
+.missing-publish.closed-collect-case .pub-card-wrapper:hover .closed-stamp-img,
+.missing-publish.closed-collect-case .pub-card-wrapper.is-expanded .closed-stamp-img {
+    /* 這裡的數值跟 Hover 時的卡片保持一致 */
+    filter: grayscale(30%) brightness(0.7);
+    opacity: 0.9;
+}
+
+
+
+/* ---------------已申請領養卡片設定--------------- */
+/* =============================================== */
+/* ======================================================
+   已申請領養頁面專屬樣式 
+   Target Class: .submitted-type
+   ====================================================== */
+
+
+.pub-card-wrapper.submitted-type {
+    /* min-width: 800px; */
+    /* max-width: 850px !important; */
+    /* max-width: 100% !important; */
+    min-height: 160px;
+    /* 調整高度 */
+}
+
+/* 2. 卡片本體重置 (移除原本的邊框線條) */
+.submitted-type .pub-card {
+    background-color: #A69076;
+    /* 圖二的咖啡色背景 */
+    min-height: auto;
+    margin-bottom: 60px;
+    padding: 10px;
+}
+
+
+
+/* 3. 左側圖片 (正方形) */
+.submitted-type .img-container {
+    padding-left: 20px;
+    padding: 5px;
+    height: 140px;
+    /* 固定圖片高度 */
+    width: 140px;
+    /* 固定圖片寬度 */
+    flex: 0 0 auto;
+    /* 防止縮放 */
+    margin-left: 6px;
+}
+
+.submitted-type .pet-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* 4. 中間資訊區塊 */
+.submitted-type .info-container {
+    display: block;
+    /* 讓內容自然堆疊 */
+}
+
+/* 案件編號 - 白色膠囊樣式 */
+.submitted-type .case-number-badge {
+    background-color: #FFFBF7;
+    color: #5D4033;
+    padding: 5px 20px;
+    border-radius: 5px;
+    /* 圓角膠囊 */
+    display: inline-block;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 文字詳情 */
+.submitted-type .pet-details p,
+.submitted-type .pet-details div {
+    color: #FFFBF7;
+    /* 白色文字 */
+    font-size: 0.95rem;
+    margin: 5px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.submitted-type .status-value {
+    border-radius: 5px;
+}
+
+
+
+/* 6. 聊天室按鈕 (右下角膠囊) */
+.submitted-type .chat-btn-pill {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    background-color: #E9E2D8;
+    /* 米白色 */
+    color: #504033;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+}
+
+.submitted-type .chat-btn-pill:hover {
+    background-color: #FFFBF7;
+    transform: translateY(-2px);
+}
+
+/* 鎖定狀態的按鈕樣式 (假裝反灰) */
+.chat-btn-pill.btn-locked {
+    background-color: #BDB3AC;
+    /* 強制灰色背景 */
+    color: #756B61;
+    /* 深灰色文字 */
+    border-color: #cccccc;
+    cursor: not-allowed;
+    /* 滑鼠游標變成「禁止」符號，暗示不能用，但其實可以點 */
+    opacity: 0.8;
+}
+
+.chat-btn-pill.btn-locked:hover {
+    background-color: #c2bdb9;
+    /* 強制灰色背景 */
+
+}
+
+
+
+
+
+/* --- 迷你狀態圓球 (卡片內專用) --- */
+.mini-status-dot {
+    display: inline-flex;
+    /* 讓它跟文字排在一起 */
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    /* 設定圓球大小 */
+    height: 24px;
+    border-radius: 50%;
+    /* 變成正圓形 */
+    font-size: 14px;
+    /* Icon 大小 */
+    background-color: #504033;
+
+}
+
+/* --- 狀態顏色變化 (對應上方 Status Bar) --- */
+
+/* 1. 完成/等待 (深棕色) */
+.mini-status-dot.step1 {
+    background-color: #504033;
+    color: #FFFBF7;
+}
+
+/* 2. 進行中 (淺棕色/強調色) */
+.mini-status-dot.step2 {
+    background-color: #AB9073;
+    color: #FFFBF7;
+}
+
+.mini-status-dot.step3 {
+    background-color: #FFFBF7;
+    color: #504033;
+}
+
+/* 3. 成功 (綠色) */
+.mini-status-dot.step4success {
+    background-color: #81A868;
+    /* 對應 var(--c-success) */
+    color: #FFFBF7;
+}
+
+/* 4. 失敗 (紅色) */
+.mini-status-dot.step4fail {
+    background-color: #9C4332;
+    /* 對應 var(--c-danger) */
+    color: #FFFBF7;
+}
+
+/* --------------------------------------
+   RWD 手機版微調 (針對 submitted-type)
+   -------------------------------------- */
+@media (max-width: 768px) {
+
+    /* --- 1. 卡片外框設定 --- */
+    .submitted-type .pub-card {
+        padding-bottom: 15px;
+        /* 改回正常的底部內距 */
+        min-height: 200px;
+        /* 高度隨內容自動伸縮 */
+        overflow: hidden;
+    }
+
+    /* --- 2. Row 排版 (強制左右排列) --- */
+    .submitted-type .pub-card .row {
+        flex-wrap: nowrap !important;
+        /* 禁止換行，確保左右排列 */
+        align-items: flex-start;
+        /* 改為「靠上對齊」，讓圖片跟案件編號都對齊頂部 */
+        margin: 0;
+    }
+
+    /* --- 3. 黃色區域：圖片 (左側固定) --- */
+    .submitted-type .img-container {
+        width: 110px;
+        /* 設定固定寬度 */
+        height: 110px;
+        /* 設定固定高度 */
+        flex: 0 0 110px;
+        /* 鎖定 Flex 寬度，不讓它被壓縮 */
+        margin-left: 10px;
+        margin-bottom: 40px;
+        margin-top: 10px;
+
+    }
+
+    /* --- 4. 紅色區域：資訊 (右側填滿) --- */
+    .submitted-type .info-container {
+        display: block;
+        padding: 10px 15px 0 0;
+    }
+
+
+
+    /* 微調：案件編號 (膠囊) */
+    .submitted-type .case-number-badge {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        margin-top: 5px;
+        /* 確保跟圖片頂部對齊 */
+        margin-left: 10px;
+        margin-bottom: 25px;
+        align-self: flex-start;
+        /* 讓標籤靠左排 */
+        width: 85%;
+
+
+    }
+
+    /* 微調：文字詳情 */
+    .submitted-type .pet-details {
+        display: block;
+        margin-top: 5px;
+
+    }
+
+    /* 按鈕 (右下角絕對定位) --- */
+    .submitted-type .chat-btn-pill {
+        position: float;
+        /* 絕對定位：無視原本的 HTML 結構 */
+        left: 25px;
+        /* 靠左對齊 (數值視你的 padding 調整，通常跟圖片左側對齊) */
+        bottom: 20px;
+        margin-top: 10px;
+        /* 外觀尺寸 */
+        width: 100px;
+        /* 設定寬度跟圖片(100px)一樣寬 */
+        right: auto;
+        /* 清除原本的靠右設定 */
+        margin: 0;
+        float: none;
+
+        /* 內容排版 */
+        padding: 5px 0;
+        /* 上下內距 */
+        font-size: 0.8rem;
+        /* 字體大小 */
+        display: flex;
+        /* 讓文字跟圖示水平置中 */
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 取消按鈕 (右上角那個叉叉或文字) 的微調 */
+    .submitted-type .right-action-bar.cancel-btn {
+        width: 40px;
+        font-size: 1rem;
+
+    }
+
+    .pub-card-wrapper.submitted-type {
+        /* min-width: 800px; */
+        /* max-width: 450px ; */
+        max-width: 100% !important;
+        min-height: 160px;
+        /* 調整高度 */
+    }
+
+
+
+
+
+
+}

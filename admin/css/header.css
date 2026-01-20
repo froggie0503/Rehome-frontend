@@ -1,0 +1,75 @@
+/* Header Styles */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px; /* 固定頁首高度 */
+    box-sizing: border-box;
+    position: relative; /* 讓漢堡按鈕可以相對定位 */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    height: 80px; /* 調整 Logo 圖片的高度 */
+}
+
+.header-left span {
+    color: #504033;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 頭像和文字之間的間距 */
+}
+
+.user-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* 圓形頭像 */
+    object-fit: cover; /* 確保圖片不變形 */
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 文字靠左對齊 */
+    line-height: 1.4; /* 調整行高 */
+}
+
+.username {
+    font-weight: bold;
+    color: #504033; /* 深棕色文字 */
+    font-size: 16px;
+}
+
+.userrole {
+    font-size: 14px;
+    color: #A69585; /* 淺棕色文字 */
+}
+
+/* RWD: 小螢幕時隱藏標題文字 */
+@media (max-width: 768px) {
+    .header-left span {
+        display: none;
+    }
+    
+    /* 為了避免被漢堡選單 (left: 15px, width: 45px) 擋住，增加左邊距 */
+    .header-left {
+        margin-left: 60px;
+    }
+}

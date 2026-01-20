@@ -1,0 +1,553 @@
+/* contact_faq.css - 常見問題頁面樣式 */
+
+/* ===================新增下拉===================== */
+/* --- 新增：底部緞帶按鈕樣式 (Ribbon Style) --- */
+.qna_ribbon_btn {
+   /* --- 定位設定 (核心修改) --- */
+    position: absolute;      /* 設定為絕對定位 */
+    top: 100%;               /* 100% 代表緊貼著父區塊的最底緣 */
+    left: 50%;               /* 水平置中起點 */
+    transform: translateX(-50%) rotate(1.5deg);
+    transform-origin: top center;
+    
+    /* --- 外觀設定 --- */
+    width: 150px;
+    height: 50px;
+    background-color: #eace6b; /* 與上方區塊同色，看起來像一體的 */
+    color: #504033;
+    
+    border: none;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 20;
+    margin: 0;
+    transition: height 0.3s ease, padding-bottom 0.3s ease;
+}
+
+/* 滑鼠移過去的效果：稍微變長一點 */
+.qna_ribbon_btn:hover {
+    background-color: #eed270; /* 變深一點點 */
+  
+    padding-bottom: 5px;
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+
+
+/* ============ 展開動畫與漸層遮罩 ============ */
+
+/* 1. 隱藏群組的容器：預設收合 */
+.hidden-group {
+    margin-top:-15px ;
+    padding: 0;
+    border: none;
+    max-height: 0;           /* 高度為 0 */
+    opacity: 0;              /* 透明 */
+    overflow: hidden;        /* 超出範圍隱藏 */
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* 滑順過渡 */
+}
+
+/*  問題群組被加上 .show class 時的狀態：展開 */
+.hidden-group.show {
+    max-height: 2000px;     
+    opacity: 1;          
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* 3. 漸層遮罩效果 (Visual Hint) */
+.faq-block {
+    position: relative; 
+    transition: padding-bottom 0.3s;
+}
+
+/* 使用偽元素製作漸層 */
+.faq-gradient-mask::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; /* 調整位置，大約在按鈕上方 */
+    left: 0;
+    width: 100%;
+    height: 60px; 
+   
+    background: linear-gradient(to bottom, rgba(213, 200, 184, 0), #D5C8B8 100%);
+    pointer-events: none; 
+    transition: opacity 1s ease;
+    opacity: 1;
+}
+
+/* 當展開時，讓遮罩消失 */
+.faq-gradient-mask.mask-off::after {
+    opacity: 0;
+}
+/* ============選項============== */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #756B61;
+    background-color: #ffffff;
+
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #BDB3AC;
+    opacity: 1;
+    font-style: italic;
+}
+
+input,
+select,
+textarea {
+    color: #756B61;
+    background-color: #E9E2D8;
+}
+
+
+
+select:required:invalid,
+select[value=""] {
+    font-style: italic;
+}
+
+input[type="date"]:required:invalid {
+    background-color: #FFFBF7;
+    /* 未填寫時的淺色背景 */
+    color: #BDB3AC;
+    /* 未填寫時的文字顏色 (年/月/日 的預設文字) */
+}
+
+
+/* 當輸入框 顯示 placeholder 時 (代表使用者還沒打字) */
+input:not(:focus):placeholder-shown,
+textarea:not(:focus):placeholder-shown {
+
+
+    background-color: #FFFBF7;
+    /* 範例：邊框顏色也可以不同 */
+    color: #BDB3AC;
+    /* 文字顏色較淡 */
+}
+
+/* 確保 Select 也有一樣的效果 (利用 required 和 invalid) */
+/* 注意：HTML 的 select 標籤必須加上 required 屬性才有效 */
+select:required:invalid {
+    background-color: #FFFBF7;
+    color: #BDB3AC;
+    font-style: italic;
+    /* 這也同時解決了您的第 4 點 */
+}
+
+option {
+    color: #504033;
+    font-style: normal;
+    background-color: #FFFBF7;
+    font-weight: bolder;
+
+}
+
+option:hover {
+    color: #FFFBF7;
+    background-color: #756B61;
+
+
+
+}
+
+option {
+    color: #333333;
+    /* 這裡使用深灰色，您可以替換成 #000000 (黑色) */
+    /* 確保背景與文字有足夠對比，讓選項在下拉列表中清晰可見 */
+}
+
+input,
+select,
+textarea {
+    flex-grow: 1;
+    /* 移除導致偏移的 10% margin */
+    margin-left: 0;
+    margin-right: 0;
+
+    /* 樣式設定 */
+    padding: 8px 10px;
+    border: 1px solid #C5C5C5;
+    border-radius: 10px;
+    background-color: #E9E2D8;
+    font-size: 1rem;
+    font-weight: bolder;
+
+    /* 寬度控制：確保在大螢幕與手機都好看 */
+    width: 100%;
+    /* max-width: 500px;  */
+    min-width: 200px;
+}
+
+/* 針對 Select 箭頭調整 */
+select {
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+/* --- 全域設定 --- */
+body {
+    background-color: #E9E2D8;
+    /* 維持您的背景色 */
+}
+
+.faq-container {
+    max-width: 900px;
+    margin-top: 50px;
+    padding-bottom: 80px;
+}
+
+/* --- 搜尋欄區塊 --- */
+input.search-section {
+    margin-bottom: 40px;
+    text-align: center;
+    right: 14px;
+}
+
+.search-bar-wrapper {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto 20px;
+}
+
+.faq-search-input {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 50px;
+    border: 2px solid #DAC4AC;
+    /* 白色邊框或背景 */
+    background-color: #FFFBF7;
+    color: #756B61;
+    font-size: 1rem;
+    outline: none;
+}
+
+.faq-search-input::placeholder {
+    color: #BDB3AC;
+    font-weight: bolder;
+
+}
+
+.faq-search-btn {
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #756B61;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: bold;
+    
+}
+.faq-delete-btn {
+    position: absolute;
+    right: 100px;
+    top: 15%;
+    background-color: transparent;
+    color: #504033;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: bold;
+    visibility: hidden;
+    
+}
+
+/* 新增這個 class：當有 .show 時變為可見 */
+.faq-delete-btn.show {
+    visibility: visible;
+}
+
+
+.faq-search-btn:hover {
+    background-color: #504033;
+}
+
+.section-divider {
+    border-top: 1px solid #756B61;
+    opacity: 0.3;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* --- 常見問題區塊 (手風琴) --- */
+
+
+
+/* 新增的 header 排版 */
+.faq-header {
+    display: flex;              /* 啟用 Flexbox */
+    justify-content: space-between; /* 內容分散對齊：一個靠左，一個靠右 */
+    align-items: flex-end;      /* 底部對齊 (因為你的標題像籤頁，底部對齊較好看) */
+    /* 若希望連結垂直置中，可改用 align-items: center; */
+}
+.faq-section {
+    margin-bottom: 40px;
+}
+
+/* 標題樣式 (操作流程、會員、聯絡我們) */
+.faq-category-title {
+    /* 模仿 missing_publish_1.css 的標題樣式，但背景做調整 */
+    padding: 10px 20px;
+    background-color: #D5C8B8;
+    /* 較深的底色 */
+    color: #504033;
+    font-weight: 800;
+    display: inline-block;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+
+}
+
+/* 包覆內容的淺褐色大區塊 */
+.faq-block {
+    background-color: #D5C8B8;
+    padding: 30px 40px;
+
+    margin-bottom: 100px !important;
+
+}
+
+
+/* --- 聯絡我們表單 (整合 missing_publish_1.css) --- */
+.contact-form-block {
+    background-color: #D5C8B8;
+    padding: 40px;
+
+}
+.contact-title {
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+/* 送出按鈕區塊 */
+.contact-submit-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-contact-submit {
+    background-color: #AB9073;
+    /* 深褐色按鈕 */
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    /* transition: background 0.3s; */
+}
+
+.btn-contact-submit:hover {
+    background-color: #756B61;
+}
+
+.submit-note {
+    font-size: 0.85rem;
+    color: #504033;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .faq-category-title {
+        margin-left: 0;
+        /* width: 100%; */
+
+        text-align: center;
+    }
+
+    .faq-block,
+    .contact-form-block {
+        padding: 20px;
+    }
+}
+
+
+/* ============ Accordion 分離樣式修正 ============ */
+
+/* 1. 移除 Bootstrap 預設的 "第一個" 和 "最後一個" 圓角強制設定 */
+.accordion-item:first-of-type,
+.accordion-item:last-of-type,
+.accordion-item {
+    border-radius: 10px !important; /* 強制每個都圓角 */
+    border: none;                   /* 移除預設邊框 */
+    margin-bottom: 15px;            /* 關鍵：增加下邊距讓它們分開 */
+    overflow: hidden;               /* 確保圓角不被內容切掉 */
+    background-color: transparent;  
+}
+
+/* 2. 移除 Bootstrap 預設的相鄰邊框重疊*/
+.accordion-item + .accordion-item {
+    border-top: none;
+}
+
+/* 3. 按鈕樣式調整 (確保獨立感) */
+.accordion-button {
+    background-color: #FFFBF7;    
+    color: #504033; 
+    border-radius: 10px !important; /* 按鈕本身也要圓角 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 加一點點陰影更有立體感 */
+    display: flex;
+    justify-content: space-between;
+    /* 文字靠左，圖示靠右 */
+    align-items: center;
+    text-align: left;
+    /* border-radius: 10px; */
+    margin-bottom: 2px;
+    font-weight: bolder;
+    /* 確保多行文字時靠左對齊 */
+}
+.accordion-button:hover {
+    color: #756B61;
+    border:1px solid #756B61;
+}
+
+
+/* 4. 展開時的內容區塊樣式 */
+.accordion-collapse {
+    background-color: #E9E2D8;      /* 內容背景色 (米白) */
+    border-radius: 10px ;   
+    margin-top: 0px;    
+    font-weight: bolder; 
+    color: #504033;  
+    /* border:2px dashed #756B61;    */
+    
+}
+
+
+/* --- Bootstrap Accordion 客製化 --- */
+/* ============ Accordion Icon 客製化 (仿首頁風格) ============ */
+
+
+
+/*  */
+
+
+.accordion-item {
+    /* border-radius: 10px; */
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/* 1. 隱藏 Bootstrap 原本預設的箭頭 */
+.accordion-button::after {
+    display: none !important;
+    /* 強制隱藏 */
+    content: none !important;
+}
+
+
+/* 3. 定義加號圖示的樣式 */
+.qna_icon {
+    font-size: 1.2rem;
+    color: #504033;
+    transition: transform 0.2s ease;
+    /* 平滑旋轉動畫 */
+    flex-shrink: 1px;
+    /* 防止圖示被文字擠壓變形 */
+    margin-left: 15px;
+    /* 圖示跟文字保有一些距離 */
+    -webkit-text-stroke: 1px;
+    /* 稍微加粗一點點 (選用) */
+   
+    /* margin-bottom: 10px; */
+}
+
+/* 4. 展開狀態 (not collapsed) 時的樣式變化 */
+.accordion-button:not(.collapsed) {
+    
+    /* 維持背景色 */
+background-color: #FFFBF7;
+    color: #504033;
+    border: 2px solid #756B61;
+    /* 展開時加上深色邊框 */
+    box-shadow: none;
+    border-radius: 10px !important;
+}
+
+
+
+/* 5. 展開時：讓圖示旋轉 45 度 (變成 X) */
+.accordion-button:not(.collapsed) .qna_icon {
+    transform: rotate(45deg);
+}
+
+/* ============ 聯絡我們彈窗樣式 (仿照您的截圖) ============ */
+.contact-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.contact-modal-card {
+    background-color: #D5C8B8; /* 外框深米色 */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.contact-modal-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #504033;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #504033; /* 下底線樣式 */
+    display: inline-block;
+}
+
+.contact-modal-body {
+    background-color: #FFFBF7; /* 內容區塊白色背景 */
+    padding: 30px 20px;
+    border-radius: 5px;
+    color: #504033;
+    font-weight: bold;
+    font-size: 1rem;
+    min-height: 150px; /* 模擬截圖的高度感 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-modal-footer {
+    display: flex;
+    justify-content: flex-end; /* 按鈕靠右 */
+    margin-top: 20px;
+}
+
+.btn-contact-modal-confirm {
+    background-color: #81A868; /* 綠色按鈕 */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    
+}
+
+.btn-contact-modal-confirm:hover {
+    background-color: #6b8f54; /* hover 深綠色 */
+}
+

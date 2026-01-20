@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReHome Transition</title>
+    <style>
+        /* --- ★★★ 快速調整區 (CSS 變數) ★★★ --- */
+        :root {
+            /* 1. 設定 Logo 最後要飛到的位置 */
+            --final-pos-top: 15px;  /* 距離上面多少 */
+            --final-pos-left: 20px; /* 距離左邊多少 */
+
+            /* 2. 設定 Logo 的「初始大小」 (請對應下方 logo-box 的 width/height) */
+            --init-size-pc: 180px;
+            --init-size-mobile: 120px;
+
+            /* 3. 設定 Logo 的「最終縮放比例」 (控制最後的大小) */
+            /* 計算公式： 想要的高度 / 初始大小 = 縮放比例
+               例如：想要最後高度是 50px
+               電腦版： 50 / 180 = 0.277 (約 0.28)
+               手機版： 50 / 120 = 0.416 (約 0.42)
+            */
+            --scale-pc: 0.28;     /* 電腦版縮放比例 */
+            --scale-mobile: 0.42; /* 手機版縮放比例 */
+        }
+
+        /* --- 1. 基礎設定 --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #Fdfbf6;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. Loading 遮罩層 --- */
+        #loader-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #Fdfbf6;
+            z-index: 9000;
+            transition: opacity 1s ease;
+        }
+
+        #loader-bg.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* --- 3. 品牌容器 --- */
+        .brand-container {
+            position: fixed;
+            z-index: 9999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            display: flex;
+            align-items: center;
+            transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+            opacity: 1;
+
+        }
+        /* ★ 新增：任務完成，功成身退的 class */
+        .brand-container.mission-complete {
+            opacity: 0;
+            pointer-events: none; /* 確保消失後點不到它，不會擋住下方的按鈕 */
+            transition: opacity 0.5s ease; /* 0.5秒淡出 */
+        }
+
+        /* --- 結束狀態：飛到左上角 (使用變數控制) --- */
+        .brand-container.move-to-header {
+            top: var(--final-pos-top);
+            left: var(--final-pos-left);
+            
+            /* 使用變數設定的縮放比例 */
+            transform: translate(0, 0) scale(var(--scale-pc));
+            transform-origin: top left;
+        }
+
+        /* Slogan 消失 */
+        .brand-container.move-to-header .slogan {
+            opacity: 0 !important;
+            transition: opacity 0.3s ease;
+        }
+
+        /* --- 4. Logo 圖片 --- */
+        .logo-box {
+            position: relative;
+            /* 使用變數設定初始大小 */
+            width: var(--init-size-pc);
+            height: var(--init-size-pc);
+            flex-shrink: 0;
+            opacity: 0; 
+            transition: opacity 0.5s ease-in-out;
+        }
+        .logo-box.show {
+            opacity: 1;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* 光暈 */
+        .window-glow {
+            position: absolute;
+            background-color: #f5e8a1;
+            width: 20%;
+            height: 20%;
+            top: 78%;
+            left: 50%;
+            border-radius: 2px;
+            filter: blur(3px);
+            opacity: 0.8;
+            mix-blend-mode: hard-light;
+            animation: breathe 3s infinite ease-in-out;
+            transition: opacity 1s;
+        }
+        .brand-container.move-to-header .window-glow {
+            opacity: 0;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.05); filter: blur(25px); }
+        }
+
+        /* --- 5. 文字群組 --- */
+        .text-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .name-img-box {
+            margin-top: 50px;
+            width: 500px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .name-img-box.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            color: #8c7b70;
+            margin-top: 15px;
+            margin-left: 5px;
+            letter-spacing: 3px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+        .slogan.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 6. 首頁內容 --- */
+        #main-content {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease 0.5s;
+            padding-top: 120px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        #main-content.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 8000;
+        }
+
+        /* --- RWD 手機版設定 --- */
+        @media (max-width: 800px) {
+            .logo-box {
+                /* 手機版初始大小 */
+                width: var(--init-size-mobile);
+                height: var(--init-size-mobile);
+            }
+            .text-group {
+                margin-left: 5px;
+            }
+            .name-img-box {
+                margin-top: 25px;
+                width: auto;
+            }
+            .name-img-box img {
+                height: 140px !important;
+            }
+            .slogan {
+                font-size: 1rem;
+                margin-top: 10px;
+                letter-spacing: 2px;
+            }
+            
+            /* 手機版結束狀態 */
+            .brand-container.move-to-header {
+                /* 改用手機版的縮放比例變數 */
+                transform: translate(0, 0) scale(var(--scale-mobile));
+            }
+        }
+
+        @media (max-width: 500px) {
+            /* 1. 針對小螢幕，初始 Logo 再縮小 */
+            .logo-box {
+                width: 90px;  /* 從 120px 縮小到 90px */
+                height: 90px;
+            }
+
+            /* 2. ReHome 文字圖片縮小 */
+            .name-img-box img {
+                height: 100px !important; /* 從 140px 縮小到 100px */
+            }
+            
+            .name-img-box {
+                margin-top: 15px; /* 稍微往上拉，保持垂直置中 */
+            }
+
+            /* 3. Slogan 字體與間距微調 */
+            .slogan {
+                font-size: 0.85rem; /* 字體再小一點 */
+                margin-top: 8px;
+                letter-spacing: 1px;
+            }
+
+            /* 4. 縮小圖跟字的間距 */
+            .text-group {
+                margin-left: 0px; /* 貼近一點 */
+            }
+
+            /* 5. ★關鍵調整：結束時的縮放比例 */
+            /* 為了讓它縮上去後跟電腦版一樣大，這裡的比例需要重新計算。
+               公式：(目標 Header Logo 高度) / (現在的初始高度 90px)
+               假設目標是 45~50px， 45 / 90 = 0.5 
+            */
+            .brand-container.move-to-header {
+                transform: translate(0, 0) scale(0.55); 
+                /* 建議設在 0.5 ~ 0.6 之間，您可以微調這個數字來對齊真 Header */
+            }
+            
+            /* 如果在超小螢幕上 Header 位置不同，也可以在這裡微調 top/left */
+            /*
+            .brand-container.move-to-header {
+                 top: 10px;
+                 left: 10px;
+            }
+            */
+        }
+    </style>
+    <link rel="stylesheet" href="../css/modules/navbar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/utils/navbar.js"></script>
+
+</head>
+
+<body>
+    <div id="loader-bg"></div>
+
+    <div class="brand-container" id="brand-container">
+        <div class="logo-box">
+            <img src="../assets/img/logo/Logo.png" alt="ReHome Logo" class="logo-img">
+            <div class="window-glow"></div>
+        </div>
+
+        <div class="text-group">
+            <div class="name-img-box" id="brand-name-box">
+                <img src="../assets/img/logo/LogoName.png" style="height: 220px; display: block;">
+            </div>
+            <div class="slogan" id="slogan">
+                點亮希望，讓愛歸家。
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+       <nav class="navbar navbar-expand-lg custom-nav" id="navbar">
+           <div class="container-fluid">
+               <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                   <img src="../assets/img/logo/LogoPlusName.png" id="logo" class="me-2" style="opacity:0;"> 
+               </a>
+               </div>
+       </nav>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            const brandContainer = document.getElementById('brand-container');
+            const loaderBg = document.getElementById('loader-bg');
+            const brandNameBox = document.getElementById('brand-name-box');
+            const slogan = document.getElementById('slogan');
+            const content = document.getElementById('main-content');
+            const logoBox = document.querySelector('.logo-box');
+
+            // 0. Logo 淡入
+            setTimeout(() => {
+                logoBox.classList.add('show');
+            }, 100);
+
+            // 1. ReHome 圖片滑出
+            setTimeout(() => {
+                brandNameBox.classList.add('show');
+            }, 1000);
+
+            // 2. Slogan 浮現
+            setTimeout(() => {
+                slogan.classList.add('show');
+            }, 1200);
+
+            // 3. 開始轉場
+            setTimeout(() => {
+                brandContainer.classList.add('move-to-header');
+                loaderBg.classList.add('fade-out');
+                content.classList.add('visible');
+            }, 3500);
+
+            setTimeout(() => {
+                
+                // (A) 真正的 Logo 浮現
+                realLogo.classList.add('visible');
+
+                // (B) 動畫 Logo 消失
+                brandContainer.classList.add('mission-complete');
+
+            }, 4700); // 3500 + 1200 = 4700
+        });
+    </script>
+</body>
+</html>

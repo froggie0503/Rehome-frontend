@@ -1,0 +1,92 @@
+/* 註冊標題 */
+#repasswd_Title {
+    font-weight: bold;
+    color: #5D4033;
+    text-align: center;
+    padding: 20px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 5px; /* 底線寬度 */
+    text-underline-offset: 10px;    /* 底線間距 */
+}
+
+/*---------------------------------
+    密碼規則 
+ --------------------------------*/
+#passwordRule {
+    display: block;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    padding: 10px;
+    font-size: 12px;
+    display: none;
+}
+
+.invalid {
+    color: #9c4332;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid::before {
+    position: relative;
+    left: -5px;
+    content: "!";
+}
+
+.valid::before {
+    position: relative;
+    left: -5px;
+    content: "\2713";
+}
+
+/* 輸入驗證碼 */
+#repasswd_ConfirmCode {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;               
+    justify-content: space-around;
+    align-items: center; 
+}
+
+/* 隨機驗證碼區塊 */
+#captchaTxtArea {
+    background-color: #e9e2d8;
+    height: 35px;
+    text-align: center;
+    color: #5D4033;
+    font-weight: bold;
+}
+
+/* 驗證碼重整 refreshbtn */
+#refreshbtn {
+    background-color: #e9e2d8;  
+    border: none;                 /* 去掉邊框 */
+    padding: 10px;                 /* 調整按鈕大小 */
+    margin-left: 3px;
+}
+
+/* 驗證碼重整 icon */
+.bi-arrow-clockwise {
+    color: #5D4033;
+}
+
+/* 送出按鈕 */
+#repasswd_Btn {
+    font-size: large;
+    font-weight: bold;            
+    color: #FFFBF7;             
+    background-color: #ab9073;  
+    border: none;                 /* 去掉邊框 */
+    padding: 5px;                 /* 調整按鈕大小 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;           /* 圓角 */
+}
+
+/* 送出按鈕 hover */
+#repasswd_Btn:hover {
+    color: #FFFBF7;
+    background-color: #756b61;
+}

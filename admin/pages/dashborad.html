@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 首頁 - 儀表板">
+    <meta name="theme-color" content="#9B7E66">
+    <title>首頁 - 儀表板 | ReHome 後台管理系統</title>
+    <script src="../js/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashborad.css">
+</head>
+
+<body>
+    <!-- 漢堡選單按鈕 (手機版) -->
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="開啟側邊選單" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- 遮罩層 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+    
+    <header class="header"></header>
+    <div class="main-container">
+        <aside class="sidebar" role="navigation" aria-label="主選單"></aside>
+        <main class="content" role="main">
+            <h1>儀表板</h1>
+            <div class="dashboard-grid">
+                <!-- 總案例 -->
+                <section class="dashboard-card" aria-labelledby="totalCasesTitle">
+                    <h2 id="totalCasesTitle">總案例</h2>
+                    <div class="chart-container" role="img" aria-label="總案例圓餅圖">
+                        <canvas id="casesChart" aria-label="案例分布圓餅圖"></canvas>
+                        <div class="chart-center-text" id="totalCasesText" aria-live="polite">???</div>
+                    </div>
+                    <ul class="chart-legend" role="list">
+                        <li class="legend-item"><span class="dot orange" aria-hidden="true"></span>走失協尋</li>
+                        <li class="legend-item"><span class="dot black" aria-hidden="true"></span>領養</li>
+                        <li class="legend-item"><span class="dot gray" aria-hidden="true"></span>送養</li>
+                    </ul>
+                </section>
+
+                <!-- 本月送養 -->
+                <section class="dashboard-card" aria-labelledby="thisMonthAdoptionsTitle">
+                    <h2 id="thisMonthAdoptionsTitle">本月送養</h2>
+                    <div class="big-number" id="thisMonthAdoptions" aria-live="polite">???</div>
+                    <ul class="stats-rows" role="list">
+                        <li class="stat-row">
+                            <div class="icon-circle black" aria-hidden="true"><i class="bi bi-bar-chart-fill"></i></div>
+                            <div class="stat-details">
+                                <span class="stat-label">上月送養</span>
+                                <span class="stat-value" id="lastMonthAdoptions" aria-live="polite">???</span>
+                            </div>
+                            <span class="stat-change" id="adoptionsChange" aria-live="polite">(+ 增加 ? 筆)</span>
+                        </li>
+                        <li class="stat-row">
+                            <div class="icon-circle orange" aria-hidden="true"><i class="bi bi-wallet-fill"></i></div>
+                            <div class="stat-details">
+                                <span class="stat-label">上月刊登(送養)</span>
+                                <span class="stat-value" id="lastMonthListings" aria-live="polite">???</span>
+                            </div>
+                            <span class="stat-change" id="listingsChange" aria-live="polite">(+ 增加案例 ? 筆)</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- 瀏覽數 -->
+            <section class="dashboard-card full-width" aria-labelledby="viewsChartTitle">
+                <h2 id="viewsChartTitle">登入瀏覽數</h2>
+                <div class="line-chart-container" role="img" aria-label="登入瀏覽數折線圖">
+                    <canvas id="viewsChart" aria-label="每月登入瀏覽數趨勢圖"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashborad.js"></script>
+    <script src="../js/component-loader.js"></script>
+
+</body>
+
+</html>

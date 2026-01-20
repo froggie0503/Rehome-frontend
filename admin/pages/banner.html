@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 輪播圖設定">
+    <title>輪播圖設定 | ReHome 後台管理系統</title>
+    <script src="../js/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/banner.css">
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main-container">
+        <div class="sidebar"></div>
+        <main class="content">
+            <h1>輪播圖設定</h1>
+            
+            <section class="banner-section" aria-label="輪播圖管理">
+                <!-- 輪播圖項目 1 -->
+                <article class="banner-item" data-banner-id="1">
+                    <div class="banner-preview" role="img" aria-label="主圖預覽">
+                        <button type="button" class="upload-btn" data-target="fileInput1" aria-label="上傳主圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="fileInput1" accept="image/*" style="display: none;" aria-label="選擇主圖檔案">
+                    </div>
+                    <div class="banner-thumbnail" role="img" aria-label="縮圖預覽">
+                        <button type="button" class="upload-btn-small" data-target="thumbInput1" aria-label="上傳縮圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="thumbInput1" accept="image/*" style="display: none;" aria-label="選擇縮圖檔案">
+                    </div>
+                    <div class="banner-info">
+                        <div class="form-group">
+                            <label for="altText1">替代文字：</label>
+                            <input type="text" id="altText1" name="altText1" placeholder="輸入替代文字" class="form-input" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="targetUrl1">網址 URL：</label>
+                            <input type="url" id="targetUrl1" name="targetUrl1" placeholder="輸入網址" class="form-input" pattern="https?://.+">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayOrder1">播放順序：</label>
+                            <input type="number" id="displayOrder1" name="displayOrder1" min="1" max="5" step="1">
+                        </div>
+                        <div class="banner-specs-wrapper">
+                            <div class="banner-specs">
+                                <p>圖片建議尺寸(寬 x 高)：(大) 1600 px × 900 px, (小) 507px × 902px</p>
+                                <p>上傳檔案大小：16 MB 以內</p>
+                            </div>
+                            <button type="button" class="update-banner-btn" aria-label="更新輪播圖 1">更新</button>
+                        </div>
+                    </div>
+                </article>
+                <!-- 輪播圖項目 2 -->
+                <article class="banner-item" data-banner-id="2">
+                    <div class="banner-preview empty" role="img" aria-label="主圖預覽">
+                        <button type="button" class="upload-btn" data-target="fileInput2" aria-label="上傳主圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="fileInput2" accept="image/*" style="display: none;" aria-label="選擇主圖檔案">
+                    </div>
+                    <div class="banner-thumbnail empty" role="img" aria-label="縮圖預覽">
+                        <button type="button" class="upload-btn-small" data-target="thumbInput2" aria-label="上傳縮圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="thumbInput2" accept="image/*" style="display: none;" aria-label="選擇縮圖檔案">
+                    </div>
+                    <div class="banner-info">
+                        <div class="form-group">
+                            <label for="altText2">替代文字：</label>
+                            <input type="text" id="altText2" name="altText2" placeholder="輸入替代文字" class="form-input" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="targetUrl2">網址 URL：</label>
+                            <input type="url" id="targetUrl2" name="targetUrl2" placeholder="輸入網址" class="form-input" pattern="https?://.+">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayOrder2">播放順序：</label>
+                            <input type="number" id="displayOrder2" name="displayOrder2" min="1" max="5" step="1">
+                        </div>
+                        <div class="banner-specs-wrapper">
+                            <div class="banner-specs">
+                                <p>圖片建議尺寸(寬 x 高)：(大) 1600 px × 900 px, (小) 507px × 902px</p>
+                                <p>上傳檔案大小：16 MB 以內</p>
+                            </div>
+                            <button type="button" class="update-banner-btn" aria-label="更新輪播圖 2">更新</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 輪播圖項目 3 -->
+                <article class="banner-item" data-banner-id="3">
+                    <div class="banner-preview empty" role="img" aria-label="主圖預覽">
+                        <button type="button" class="upload-btn" data-target="fileInput3" aria-label="上傳主圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="fileInput3" accept="image/*" style="display: none;" aria-label="選擇主圖檔案">
+                    </div>
+                    <div class="banner-thumbnail empty" role="img" aria-label="縮圖預覽">
+                        <button type="button" class="upload-btn-small" data-target="thumbInput3" aria-label="上傳縮圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="thumbInput3" accept="image/*" style="display: none;" aria-label="選擇縮圖檔案">
+                    </div>
+                    <div class="banner-info">
+                        <div class="form-group">
+                            <label for="altText3">替代文字：</label>
+                            <input type="text" id="altText3" name="altText3" placeholder="輸入替代文字" class="form-input" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="targetUrl3">網址 URL：</label>
+                            <input type="url" id="targetUrl3" name="targetUrl3" placeholder="輸入網址" class="form-input" pattern="https?://.+">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayOrder3">播放順序：</label>
+                            <input type="number" id="displayOrder3" name="displayOrder3" min="1" max="5" step="1">
+                        </div>
+                        <div class="banner-specs-wrapper">
+                            <div class="banner-specs">
+                                <p>圖片建議尺寸(寬 x 高)：(大) 1600 px × 900 px, (小) 507px × 902px</p>
+                                <p>上傳檔案大小：16 MB 以內</p>
+                            </div>
+                            <button type="button" class="update-banner-btn" aria-label="更新輪播圖 3">更新</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 輪播圖項目 4 -->
+                <article class="banner-item" data-banner-id="4">
+                    <div class="banner-preview empty" role="img" aria-label="主圖預覽">
+                        <button type="button" class="upload-btn" data-target="fileInput4" aria-label="上傳主圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="fileInput4" accept="image/*" style="display: none;" aria-label="選擇主圖檔案">
+                    </div>
+                    <div class="banner-thumbnail empty" role="img" aria-label="縮圖預覽">
+                        <button type="button" class="upload-btn-small" data-target="thumbInput4" aria-label="上傳縮圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="thumbInput4" accept="image/*" style="display: none;" aria-label="選擇縮圖檔案">
+                    </div>
+                    <div class="banner-info">
+                        <div class="form-group">
+                            <label for="altText4">替代文字：</label>
+                            <input type="text" id="altText4" name="altText4" placeholder="輸入替代文字" class="form-input" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="targetUrl4">網址 URL：</label>
+                            <input type="url" id="targetUrl4" name="targetUrl4" placeholder="輸入網址" class="form-input" pattern="https?://.+">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayOrder4">播放順序：</label>
+                            <input type="number" id="displayOrder4" name="displayOrder4" min="1" max="5" step="1">
+                        </div>
+                        <div class="banner-specs-wrapper">
+                            <div class="banner-specs">
+                                <p>圖片建議尺寸(寬 x 高)：(大) 1600 px × 900 px, (小) 507px × 902px</p>
+                                <p>上傳檔案大小：16 MB 以內</p>
+                            </div>
+                            <button type="button" class="update-banner-btn" aria-label="更新輪播圖 4">更新</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 輪播圖項目 5 -->
+                <article class="banner-item" data-banner-id="5">
+                    <div class="banner-preview empty" role="img" aria-label="主圖預覽">
+                        <button type="button" class="upload-btn" data-target="fileInput5" aria-label="上傳主圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="fileInput5" accept="image/*" style="display: none;" aria-label="選擇主圖檔案">
+                    </div>
+                    <div class="banner-thumbnail empty" role="img" aria-label="縮圖預覽">
+                        <button type="button" class="upload-btn-small" data-target="thumbInput5" aria-label="上傳縮圖">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <input type="file" id="thumbInput5" accept="image/*" style="display: none;" aria-label="選擇縮圖檔案">
+                    </div>
+                    <div class="banner-info">
+                        <div class="form-group">
+                            <label for="altText5">替代文字：</label>
+                            <input type="text" id="altText5" name="altText5" placeholder="輸入替代文字" class="form-input" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="targetUrl5">網址 URL：</label>
+                            <input type="url" id="targetUrl5" name="targetUrl5" placeholder="輸入網址" class="form-input" pattern="https?://.+">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayOrder5">播放順序：</label>
+                            <input type="number" id="displayOrder5" name="displayOrder5" min="1" max="5" step="1">
+                        </div>
+                        <div class="banner-specs-wrapper">
+                            <div class="banner-specs">
+                                <p>圖片建議尺寸(寬 x 高)：(大) 1600 px × 900 px, (小) 507px × 902px</p>
+                                <p>上傳檔案大小：16 MB 以內</p>
+                            </div>
+                            <button type="button" class="update-banner-btn" aria-label="更新輪播圖 5">更新</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/banner.js"></script>
+</body>
+
+</html>

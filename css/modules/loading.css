@@ -1,0 +1,52 @@
+/* =========================================
+   自定義 Loading 動畫 (三點跳動)
+   ========================================= */
+
+/* 1. 外層定位容器 (用來控制整體顯示/隱藏與置中) */
+#loading-spinner {
+    padding: 100px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 2. 動畫本體容器 */
+.loader-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* 稍微加大間距讓它呼吸感好一點 */
+}
+
+/* 3. 圓點樣式 */
+.loader-dots div {
+    width: 20px;
+    height: 20px;
+    background-color: #756B61; /* 你原本設定的顏色 */
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+}
+
+/* 4. 讓圓點依序跳動 (動畫延遲) */
+.loader-dots div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader-dots div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* 5. 定義跳動動畫關鍵影格 */
+@keyframes bounce {
+    to {
+        opacity: 0.3;
+        transform: translateY(-8px); /* 跳得稍微高一點點 */
+    }
+}
+
+/* 確保內容區塊一開始是隱藏的 (避免像截圖那樣看到空的標題) */
+/* .missing-publish {
+    display: none;
+} */

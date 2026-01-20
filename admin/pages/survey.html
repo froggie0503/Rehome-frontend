@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ReHome 後台管理系統 - 問卷設定">
+    <title>問卷設定 | ReHome 後台管理系統</title>
+    <script src="../js/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/survey.css">
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main-container">
+        <div class="sidebar"></div>
+        <main class="content">
+            <div class="survey-container">
+                <h1 class="page-title">問卷設定</h1>
+                <!-- 送養問卷設定 -->
+                <section class="survey-section">
+                    <span class="update-info">最近更新：2025/12/04 20:15:30</span>
+                    
+                    <!-- 預設題目區塊 (手風琴) -->
+                    <div class="accordion-section">
+                        <div class="accordion-header" id="defaultQuestionsHeader">
+                            <span class="accordion-title">預設題目</span>
+                            <span class="accordion-toggle">▼</span>
+                        </div>
+                        <div class="accordion-content expanded" id="defaultQuestionList">
+                            <!-- 預設題目將由 JavaScript 動態載入 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 自訂題目區塊 -->
+                    <div class="custom-section">
+                        <h3 class="section-title">自訂題目</h3>
+                        <div id="customQuestionList" class="question-list">
+                            <!-- 自訂題目將由 JavaScript 動態載入 -->
+                        </div>
+                        <!-- 新增問題按鈕 -->
+                        <button class="add-question-btn">+ 新增題目</button>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">取消</button>
+                <button class="btn-save">儲存</button>
+            </div>
+            </section>
+    </div>
+    </main>
+    </div>
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/survey.js"></script>
+</body>
+</html>

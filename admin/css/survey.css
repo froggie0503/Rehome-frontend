@@ -1,0 +1,398 @@
+/* 主容器布局 */
+/* 頁面標題 */
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #504033;
+    margin-bottom: 15px;
+}
+
+/* 問卷區塊 */
+.survey-section {
+    margin-bottom: 50px;
+}
+
+/* 區塊標題 */
+.section-title {
+    color: #704C38;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* 問卷項目 */
+.survey-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Edit 按鈕 */
+.edit-btn {
+    background-color: transparent;
+    color: #DE7E0A;
+    border: 2px solid #9B7E66;
+    border-radius: 8px;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(155, 126, 102, 0.3);
+}
+
+.edit-btn:active {
+    transform: translateY(0);
+}
+
+/* 更新資訊 */
+.update-info {
+    color: #8B7355;
+    font-size: 16px;
+}
+
+/* 響應式設計 */
+@media (max-width: 1024px) {
+    .content {
+        padding: 30px 40px;
+    }
+    
+    .page-title {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .survey-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .edit-btn {
+        width: 100%;
+    }
+}
+
+/* 手風琴區塊 */
+.accordion-section {
+    margin-bottom: 30px;
+    background-color: #F5F0EA;
+    border: 2px solid #C9B9A8;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #D5C8B8 0%, #C9B9A8 100%);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #C9B9A8 0%, #B8A898 100%);
+}
+
+.accordion-title {
+    color: #504033;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.accordion-toggle {
+    color: #704C38;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #FFFFFF;
+}
+
+.accordion-content.expanded {
+    max-height: 2000px;
+    padding: 20px;
+}
+
+/* 自訂題目區塊 */
+.custom-section {
+    margin-bottom: 30px;
+}
+
+/* 問卷列表 */
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* 問卷題目項目 */
+.question-item {
+    background-color: #D5C8B8;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.question-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 預設題目樣式 */
+.question-item.default-question {
+    background-color: #F5F0EA;
+    border: 1px solid #E0D5C7;
+}
+
+.question-item.default-question .question-header {
+    padding: 15px 20px;
+    cursor: default;
+}
+
+.question-item.default-question .question-header:hover {
+    background-color: transparent;
+}
+
+/* 問卷題目標題 */
+.question-header {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    gap: 12px;
+}
+
+.question-item:not(.default-question) .question-header {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.question-item:not(.default-question) .question-header:hover {
+    background-color: #C4B5A0;
+}
+
+/* 排序按鈕區域 */
+.sort-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 12px;
+}
+
+/* 排序按鈕 */
+.sort-btn {
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-btn:hover:not(:disabled) {
+    background-color: #704C38;
+    transform: scale(1.1);
+}
+
+.sort-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.sort-btn:disabled {
+    background-color: #C4B5A0;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* 題目編號 */
+.question-number {
+    color: #704C38;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 30px;
+}
+
+/* 預設題目徽章 */
+.default-badge {
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* 題目文字 */
+.question-text {
+    color: #504033;
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+    outline: none;
+}
+
+.question-text:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* 刪除按鈕 */
+.delete-btn {
+    background-color: #D9534F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background-color: #C9302C;
+    transform: scale(1.1);
+}
+
+/* 新增題目按鈕 */
+.add-question-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.add-question-btn:hover {
+    background-color: #8B6E56;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(155, 126, 102, 0.3);
+}
+
+/* 底部按鈕區 */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 2px solid #C9B9A8;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 12px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    color: #704C38;
+    border: 2px solid #9B7E66;
+}
+
+.btn-cancel:hover {
+    background-color: #F5EDE3;
+}
+
+.btn-save {
+    background-color: #9B7E66;
+    color: #FFFFFF;
+}
+
+.btn-save:hover {
+    background-color: #8B6E56;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(155, 126, 102, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .survey-container {
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .question-text {
+        font-size: 16px;
+    }
+    
+    .accordion-title {
+        font-size: 18px;
+    }
+    
+    .sort-buttons {
+        gap: 6px;
+    }
+    
+    .sort-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="../../css/modules/card.css">
+<link rel="stylesheet" href="../../css/modules/new_mem_card.css">
+<link rel="stylesheet" href="../../css/modules/message_model.css">
+<!-- <script src="../../js/modules/card.js"></script> -->
+<script src="../../js/modules/adoptionAnnoun.js"></script>
+
+
+<div class="announ container">
+    <!--標題-->
+    <p class="containertitle">送養刊登狀態</p>
+</div>
+<!--內容-->
+<div class="memcenter-container">
+
+    <div id="global-loading" class="loading-overlay">
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="loading-text"></div>
+        <!-- 已上架 -->
+        <div class="missing-publish" id="sec-on-shelf">
+            <h4>已上架</h4>
+            <!-- JS 動態插入卡片 -->
+        </div>
+
+        <!-- 等待審核 -->
+        <div class="missing-publish" id="sec-waiting">
+            <h4>等待審核</h4>
+        </div>
+
+        <!-- 審核失敗 -->
+        <div class="missing-publish" id="sec-failed">
+            <h4>審核失敗</h4>
+        </div>
+
+        <!-- 已結案 -->
+        <div class="missing-publish closed-case" id="closed-case">
+            <h4>已結案</h4>
+        </div>
+
+    </div>
+
+
+
+    <!--下架 Modal-->
+    <div class="modal fade " id="cardremove_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cardremovemodalcontent" style="background-color: #fffff6;">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
+                    <button type="button" id="confirmRemoveBtn" class="btn">確定</button>
+                </div>
+            </div>
+        </div>
+    </div>

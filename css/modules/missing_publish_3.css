@@ -1,0 +1,130 @@
+/* missing_publish_3.css - 等待審核頁面樣式 */
+
+
+
+body {
+
+    overflow-x: hidden;
+    /* 關鍵：強制隱藏水平溢出的內容 */
+
+}
+
+
+.success-page-content {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.failed {
+    color: #9C4332;
+    /* background-color: #FFFBF7; */
+    padding: 10px;
+    width: 50%;
+    margin: 15px auto;
+}
+
+/* --- 按鈕樣式 (參考 Step 1 確認資料按鈕) --- */
+.btn-action {
+    background-color: #D5C2A5;
+    /* 淺褐色 */
+    color: #504033;
+    /* 深色文字 */
+    font-weight: 800;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-action:hover {
+    background-color: #bfab8e;
+}
+
+/* 印章 */
+
+.stamp-mark {
+    transform: rotate(10deg);
+    position: absolute;
+    top: 210px;
+    left: 300px;
+    width: 40px;
+    opacity: 0;
+    z-index: 2;
+}
+
+/* --- 插畫區與動畫 --- */
+.illustration-container {
+    position: relative;
+    width: 390px;
+    max-width: 100%;
+    height: 270px;
+    margin: 0 auto 30px;
+}
+
+.base-image {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* 底圖 */
+}
+
+.moving-element {
+    position: absolute;
+    width: 80px;
+    /* 調整放大鏡大小 */
+    z-index: 2;
+    /* 浮動在上面 */
+    transform: translate(0, 0);
+    /* 初始位置 */
+}
+
+/* --- 文字區 --- */
+
+.caseNumberSpan {
+    background-color: #fffbf7;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bolder;
+    color: #504033;
+}
+
+.success-title {
+    color: #504033;
+    font-size: 1.8rem;
+    margin-bottom: 0px;
+    font-weight: bolder;
+    padding: 20px 20px 10px 20px;
+    /* border-radius: 10px; */
+
+}
+
+/* 成功的粗線條 */
+hr.success-title-line {
+    border: 0 !important;
+    opacity: 1 !important;
+    height: 4px;
+    background-color: #504033;
+    border-radius: 2px;
+    margin: 0 auto 30px auto;
+
+}
+
+.success-message {
+    font-weight: bolder;
+    color: #756B61;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.success-message span {
+    font-weight: bold;
+}

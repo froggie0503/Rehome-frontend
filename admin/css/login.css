@@ -1,0 +1,511 @@
+/* ========================================
+   ReHome Admin - Login Page Styles
+   ======================================== */
+
+/* ========== 通用工具類 ========== */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 無障礙焦點樣式 */
+*:focus-visible {
+    outline: 2px solid #504033;
+    outline-offset: 2px;
+}
+
+/* ========== 登入容器佈局 ========== */
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    height: 100vh;
+    align-items: center;
+    padding: 0 80px;
+}
+
+/* 左側區域 */
+.login-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 3rem;
+    position: relative;
+}
+
+.login-icon img {
+    width: 100%;
+    height: auto;
+}
+
+/* 右側區域 */
+.login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ========== 登入表單 ========== */
+.login-right h1 {
+    color: #504033;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.loginForm {
+    width: 100%;
+    max-width: 430px;
+}
+
+/* 表單群組 */
+.form-group {
+    margin-bottom: 30px;
+}
+
+/* 輸入框基本樣式 */
+.form-group input {
+    width: 100%;
+    padding: 18px 24px;
+    background-color: transparent;
+    border: 2px solid #8B7355;
+    border-radius: 12px;
+    font-size: 18px;
+    color: #504033;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+    color: #A69585;
+    opacity: 0.7;
+}
+
+.form-group input:focus {
+    border-color: #504033;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========== 密碼輸入框 ========== */
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input .lock-icon {
+    position: absolute;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.password-input input {
+    width: 100%;
+    padding: 18px 24px 18px 55px;
+    background-color: transparent;
+    border: 2px solid #8B7355;
+    border-radius: 12px;
+    font-size: 18px;
+    color: #504033;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+/* ========== 忘記密碼連結 ========== */
+.forgot-password {
+    text-align: right;
+    margin-bottom: 35px;
+}
+
+.forgot-password a {
+    color: #704C38;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: #504033;
+    text-decoration: underline;
+}
+
+.forgot-password a:focus {
+    outline: 2px solid #504033;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ========== 登入按鈕 ========== */
+.login-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover:not(:disabled) {
+    background-color: #8B6E56;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.login-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========== 響應式設計 ========== */
+
+/* 平板裝置 (1024px 以下) */
+@media (max-width: 1024px) {
+    .login-container {
+        padding: 0 40px;
+    }
+
+    .login-left {
+        padding-right: 50px;
+    }
+
+    .logoName img {
+        width: 240px;
+    }
+
+    .login-left h1 {
+        font-size: 56px;
+    }
+
+    .circle-bg img {
+        width: 360px;
+        height: 360px;
+    }
+}
+
+/* 手機裝置 (768px 以下) */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        padding: 40px 20px;
+        justify-content: center;
+    }
+
+    .login-left {
+        padding-right: 0;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .logoName {
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
+    }
+
+    .logoName img {
+        width: 200px;
+    }
+
+    .illustration {
+        margin-top: 0;
+    }
+
+    .login-left h1 {
+        font-size: 48px;
+    }
+
+    .circle-bg img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .login-right {
+        padding-left: 0;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-right h2 {
+        font-size: 36px;
+    }
+}
+
+/* ========================================
+   Modal 系統
+   ======================================== */
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+/* Modal 動畫效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #F5F0E8;
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+}
+
+/* Modal 關閉按鈕 */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: #504033;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #8B7355;
+    transform: rotate(90deg);
+}
+
+.modal-close:focus {
+    outline: 2px solid #504033;
+    outline-offset: 2px;
+}
+
+/* Modal 標題 */
+.modal-content h3 {
+    color: #504033;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Modal 表單群組 */
+.modal-content .form-group {
+    margin-bottom: 25px;
+}
+
+.modal-content label {
+    display: block;
+    color: #504033;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Modal 輸入框 */
+.modal-content input {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #FFFFFF;
+    border: 2px solid #8B7355;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #504033;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.modal-content input:focus {
+    border-color: #504033;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(80, 64, 51, 0.1);
+}
+
+/* Modal 密碼輸入框 */
+.modal-content .password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.modal-content .password-input .lock-icon {
+    position: absolute;
+    left: 15px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.modal-content .password-input input {
+    padding-left: 45px;
+}
+
+/* ========== 驗證碼區域 ========== */
+.captcha-group {
+    margin-bottom: 30px;
+}
+
+.captcha-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.captcha-wrapper input {
+    flex: 1;
+}
+
+.captcha-display {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.captcha-display:hover {
+    border-color: #AB9073;
+}
+
+#captchaCanvas {
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+#captchaCanvas:hover {
+    opacity: 0.9;
+}
+
+#captchaCanvas:active {
+    opacity: 0.8;
+}
+
+/* ========== 提示文字 ========== */
+.hint {
+    display: block;
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: 8px;
+}
+
+.hint.error-message {
+    color: #EF4444;
+    font-weight: 600;
+}
+
+/* ========== 送出按鈕 ========== */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #9B7E66;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background-color: #8B6E56;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========== Modal 響應式設計 ========== */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    .modal-content h3 {
+        font-size: 26px;
+    }
+
+    .captcha-wrapper {
+        flex-direction: column;
+    }
+
+    .captcha-display {
+        width: 100%;
+    }
+
+    #captchaCanvas {
+        width: 100%;
+        max-width: 300px;
+    }
+}

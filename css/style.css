@@ -1,0 +1,87 @@
+/* src/main/resources/static/css/style.css */
+
+/* 1. 引入基礎樣式 */
+@import url("base/variables.css");
+@import url("base/frame.css");
+
+/* 2. 引入所有業務模組的樣式 */
+@import url("modules/floatFlag.css");
+@import url("modules/footer.css");
+@import url("modules/navbar.css");
+@import url("modules/pet-adoption-list.css");
+@import url("modules/pet-adoption-detail.css");
+@import url("modules/alert.css");
+@import url("modules/loading.css");
+@import url("modules/uiOverlay.css");
+@import url("modules/index_loading.css");
+
+/* 3. 全局自訂樣式 */
+body {
+    background-color: var(--color-background);
+    /* 使用 variables.css 中的變數 */
+    font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+    color: var(--font-color-primary);
+}
+
+/* 修正頁面跳到中間的問題 */
+html {
+    scroll-behavior: auto !important;
+    scroll-padding-top: 0 !important;
+}
+
+body {
+    scroll-margin-top: 0 !important;
+    scroll-padding-top: 0 !important;
+}
+
+.container,
+.title-container,
+.banner-image {
+    scroll-margin-top: 0 !important;
+    scroll-snap-align: none !important;
+}
+
+/* 載入順暢 */
+
+#header-placeholder {
+    display: block;
+    width: 100%;
+
+    min-height: 10px;
+}
+
+/* 1. 預設將 Header, Main, Footer 全部隱藏 (透明) */
+#header-placeholder,
+#main-content-area,
+#footer-placeholder {
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    /* 統一淡入時間 */
+}
+
+/* 2. 當 Body 加上 'app-loaded' class 時，全部一起顯示 */
+body.app-loaded #header-placeholder,
+body.app-loaded #main-content-area,
+body.app-loaded #footer-placeholder {
+    opacity: 1;
+}
+
+/* 3. 確保 Main 區域有最小高度，避免 Footer 亂跳 */
+#main-content-area {
+    min-height: 85vh;
+    transform: translateY(10px);
+    /* 初始位置稍微偏下 */
+}
+
+body.app-loaded #main-content-area {
+    opacity: 1;
+    transform: none;
+}
+
+#main-content-area.fade-out {
+    opacity: 0 !important;
+    transform: translateY(50px);
+    /* 下沉效果，讓下一次出現時有浮上來的感覺 */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    /* 轉場速度可以比全域快一點，感覺較輕快 */
+}

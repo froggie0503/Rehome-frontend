@@ -1,0 +1,147 @@
+<head>
+    <link rel="stylesheet" href="../css/modules/adoRev.css">
+</head>
+
+<body>
+    <br><br><br><br>
+    <!-- 至頂標籤 -->
+    <section class="banner-image">
+        <div class="container title-container">
+            <div class="custom-title-wrapper">
+
+                <img class="title-left-img" src="../assets/img/icon/form.png" alt="表單圖示">
+
+                <h3>
+                    送養資料<span class="highlight-text">確認</span>
+                </h3>
+
+                <img class="title-right-img" src="../assets/img/page_hint/yarm_ball.png" alt="圖示">
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="step">
+            <span class="title">Step 1</span>
+            <div class="label-end">寵物履歷 </div>
+        </div>
+
+        <div class="line-end"></div>
+
+        <div class="step">
+            <span class="title">Step 2</span>
+            <div class="label-end">確認資料 </div>
+        </div>
+
+        <div class="line-end"></div>
+
+        <div class="step">
+            <span class="title">Step 3</span>
+            <div class="label-start">等待審核 </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+            <span class="title">Step 4</span>
+            <div class="label">上傳成功 </div>
+        </div>
+    </div>
+
+    <div class="Divider"></div>
+    <main>
+        <section class="case-Information">
+            <div class="case-box">
+                <div class="case-number">案件編號: 載入中...</div>
+                <div class="case-status">審核時間: 載入中...</div>
+            </div>
+            <!-- 錯誤訊息容器 -->
+            <div class="error-message" id="errorMessage"></div>
+            <!-- 成功訊息容器 -->
+            <div class="success-message" id="successMessage"></div>
+        </section>
+
+        <section class="pet-inf">
+            <div class="pet-inf-Folder">
+                <div class="tag1"></div>
+                <div class="tag2"></div>
+                <div class="pet-inf-img">
+                    <img src="/assets/img/logo/Logo.png" alt="寵物圖片">
+                </div>
+                <div class="pet-details">
+                    <div class="pet-details-left">
+                        <div class="info-item">
+                            <div class="info-label">寵物名稱:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">寵物種類:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">寵物性別:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                    </div>
+                    <div class="pet-details-right">
+                        <div class="info-item">
+                            <div class="info-label">寵物年齡:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">寵物體型:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">寵物品種:</div>
+                            <div class="info-text">載入中...</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="adoption-note">
+            <div class="note-title">審核說明</div>
+            <div class="note-content">
+                <img src="../assets/img/icon/Search.png" alt="注意事項圖示" class="note-icon">
+                <p><i class="bi bi-check2-circle icon-yes"></i>經審核完畢，會以Emil及會員中心訊息作通知。</p>
+                <p><i class="bi bi-check2-circle icon-yes"></i>審核時間為 1~3天，再次提醒審核期間勿重複刊登</p>
+                <p><i class="bi bi-check2-circle icon-yes"></i>刊登應確定刊登內容未使用未經授權之文字、圖片、影音或任何形式之資訊。</p>
+                <p><i class="bi bi-check2-circle icon-yes"></i>ReHome 對刊登資訊保有最終篩選、修改、刪除及決定刊登與否之權利。</p>
+            </div>
+        </section>
+        <section class="illustration-section">
+            <div class="illustration">
+                <img class="group-icon" src="../assets/img/icon/Group 102.png" alt="插圖">
+                <img class="search-icon" src="../assets/img/icon/Search.png" alt="插圖">
+                <div class="illustration-buttons">
+                    <button class="btn-back" >
+                        <i class="bi bi-arrow-left"></i> 案件管理
+                    </button>
+                    <button class="btn-home">
+                        <i class="bi bi-house-door"></i> 回到首頁
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- <div style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">
+            <input type="number" id="case-id-input" placeholder="輸入案件ID">
+            <button id="load-case-btn">載入案件</button>
+        </div> -->
+
+
+
+    </main>
+
+    <!-- 載入遮罩 -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+</body>
+
+</html>

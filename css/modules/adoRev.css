@@ -1,0 +1,419 @@
+ /* 置頂標籤 */
+/* 外層容器：負責把整個區塊置中 */
+
+
+.title-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 核心設計：標題包裝器 */
+.custom-title-wrapper {
+    display: inline-flex;
+    align-items: flex-end;
+    /* 底部對齊 */
+    justify-content: center;
+    /* 水平置中 */
+    border-bottom: 5px solid #504033;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    /* 手機版減少內距 */
+    padding-right: 10px;
+    max-width: 100%;
+    /* 防止超出螢幕寬度 */
+    flex-wrap: nowrap;
+    /* 禁止換行，這是關鍵！ */
+}
+
+/* 文字樣式 */
+.custom-title-wrapper h3 {
+    margin: 0;
+    font-size: 36px;
+    /* 桌面版預設大小 */
+    color: #504033;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    padding: 0 10px;
+    /* 減少左右間距 */
+    white-space: nowrap;
+    /* 禁止文字換行 */
+}
+
+/* 特別強調「走失」兩個字 */
+.highlight-text {
+    color: #9C4332;
+}
+
+
+.title-left-img {
+    height: 60px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度為視窗寬度的 20%，避免擠壓文字 */
+    object-fit: contain;
+    /* 保持圖片比例 */
+}
+
+.title-right-img {
+    height: 80px;
+    margin-bottom: -10px;
+    /* 微調對齊 */
+    width: auto;
+    max-width: 20vw;
+    /* 限制最大寬度 */
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+
+    .custom-title-wrapper h3 {
+        font-size: 24px;
+        /* 手機版文字變小 */
+        letter-spacing: 1px;
+    }
+
+    .title-left-img {
+        height: 40px;
+        /* 手機版圖片變小 */
+        margin-bottom: -10px;
+    }
+
+    .title-right-img {
+        height: 50px;
+        /* 手機版圖片變小 */
+        margin-bottom: -5px;
+    }
+
+    .placeholder-box>img {
+        width: 100px;
+        height: 100px;
+
+    }
+}
+/* 進度條 */
+.container {
+    max-width: 50%;
+    min-height: 100px;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "微軟正黑體", sans-serif;
+    box-sizing: border-box;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step .title {
+    font-size: 15px;
+    color: #5a5148;
+    width: 100%;
+    text-align: left;
+}
+
+.step .label {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #e2d4c1;
+    color: #7a6553;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.step .label-end {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #AB9073;
+    color: #FFFBF7;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.line-end {
+    flex: 1;
+    height: 5px;
+    background-color: #AB9073;
+    margin: 18px 0 0;
+}
+
+.label-start {
+    font-size: 18px;
+    padding: 6px 18px;
+    background-color: #756B61;
+    color: #FFFBF7;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+}
+
+.line {
+    flex: 1;
+    height: 5px;
+    background-color: #dcc7b3;
+    margin: 18px 0 0;
+}
+
+/* Divider 分隔線 */
+.Divider {
+    height: 5px;
+    background-color: #7a6553;
+    max-width: 50%;
+    margin: 50px auto;
+    border-radius: 50px;
+}
+
+/* 案件資訊 */
+.case-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5px auto;
+    gap: 200px;
+    margin-bottom: 20px;
+    width: 800px;
+}
+
+.case-box .case-number,
+.case-status {
+    background-color: #b8946e;
+    color: #fff;
+    padding: 6px 18px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* 詳細資料區塊 */
+.pet-inf-Folder {
+    width: 700px;
+    margin: 100px auto;
+    padding: 40px 20px 30px;
+    background-color: #D5C8B8;
+    border-radius: 0px 0 20px 20px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tag1 {
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    width: 120px;
+    height: 40px;
+    background-color: #baa080;
+    border-radius: 10px 10px 0 0;
+}
+
+.tag2 {
+    position: absolute;
+    top: -40px;
+    left: 140px;
+    width: 120px;
+    height: 40px;
+    background-color: #7a6553;
+    border-radius: 8px 8px 0 0;
+    padding: 4px 6px;
+}
+
+/* 照片 */
+.pet-inf-img {
+
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 19px;
+}
+
+.pet-inf-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+    display: block;
+}
+
+
+.pet-details {
+    overflow: hidden;
+    display: flex;
+    gap: 20px;
+}
+
+.pet-details-left,
+.pet-details-right {
+    margin: 20px auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-label {
+    background: #ffffff;
+    padding: 8px 12px;
+    border-radius: 8px 0 8px 0;
+    font-weight: 600;
+    color: #5c544e;
+    font-size: 16px;
+    min-width: 80px;
+    margin-right: 10px;
+    line-height: 1.5;
+}
+
+.info-text {
+    text-align: center;
+    font-size: 16px;
+    color: #5c544e;
+    font-weight: 600;
+    padding: 4px 0;
+    border-bottom: 2px solid #AB9073;
+    flex: 1;
+}
+
+/* 審核說明 */
+.adoption-note {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    background-color: #D5C8B8;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-title {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    background: #7a6a58;
+    padding: 4px 16px;
+    color: #fff;
+    font-size: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-content {
+    margin: 50px auto;
+    padding: 20px 20px 20px 40px;
+
+}
+
+.note-content img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+}
+
+
+.note-content p {
+    border-bottom: 2px solid #AB9073;
+    font-size: 16px;
+    font-weight: 550;
+    color: #5c544e;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.icon-yes {
+    color: #c63c30;
+    font-size: 25px;
+}
+
+/* 插圖區域 */
+.illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 700px;
+    background-color: #f9f6f2;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.illustration .search-icon{
+    width: 40px;
+    height: auto;
+    position: absolute;
+    
+    
+}
+.illustration .group-icon {
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+}
+
+.illustration-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.illustration-buttons button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "微軟正黑體", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.btn-back {
+    background-color: #AB9073;
+    color: #FFFBF7;
+}
+
+.btn-back:hover {
+    background-color: #9a7f63;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(171, 144, 115, 0.3);
+}
+
+.btn-home {
+    background-color: #7a6553;
+    color: #FFFBF7;
+}
+
+.btn-home:hover {
+    background-color: #6b5a48;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(122, 101, 83, 0.3);
+}

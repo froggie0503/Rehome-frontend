@@ -1,0 +1,202 @@
+<br><br><br><br>
+<link rel="stylesheet" href="../css/modules/hint_tag.css">
+
+<section id="adoption_detail" class="container">
+    <!-- 地址 banner -->
+    <div class="container title-container d-none">
+        <div class="custom-title-wrapper">
+        <!-- 生成 -->
+        </div>
+    </div>
+
+    <!-- 寵物內容 -->
+    <div id="adoption_detail_main" class="mx-auto py-5">
+        <!-- <<< 分享 -->
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="share-btn-wrapper d-none">
+                <span class="fw-bold me-3">分享 <i class="bi bi-share-fill"></i></span>
+                <a href="" class="btn facebook-btn p-0" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" class="btn line-btn p-0" target="_blank"><i class="bi bi-line"></i></a>
+                <a href="" class="btn twitter-x-btn" target="_blank"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+
+        <!-- 寵物內容 -->
+        <div class="position-relative">
+            <!-- 刊登日期 -->
+            <div class="publish-date px-3 d-none">
+                <div class="m-3 publish-date-wrapper fw-bold">
+                </div>
+            </div>
+
+            <!-- 骨架 loading -->
+            <div class="row m-0 detail-content" id="skeleton">
+                <div class="col-lg-6">
+                    <div class="img-wrapper ms-2 my-4">
+                        <div class="skeleton skeleton-img"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="m-4">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text" style="width: 80%"></div>
+                        <div class="mt-4">
+                            <div class="skeleton skeleton-btn me-2"></div>
+                            <div class="skeleton skeleton-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 圖片 + 詳細資料 -->
+            <div class="row m-0 detail-content d-none">
+                <!-- 收藏 + 狀態 -->
+                <div class="d-flex justify-content-end position-absolute mt-3" id="detail_content_favorite">
+                </div>
+
+                <!-- 圖片 -->
+                <div class="col-lg-6">
+                    <div class="img-wrapper ms-2 my-4">
+                        <img src="" class="img-customer" id="detail_main_img">
+                    </div>
+                </div>
+
+                <!-- 詳細資料 -->
+                <div class="col-lg-6">
+                    <div class="m-4" id="detail_content">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <!-- 圖片選單 (個人有、公立無) -->
+            <div class="col-lg" id="detail_carousel_img">
+            </div>
+
+            <!-- 聯絡人詳細資料&功能按鈕 (個人看顯示狀態、公立滿版 col-12) -->
+            <div class="col-lg d-flex justify-content-center align-items-center" id="detail_contact">
+                <div class="row w-100 p-3 mx-0 contact d-flex justify-content-center align-items-center">
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- 描述區塊 -->
+        <div class="description py-5" id="detail_description">
+            <div class="py-5">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text" style="width: 40%"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="adopt_question" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="adopt_question_title" aria-hidden="true" style="z-index: 10001;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="adopt_question_title">我要領養</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-5">
+                    <div class="info-wrapper">
+                        <!-- title -->
+                        <div class="position-relative d-flex justify-content-center align-items-center">
+                            <div class="info-wrapper-title py-2 px-5 fw-bold">
+                                <span>基本資料</span>
+                            </div>
+                        </div>
+
+
+                        <!-- info -->
+                        <div class="row p-5 w-75 mx-auto">
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_name">姓名</label><br>
+                                <input class="info-answer" type="text" name="name" id="info_name" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_gender">性別</label><br>
+                                <input class="info-answer" type="text" name="gender" id="info_gender" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_age">年齡</label><br>
+                                <input class="info-answer" type="text" name="age" id="info_age" readonly>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_phone">電話</label><br>
+                                <input class="info-answer" type="text" name="phone" id="info_phone" readonly>
+                            </div>
+                            <!-- <div class="col-12 mb-3">
+                                <label class="info-title" for="info_address">住址</label><br>
+                                <input class="info-answer" type="text" name="address" id="info_address" readonly>
+                            </div> -->
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_marital">婚姻狀態<i class="bi bi-asterisk required"></i></label><br>
+                                <select class="info-answer" name="marital" id="info_marital" required>
+                                    <option value="single">未婚</option>
+                                    <option value="married">已婚</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="info-title" for="info_employment">工作狀態<i class="bi bi-asterisk required"></i></label><br>
+                                <select class="info-answer" name="employment" id="info_employment" required>
+                                    <option value="student">學生</option>
+                                    <option value="employed">就業</option>
+                                    <option value="unemployed">待業</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="info-wrapper">
+                        <!-- title -->
+                        <div class="position-relative d-flex justify-content-center align-items-center">
+                            <div class="info-wrapper-title py-2 px-5 fw-bold">
+                                <span>填寫問卷</span>
+                            </div>
+                        </div>
+
+                        <!-- question -->
+                        <div class="p-5" id="question_wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer py-5">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button> -->
+                    <button type="button" class="btn question-btn mx-auto px-5 fw-bold">確定送出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="missing_post" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="missing_post_title" aria-hidden="true" style="z-index: 10001;">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="missing_post_title">傳送通報訊息給失主</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-0">
+                    <div class="info-wrapper">
+                        <textarea class="form-control" rows="10" placeholder="範例：......" id="missing_post_textarea" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer mb-2">
+                    <button type="button" class="btn missing-cancel-btn px-3 fw-bold" data-bs-dismiss="modal"
+                        aria-label="Close">取消傳送</button>
+                    <button type="button" class="btn missing-post-btn ms-auto px-3 fw-bold">送出訊息</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

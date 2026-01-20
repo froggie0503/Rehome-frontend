@@ -1,0 +1,389 @@
+ /* ------------------- 條款視窗------------------- */
+
+ /* 遮罩背景 */
+ .modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+     /* 半透明黑底 */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+ }
+
+ /* 視窗本體 (米色卡片) */
+ .modal-card {
+     background-color: #D5C8B8;
+     /* 圖片中的米色背景 */
+     width: 90%;
+     max-width: 600px;
+     padding: 30px;
+     border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     position: relative;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* 標題 (帶有深色底線) */
+ .modal-header-title {
+     color: #504033;
+     font-weight: 900;
+     font-size: 1.5rem;
+     margin-bottom: 20px;
+     padding-bottom: 10px;
+     border-bottom: 4px solid #504033;
+     /* 模仿圖片的粗底線 */
+     display: inline-block;
+     width: fit-content;
+     /* 底線只跟文字一樣寬 (或者改成 100% 拉滿) */
+ }
+
+ /* 白色內容區塊 */
+ .modal-white-box {
+     background-color: #FFFFFF;
+     border-radius: 5px;
+     padding: 20px;
+     height: 250px;
+     /* 固定高度 */
+     overflow-y: auto;
+     /* 內容太多時可捲動 */
+     margin-bottom: 20px;
+     color: #504033;
+     font-size: 1rem;
+     line-height: 1.6;
+     text-align: left;
+ }
+
+ /* 內部勾選區 */
+ .modal-agree-check {
+     margin-bottom: 20px;
+     text-align: center;
+     font-weight: bold;
+     color: #504033;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+ }
+
+ .modal-agree-check input[type="checkbox"] {
+     width: 20px;
+     height: 20px;
+     cursor: pointer;
+ }
+
+ /* 底部按鈕區 (左右分佈) */
+ .modal-footer-btns {
+     display: flex;
+     justify-content: space-between;
+     /* 左右推開 */
+     margin-top: 10px;
+ }
+
+ /* 紅色取消按鈕 */
+ .btn-modal-cancel {
+     background-color: #A64B3C;
+     /* 圖片中的暗紅色 */
+     color: white;
+     border: none;
+     padding: 10px 30px;
+     border-radius: 5px;
+     font-weight: bold;
+     font-size: 1.1rem;
+     cursor: pointer;
+ }
+
+ .btn-modal-cancel:hover {
+     background-color: #8a3b2e;
+ }
+
+ /* 綠色確認按鈕 */
+ .btn-modal-confirm {
+     background-color: #7DA666;
+     /* 圖片中的草綠色 */
+     color: white;
+     border: none;
+     padding: 10px 30px;
+     border-radius: 5px;
+     font-weight: bold;
+     font-size: 1.1rem;
+     cursor: pointer;
+ }
+
+ .btn-modal-confirm:hover {
+     background-color: #6a8f55;
+ }
+
+ .btn-modal-confirm:disabled {
+     background-color: #a8a8a8;
+     /* 未勾選時變灰 */
+     cursor: not-allowed;
+ }
+
+ /* 主頁面 Checkbox 列表美化 */
+ .term-item {
+    color: #504033;
+    font-weight: bolder;
+     margin-bottom: 10px;
+     transition: opacity 0.3s;
+ }
+
+ .term-item:hover {
+     opacity: 0.8;
+ }
+
+ .agree-check input[type="checkbox"] {
+    accent-color: #756B61; 
+}
+
+.term-item>input {
+    pointer-events: none;
+}
+
+ .step>.back-to-enter-file {
+     border: none;
+     background-color: #AB9073;
+     color: #FFFBF7;
+ }
+
+ .back-to-enter-file:hover {
+     background-color: #756B61;
+     color: #FFFBF7;
+ }
+
+
+
+
+ /* 白色卡片容器  */
+ .white-card-section {
+     background-color: #FFFFFF;
+     width: 90%;
+     /* 根據截圖，寬度大約是這樣 */
+     max-width: 1000px;
+     margin: 40px auto;
+     /* 上下間距 */
+     padding: 50px 40px;
+     /* 內距 */
+     position: relative;
+     /* 為了讓標題絕對定位 */
+     border-radius: 0;
+     /* 截圖看起來是直角或很小的圓角 */
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+     /* 微微的陰影 */
+ }
+
+ /* 標題標籤 (例如：寵物資訊) - 模仿截圖 */
+ .section-badge-title {
+     position: absolute;
+     top: -20px;
+     /* 往上凸出 */
+     left: 40px;
+     /* 左邊距離 */
+     background-color: #756B61;
+     /* 深褐色 */
+     color: #FFFBF7;
+     padding: 8px 25px;
+     font-size: 1.2rem;
+     font-weight: 800;
+     margin: 0;
+     z-index: 10;
+ }
+
+
+
+ /* ------------------- 資料欄位排版 ------------------- */
+
+ .form-grid {
+     gap: 30px 40px;
+     /* 上下 30px, 左右 40px */
+     justify-content: flex-start;
+     padding-top: 20px;
+ }
+
+ /* 每一個資料組 (Label + Value) */
+ .data-group {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ /* 模仿截圖的 Label (米色條狀) */
+ .data-label {
+     width: 100%;
+     background-color: #EDE4DA;
+     /* 淺米色 */
+     color: #504033;
+     font-weight: bold;
+     padding: 5px 15px;
+     border-radius: 10px;
+     /* 圓角 */
+     text-align: left;
+     /* 文字靠左 */
+     font-size: 0.95rem;
+     margin-bottom: 8px;
+     min-width: 180px;
+     /* 最小寬度 */
+ }
+
+ /* 模仿截圖的 Value (文字在下方) */
+ .data-value {
+     color: #333;
+     font-weight: 800;
+     font-size: 1rem;
+     text-align: center;
+     min-height: 24px;
+     width: 100%;
+     word-break: break-all;
+ }
+
+ /* ------------------- 寬度控制 (RWD) ------------------- */
+
+ .data-group.half {
+     width: calc(50% - 25px);
+     /* 兩欄 */
+ }
+
+ .data-group.full {
+     width: 100%;
+ }
+
+ @media (max-width: 768px) {
+     .data-group.half {
+         width: 100%;
+         /* 手機版變單欄 */
+     }
+
+     .white-card-section {
+         padding: 40px 20px;
+         width: 95%;
+     }
+
+     .section-badge-title {
+         left: 20px;
+     }
+ }
+
+ /* ------------------- 圖片區塊 ------------------- */
+
+
+ .photo-box-confirm {
+     width: 120px;
+     height: 120px;
+     background-color: #EDE4DA;
+     /* 預設底色 */
+     border-radius: 10px;
+     overflow: hidden;
+ }
+
+ .photo-box-confirm img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ /* ---------圖片排版---------- */
+ .photo-cover {
+     border-radius: 0px;
+     margin-bottom: 5px;
+ }
+
+ .photo-cover-div {
+     text-align: center;
+
+ }
+
+ .photo-nocover {
+     margin-top: 28px;
+ }
+
+ .photo-preview-grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+     /* 讓照片區塊整體置中 */
+     justify-content: center;
+ }
+
+ .photo-preview-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-bottom: 20px;
+
+     /* 手機版預設：兩張一排 */
+     width: calc(50% - 7.5px);
+ }
+
+ /* 電腦版 (大於 992px)：四張一排 (4-0) */
+ @media (min-width: 992px) {
+     .photo-preview-item {
+         /* 計算方式：(100% - 3個gap 45px) / 4 = 25% - 11.25px */
+         width: calc(25% - 11.25px);
+         margin-bottom: 0;
+     }
+ }
+
+ /* ------------------- 地圖 ------------------- */
+ .confirm-map-container {
+     width: 100%;
+     height: 200px;
+     border-radius: 10px;
+     overflow: hidden;
+     border: 2px solid #E9E2D8;
+     margin-top: 5px;
+ }
+
+ /* ------------------- 底部按鈕與 Checkbox ------------------- */
+ .bottom-actions {
+     text-align: center;
+     margin-top: 50px;
+     margin-bottom: 80px;
+ }
+
+ .checkbox-group {
+     display: inline-block;
+     text-align: left;
+     margin-bottom: 20px;
+     font-size: 0.9rem;
+     color: #504033;
+     line-height: 1.8;
+ }
+
+ .btn-submit-final {
+     background-color: #D5C2A5;
+     /* 截圖中的按鈕顏色 */
+     color: #504033;
+     font-weight: 900;
+     padding: 10px 60px;
+     border: none;
+     border-radius: 8px;
+     font-size: 1.2rem;
+     margin-bottom: 15px;
+     display: block;
+     margin: 0 auto 15px auto;
+ }
+
+ .btn-submit-final:hover {
+     background-color: #bfab8e;
+ }
+
+ .btn-back-final {
+     background-color: #A04040;
+     /* 深紅色 */
+     color: white;
+     font-weight: bold;
+     padding: 5px 20px;
+     border: none;
+     border-radius: 5px;
+     font-size: 0.9rem;
+ }
+
+ .agree-check>label {
+     cursor: pointer;
+     text-decoration: underline;
+ }

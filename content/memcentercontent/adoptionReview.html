@@ -1,0 +1,492 @@
+<link rel="stylesheet" href="../../css/modules/card.css">
+<link rel="stylesheet" href="../../css/modules/member_center_status.css">
+<link rel="stylesheet" href="../../css/modules/adoptionReview.css">
+
+<script src="js/modules/adoptionReview.js"></script>
+<p class="containertitle">送養審核</p>
+<!-- 狀態對照 -->
+<section class="status-bar-section">
+    <div class="status-steps-container">
+        <div class="status-list">
+
+            <div class="status-item done">
+                <div class="status-header">
+                    <div class="status-title">Step 1</div>
+                    <div class="status-desc">等待審核</div>
+                </div>
+                <div class="status-icon-box">
+                    <div class="status-dot">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                </div>
+                <div class="status-hint">
+                    您可以點擊領養案件查看詳細資料。
+                </div>
+            </div>
+
+            <div class="status-item active">
+                <div class="status-header">
+                    <div class="status-title">Step 2</div>
+                    <div class="status-desc">審核進行中</div>
+                </div>
+                <div class="status-icon-box">
+                    <div class="status-dot">
+                        <i class="bi bi-clock"></i>
+                    </div>
+                </div>
+                <div class="status-hint">
+                    查看詳細資料後，您可直接做出決定，或開啟聊天室與領養者進一步確認。
+                </div>
+            </div>
+
+            <div class="status-item">
+                <div class="status-header">
+                    <div class="status-title">Step 3</div>
+                    <div class="status-desc">聊天室開啟</div>
+                </div>
+                <div class="status-icon-box">
+                    <div class="status-dot">
+                        <i class="bi bi-chat"></i>
+                    </div>
+                </div>
+                <div class="status-hint">
+                    開啟聊天室與領養者聯繫，進行更詳細的確認。
+                </div>
+            </div>
+
+            <div class="status-item double-icon">
+                <div class="status-header">
+                    <div class="status-title">Step 4</div>
+                    <div class="status-desc">媒合結果</div>
+                </div>
+
+                <div class="status-icon-box double-icon">
+                    <div class="multi-dots">
+                        <div class="status-dot dot-success"><i class="bi bi-heart-fill"></i></div>
+                        <div class="status-dot dot-fail"><i class="bi bi-x-circle-fill"></i></div>
+                    </div>
+                </div>
+
+                <div class="status-hint ">
+                    依據您的評估決定媒合結果。
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<hr>
+
+<!--內容-->
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="loading-box">
+    <div class="loader">
+      <span></span><span></span><span></span>
+    </div>
+    <p>載入中，請稍候...</p>
+  </div>
+</div>
+
+<div class="review-container" id="reviewContainer"></div>
+
+<!-- <div class="review-container" id="reviewContainer">
+
+
+    <div class="count-badge">目前領養申請已有 3 筆</div>
+
+    <div class="pet-review-card ">
+        <div class="pet-info-header" onclick="togglePetAccordion(this)">
+            <div class="pet-img-box">
+                <img src="https://placedog.net/500/500" alt="Pet">
+            </div>
+            <div class="pet-text-info">
+                <div class="pet-id">案件編號 : ZS20251209080801</div>
+                <div class="pet-time">刊登時間 : 2025-10-20</div>
+            </div>
+            <i class="bi bi-chevron-down header-arrow"></i>
+        </div>
+
+        <div class="applicant-list-container">
+
+            
+            <div class="applicant-item" id="app-001">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step1">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-001')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-002">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step2">
+                            <i class="bi bi-clock"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-002')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-003">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step3">
+                            <i class="bi bi-chat"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-003')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-004">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot success">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-004')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-005">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot fail">
+                           <i class="bi bi-x-circle-fill"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-005')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="count-badge">目前領養申請已有 3 筆</div>
+
+    <div class="pet-review-card ">
+        <div class="pet-info-header" onclick="togglePetAccordion(this)">
+            <div class="pet-img-box">
+                <img src="https://placedog.net/500/500" alt="Pet">
+            </div>
+            <div class="pet-text-info">
+                <div class="pet-id">案件編號 : ZS20251209080801</div>
+                <div class="pet-time">刊登時間 : 2025-10-20</div>
+            </div>
+            <i class="bi bi-chevron-down header-arrow"></i>
+        </div>
+
+        <div class="applicant-list-container">
+
+            
+            <div class="applicant-item" id="app-001">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step1">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-001')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-002">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step2">
+                            <i class="bi bi-clock"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-002')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-003">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot step3">
+                            <i class="bi bi-chat"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-003')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-004">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot success">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-004')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+            <div class="applicant-item" id="app-005">
+                <div class="applicant-header" onclick="toggleApplicant(this)">
+
+                    <div class="applicant-left-group">
+                        <div class="mini-status-dot fail">
+                           <i class="bi bi-x-circle-fill"></i>
+                        </div>
+
+                        <div class="app-info">
+                            <span class="app-name">陳美美 (Mei)</span>
+                            <span class="app-id">申請日期：2025-10-10</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reject" onclick="event.stopPropagation(); alert('已拒絕申請')">不接受申請</button>
+                    <i class="bi bi-chevron-down inner-arrow"></i>
+                </div>
+                      <div class="applicant-actions-body">
+                    <button class="action-btn btn-detail" onclick="openDetailModal('app-005')">
+                        詳細資料
+                    </button>
+                    <button class="action-btn btn-chat" disabled onclick="window.location.href='chat.html'">
+                        開啟聊天室
+                    </button>
+                    <button class="action-btn btn-accept" disabled onclick="alert('恭喜媒合成功！')">
+                        接受申請
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="modal-overlay" id="detailModal">
+    <div class="modal-container">
+        <button class="btn-close-modal" onclick="closeModal()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <div class="modal-header">
+            <span class="modal-title-badge">問卷 & 資料</span>
+        </div>
+
+        <div class="modal-scroll-area">
+            <div class="info-section">
+                <div class="section-title">聯絡資料</div>
+                <div class="info-grid-row">
+                    <div class="info-grid">
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <div id="modal-name">—</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>電話</label>
+                            <div id="modal-phone">—</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div id="modal-email">—</div>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="form-group">
+                            <label>申請日期</label>
+                            <div id="modal-applicationDate">—</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>婚姻狀態</label>
+                            <div id="modal-maritalStatus">—</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>工作狀態</label>
+                            <div id="modal-employmentStatus">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="section-title">問卷</div>
+                <div id="modal-qaList"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btn-read-finished" data-action="read-finished" class="action-btn btn-accept">已閱讀完畢</button>
+            </div>
+        </div>
+    </div>
+</div>
