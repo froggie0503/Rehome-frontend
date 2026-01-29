@@ -80,7 +80,7 @@ body.animation-done .navbar-brand img {
     pointer-events: none;
 }
 
-.brand-container {
+/* .brand-container {
     position: fixed;
     z-index: 10000;
     top: 50%;
@@ -91,10 +91,27 @@ body.animation-done .navbar-brand img {
  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1), 
                 left 1s cubic-bezier(0.65, 0, 0.35, 1), 
                 top 1s cubic-bezier(0.65, 0, 0.35, 1);
-
-    /* ★ 關鍵：變形原點設為左上角，方便對齊 */
     transform-origin: center center;
     pointer-events: none;
+} */
+
+.brand-container {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    /* 固定在 0 */
+    left: 0;
+    /* 固定在 0 */
+    /* 初始位移：移動到螢幕一半減去自己的一半 */
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    display: flex;
+    align-items: center;
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* ★ 關鍵：全程統一使用左上角作為原點 */
+    transform-origin: top left;
+    pointer-events: none;
+
 }
 
 /* --- 飛行狀態 --- */
@@ -104,8 +121,8 @@ body.animation-done .navbar-brand img {
     left: var(--final-left);
 
     /* 使用手動設定的倍率 */
-    transform: translate(0, 0) scale(var(--scale-pc));
-
+    /* transform: translate(0, 0) scale(var(--scale-pc)); */
+    transform: translate(var(--final-left), var(--final-top)) scale(var(--scale-pc));
     /* 改為左上角對齊 */
     transform-origin: top left;
 }
@@ -141,7 +158,8 @@ body.animation-done .navbar-brand img {
 
 /* 所有圖片的基礎定位 */
 .logo-box .logo-img {
-    position: absolute; /* 讓圖片重疊的核心 */
+    position: absolute;
+    /* 讓圖片重疊的核心 */
     top: 0;
     left: 0;
     width: 100%;
@@ -156,8 +174,10 @@ body.animation-done .navbar-brand img {
 
 /* 上層：亮圖 (初始狀態) */
 .logo-box .logo-img.light {
-    opacity: 0;      /* 初始隱藏 */
-    z-index: 2;      /* 確保在暗圖上方 */
+    opacity: 0;
+    /* 初始隱藏 */
+    z-index: 2;
+    /* 確保在暗圖上方 */
     transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -170,9 +190,10 @@ body.animation-done .navbar-brand img {
 .window-glow {
     position: absolute;
     background-color: #ffe760;
-    width: 40%; 
-    height: 20%; 
-    top: 78%; /* 微調對準窗戶位置 */
+    width: 40%;
+    height: 20%;
+    top: 78%;
+    /* 微調對準窗戶位置 */
     left: 60%;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -187,15 +208,16 @@ body.animation-done .navbar-brand img {
 }
 
 @keyframes smoothLightUp {
-   0% { 
-        opacity: 0; 
-        transform: translate(-50%, 0) scale(0.6); 
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.6);
         filter: blur(5px);
     }
-    100% { 
-        opacity: 0.9; 
-        transform: translate(-50%, 0) scale(0.9); 
-        filter: blur(18px); 
+
+    100% {
+        opacity: 0.9;
+        transform: translate(-50%, 0) scale(0.9);
+        filter: blur(18px);
     }
 }
 
@@ -208,6 +230,7 @@ body.animation-done .navbar-brand img {
     margin-left: -20px;
     white-space: nowrap;
 }
+
 .name-img-box {
     /* 1. 位置調整：改用 margin-top 往下推，解決太高的問題 */
     margin-top: 46px;
@@ -343,6 +366,3 @@ body.animation-done .navbar-brand img {
         margin-left: -10px;
     }
 }
-
-
-
