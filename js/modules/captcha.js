@@ -18,7 +18,7 @@ async function genNewCaptcha() {
 // store captcha on backend and get sessionId
 async function storeCaptchaToBackend(captchaCode) {
   try {
-    const response = await fetch('http://localhost:8080/api/mem/captcha/store', {
+    const response = await fetch('/api/mem/captcha/store', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

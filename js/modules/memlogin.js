@@ -28,21 +28,36 @@ function initLoginFormSubmit() {
 /*------------------------------------------------------------
     收集登入表單資料
 ------------------------------------------------------------*/
-function collectLoginFormData() {
-    console.log("collectLoginFormData()");
+// function collectLoginFormData() {
+//     console.log("collectLoginFormData()");
     
+//     const email = document.getElementById("login_Account").value;
+//     const password = document.getElementById("login_Password").value;
+//     const captcha = document.querySelector('input[name="confirmcode"]').value;
+    
+//     return {
+//         email: email,
+//         password: password,
+//         captcha: captcha,  // 暫時先送，後端目前跳過驗證
+//         sessionId: window.getCaptchaSessionId()  // 取得驗證碼 Session ID
+//     };
+// }
+
+function collectLoginFormData() {
     const email = document.getElementById("login_Account").value;
     const password = document.getElementById("login_Password").value;
     const captcha = document.querySelector('input[name="confirmcode"]').value;
+    const sId = window.getCaptchaSessionId ? window.getCaptchaSessionId() : "NOT_FOUND";
+    
+    console.log("偵測到的 SessionId:", sId); // 這裡如果印出 NOT_FOUND 或 undefined 就找到兇手了
     
     return {
         email: email,
         password: password,
-        captcha: captcha,  // 暫時先送，後端目前跳過驗證
-        sessionId: window.getCaptchaSessionId()  // 取得驗證碼 Session ID
+        captcha: captcha,
+        sessionId: sId
     };
 }
-
 /*------------------------------------------------------------
     發送登入請求到後端
 ------------------------------------------------------------*/

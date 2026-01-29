@@ -2,6 +2,7 @@
   "hosting": {
     "public": ".",
     "ignore": [
+      "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
@@ -9,9 +10,20 @@
       {
         "source": "/api/**",
         "run": {
-          "serviceId": "rehome-backend", 
-          "region": "asia-east1" 
+          "serviceId": "rehome-backend",
+          "region": "asia-east1"
         }
+      },
+      {
+        "source": "/ws/**",
+        "run": {
+          "serviceId": "rehome-backend",
+          "region": "asia-east1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }
