@@ -328,13 +328,13 @@ body.animation-done .navbar-brand img {
 
 @media (max-width: 500px) {
     :root {
-        --final-top: -25px;
-        --final-left: 30px;
-        --scale-pc: var(--scale-small);
+        --final-top: 100px; 
+        --final-left: 80px;
     }
 
     .brand-container.move-to-header {
-        transform: translate(0, 0) scale(var(--scale-small));
+        /* transform: translate(0, 0) scale(var(--scale-small)); */
+        transform: translate(28px, -25px) scale(var(--scale-small)) !important;
     }
 
     .logo-box {
