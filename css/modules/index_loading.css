@@ -103,7 +103,7 @@ body.animation-done .navbar-brand img {
     left: 0;
     /* 固定在 0 */
     /* 初始位移：移動到螢幕一半減去自己的一半 */
-    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%)) scale(1);
     display: flex;
     align-items: center;
     transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
@@ -117,14 +117,14 @@ body.animation-done .navbar-brand img {
 /* --- 飛行狀態 --- */
 .brand-container.move-to-header {
     /* 移除置中 */
-    top: var(--final-top);
-    left: var(--final-left);
+    /* top: var(--final-top);
+    left: var(--final-left); */
 
     /* 使用手動設定的倍率 */
     /* transform: translate(0, 0) scale(var(--scale-pc)); */
     transform: translate(var(--final-left), var(--final-top)) scale(var(--scale-pc));
     /* 改為左上角對齊 */
-    transform-origin: top left;
+    /* transform-origin: top left; */
 }
 
 .brand-container.mission-complete {
@@ -286,6 +286,7 @@ body.animation-done .navbar-brand img {
     :root {
         --final-top: -20px;
         --final-left: 28px;
+        --scale-pc: var(--scale-mobile); 
     }
 
     .brand-container.move-to-header {
@@ -329,6 +330,7 @@ body.animation-done .navbar-brand img {
     :root {
         --final-top: -25px;
         --final-left: 30px;
+        --scale-pc: var(--scale-small);
     }
 
     .brand-container.move-to-header {
